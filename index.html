@@ -1,0 +1,902 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Super 8s</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f3f4f6;
+        color: #17202a;
+    }
+
+    header {
+        background: #111827;
+        color: white;
+        padding: 28px 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 38px;
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin: 8px 0 0;
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    nav {
+        background: white;
+        border-bottom: 1px solid #ddd;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    nav .nav-inner {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    nav button {
+        border: 0;
+        background: transparent;
+        padding: 10px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    nav button:hover {
+        background: #f1f5f9;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 0 16px;
+    }
+
+    .page {
+        display: none;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    .hero {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .hero h2 {
+        margin-top: 0;
+        font-size: 26px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-bottom: 25px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .card .number {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .card .label {
+        font-size: 13px;
+        color: #64748b;
+    }
+
+    .section {
+        background: white;
+        border-radius: 12px;
+        padding: 22px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .section h3 {
+        margin-top: 0;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 12px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        text-align: left;
+        background: #f8fafc;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    td {
+        padding: 11px 10px;
+        border-top: 1px solid #e5e7eb;
+        font-size: 14px;
+    }
+
+    .score {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .winner {
+        font-weight: bold;
+    }
+
+    .report {
+        line-height: 1.65;
+        font-size: 16px;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 50px;
+        color: #64748b;
+    }
+
+    footer {
+        text-align: center;
+        color: #64748b;
+        font-size: 12px;
+        padding: 30px;
+    }
+
+    @media (max-width: 800px) {
+        .cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        header h1 {
+            font-size: 30px;
+        }
+
+        nav .nav-inner {
+            overflow-x: auto;
+            justify-content: flex-start;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .cards {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .section {
+            padding: 15px;
+        }
+
+        th, td {
+            padding: 8px 5px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>SUPER 8s</h1>
+    <p>Fantasy Premier League · Head-to-Head</p>
+</header>
+
+<nav>
+    <div class="nav-inner">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('results')">Results</button>
+        <button onclick="showPage('table')">League Table</button>
+        <button onclick="showPage('stats')">Stats</button>
+        <button onclick="showPage('records')">Records</button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div id="loading" class="loading">
+        Loading Super 8s data...
+    </div>
+
+    <div id="home" class="page">
+
+        <div class="hero">
+            <h2 id="gameweek-title">Super 8s</h2>
+            <p id="gameweek-subtitle"></p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="number" id="highest-score">—</div>
+                <div class="label">Highest score</div>
+            </div>
+
+            <div class="card">
+                <div class="number" id="lowest-score">—</div>
+                <div class="label">Lowest score</div>
+            </div>
+
+            <div class="card">
+                <div class="number" id="biggest-margin">—</div>
+                <div class="label">Biggest win</div>
+            </div>
+
+            <div class="card">
+                <div class="number" id="narrowest-margin">—</div>
+                <div class="label">Closest game</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Gameweek highlights</h3>
+            <div id="highlights"></div>
+        </div>
+
+    </div>
+
+
+    <div id="results" class="page">
+
+        <div class="section">
+            <h3>Latest results</h3>
+            <div id="results-table"></div>
+        </div>
+
+    </div>
+
+
+    <div id="table" class="page">
+
+        <div class="section">
+            <h3>Super 8s League Table</h3>
+            <div id="league-table"></div>
+        </div>
+
+    </div>
+
+
+    <div id="stats" class="page">
+
+        <div class="section">
+            <h3>Gameweek statistics</h3>
+            <div id="stats-content"></div>
+        </div>
+
+    </div>
+
+
+    <div id="records" class="page">
+
+        <div class="section">
+            <h3>Super 8s Records</h3>
+            <div id="records-content"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    Super 8s · Fantasy Premier League
+</footer>
+
+
+<script>
+
+let data = null;
+
+
+function showPage(pageName) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const page = document.getElementById(pageName);
+
+    if (page) {
+        page.classList.add("active");
+    }
+}
+
+
+function getLatestCompletedGameweek() {
+
+    if (!data.completed_gameweeks ||
+        data.completed_gameweeks.length === 0) {
+        return null;
+    }
+
+    return Math.max(
+        ...data.completed_gameweeks
+    );
+}
+
+
+function getMatchesForGameweek(gameweek) {
+
+    return data.matches.filter(
+        match => match.event === gameweek
+    );
+}
+
+
+function renderHome(gameweek) {
+
+    const report =
+        data.weekly_reports[String(gameweek)];
+
+    if (!report) {
+        return;
+    }
+
+    const summary =
+        report.weekly_summary;
+
+    document.getElementById(
+        "gameweek-title"
+    ).textContent =
+        `Super 8s — Gameweek ${gameweek}`;
+
+    document.getElementById(
+        "gameweek-subtitle"
+    ).textContent =
+        `${report.league.matches_this_week} matches played`;
+
+    document.getElementById(
+        "highest-score"
+    ).textContent =
+        summary.highest_score;
+
+    document.getElementById(
+        "lowest-score"
+    ).textContent =
+        summary.lowest_score;
+
+    document.getElementById(
+        "biggest-margin"
+    ).textContent =
+        summary.biggest_margin;
+
+    document.getElementById(
+        "narrowest-margin"
+    ).textContent =
+        summary.narrowest_margin;
+
+
+    const biggest =
+        summary.biggest_match;
+
+    const narrowest =
+        summary.narrowest_match;
+
+    document.getElementById(
+        "highlights"
+    ).innerHTML = `
+
+        <p>
+            <strong>Biggest win:</strong>
+            ${biggest.team_1.team_name}
+            ${biggest.team_1.score}–${biggest.team_2.score}
+            ${biggest.team_2.team_name}
+            — a ${biggest.margin}-point margin.
+        </p>
+
+        <p>
+            <strong>Closest game:</strong>
+            ${narrowest.team_1.team_name}
+            ${narrowest.team_1.score}–${narrowest.team_2.score}
+            ${narrowest.team_2.team_name}
+            — ${narrowest.margin === 0
+                ? "a draw"
+                : `decided by just ${narrowest.margin} point${narrowest.margin === 1 ? "" : "s"}`}.
+        </p>
+
+    `;
+}
+
+
+function renderResults(gameweek) {
+
+    const matches =
+        getMatchesForGameweek(gameweek);
+
+    let html = `
+        <table>
+            <thead>
+                <tr>
+                    <th>Match</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    matches.forEach(match => {
+
+        const score1 =
+            match.entry_1_points;
+
+        const score2 =
+            match.entry_2_points;
+
+        html += `
+            <tr>
+                <td>
+                    <span class="${
+                        score1 > score2
+                        ? "winner"
+                        : ""
+                    }">
+                        ${match.entry_1_name}
+                    </span>
+                    <br>
+                    <small>
+                        ${match.entry_1_player_name}
+                    </small>
+                    <br><br>
+                    <span class="${
+                        score2 > score1
+                        ? "winner"
+                        : ""
+                    }">
+                        ${match.entry_2_name}
+                    </span>
+                    <br>
+                    <small>
+                        ${match.entry_2_player_name}
+                    </small>
+                </td>
+
+                <td class="score">
+                    ${score1}<br><br>${score2}
+                </td>
+            </tr>
+        `;
+    });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    document.getElementById(
+        "results-table"
+    ).innerHTML = html;
+}
+
+
+function renderTable() {
+
+    const records = {};
+
+    data.teams.forEach(team => {
+
+        records[team.entry_id] = {
+            team_name: team.team_name,
+            manager: team.manager,
+            played: 0,
+            wins: 0,
+            draws: 0,
+            losses: 0,
+            points: 0,
+            scored: 0,
+            conceded: 0
+        };
+
+    });
+
+
+    data.matches.forEach(match => {
+
+        const a =
+            records[match.entry_1_entry];
+
+        const b =
+            records[match.entry_2_entry];
+
+        if (!a || !b) {
+            return;
+        }
+
+        a.played++;
+        b.played++;
+
+        a.scored += match.entry_1_points;
+        a.conceded += match.entry_2_points;
+
+        b.scored += match.entry_2_points;
+        b.conceded += match.entry_1_points;
+
+
+        if (match.entry_1_points >
+            match.entry_2_points) {
+
+            a.wins++;
+            a.points += 3;
+            b.losses++;
+
+        } else if (
+            match.entry_2_points >
+            match.entry_1_points
+        ) {
+
+            b.wins++;
+            b.points += 3;
+            a.losses++;
+
+        } else {
+
+            a.draws++;
+            b.draws++;
+
+            a.points++;
+            b.points++;
+        }
+
+    });
+
+
+    const teams =
+        Object.values(records)
+        .sort((a, b) => {
+
+            if (b.points !== a.points) {
+                return b.points - a.points;
+            }
+
+            return (
+                b.scored - a.scored
+            );
+
+        });
+
+
+    let html = `
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>Pts</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+
+    teams.forEach((team, index) => {
+
+        html += `
+            <tr>
+                <td>${index + 1}</td>
+
+                <td>
+                    <strong>
+                        ${team.team_name}
+                    </strong>
+                    <br>
+                    <small>
+                        ${team.manager}
+                    </small>
+                </td>
+
+                <td>${team.played}</td>
+                <td>${team.wins}</td>
+                <td>${team.draws}</td>
+                <td>${team.losses}</td>
+                <td class="score">
+                    ${team.points}
+                </td>
+            </tr>
+        `;
+
+    });
+
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+
+    document.getElementById(
+        "league-table"
+    ).innerHTML = html;
+}
+
+
+function renderStats(gameweek) {
+
+    const report =
+        data.weekly_reports[String(gameweek)];
+
+    if (!report) {
+        return;
+    }
+
+    const summary =
+        report.weekly_summary;
+
+    const high =
+        summary.highest_scoring_match;
+
+    const low =
+        summary.lowest_scoring_match;
+
+
+    document.getElementById(
+        "stats-content"
+    ).innerHTML = `
+
+        <p>
+            <strong>Highest individual score:</strong>
+            ${summary.highest_score}
+        </p>
+
+        <p>
+            <strong>Lowest individual score:</strong>
+            ${summary.lowest_score}
+        </p>
+
+        <p>
+            <strong>Highest-scoring match:</strong><br>
+            ${high.team_1.team_name}
+            ${high.team_1.score}–${high.team_2.score}
+            ${high.team_2.team_name}
+            (${high.total_points} combined points)
+        </p>
+
+        <p>
+            <strong>Lowest-scoring match:</strong><br>
+            ${low.team_1.team_name}
+            ${low.team_1.score}–${low.team_2.score}
+            ${low.team_2.team_name}
+            (${low.total_points} combined points)
+        </p>
+
+    `;
+}
+
+
+function renderRecords() {
+
+    const allMatches =
+        data.matches;
+
+    if (!allMatches.length) {
+        return;
+    }
+
+
+    let highestScore = null;
+    let lowestScore = null;
+    let biggestWin = null;
+    let closestGame = null;
+
+
+    allMatches.forEach(match => {
+
+        const scores = [
+            {
+                score: match.entry_1_points,
+                team: match.entry_1_name
+            },
+            {
+                score: match.entry_2_points,
+                team: match.entry_2_name
+            }
+        ];
+
+
+        scores.forEach(item => {
+
+            if (
+                !highestScore ||
+                item.score >
+                highestScore.score
+            ) {
+                highestScore = item;
+            }
+
+            if (
+                !lowestScore ||
+                item.score <
+                lowestScore.score
+            ) {
+                lowestScore = item;
+            }
+
+        });
+
+
+        const margin =
+            Math.abs(
+                match.entry_1_points -
+                match.entry_2_points
+            );
+
+
+        if (
+            !biggestWin ||
+            margin > biggestWin.margin
+        ) {
+            biggestWin = {
+                margin: margin,
+                team1: match.entry_1_name,
+                team2: match.entry_2_name,
+                score1: match.entry_1_points,
+                score2: match.entry_2_points
+            };
+        }
+
+
+        if (
+            !closestGame ||
+            margin < closestGame.margin
+        ) {
+            closestGame = {
+                margin: margin,
+                team1: match.entry_1_name,
+                team2: match.entry_2_name,
+                score1: match.entry_1_points,
+                score2: match.entry_2_points
+            };
+        }
+
+    });
+
+
+    document.getElementById(
+        "records-content"
+    ).innerHTML = `
+
+        <p>
+            <strong>Highest score:</strong>
+            ${highestScore.score}
+            — ${highestScore.team}
+        </p>
+
+        <p>
+            <strong>Lowest score:</strong>
+            ${lowestScore.score}
+            — ${lowestScore.team}
+        </p>
+
+        <p>
+            <strong>Biggest win:</strong>
+            ${biggestWin.margin} points
+            —
+            ${biggestWin.team1}
+            ${biggestWin.score1}–${biggestWin.score2}
+            ${biggestWin.team2}
+        </p>
+
+        <p>
+            <strong>Closest game:</strong>
+            ${closestGame.team1}
+            ${closestGame.score1}–${closestGame.score2}
+            ${closestGame.team2}
+            ${
+                closestGame.margin === 0
+                ? "— draw"
+                : `— ${closestGame.margin} point margin`
+            }
+        </p>
+
+    `;
+}
+
+
+async function loadData() {
+
+    try {
+
+        const response =
+            await fetch(
+                "gameweek_data.json"
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "Could not load gameweek_data.json"
+            );
+        }
+
+        data =
+            await response.json();
+
+
+        const gameweek =
+            getLatestCompletedGameweek();
+
+
+        if (!gameweek) {
+            throw new Error(
+                "No completed gameweeks found"
+            );
+        }
+
+
+        document.getElementById(
+            "loading"
+        ).style.display = "none";
+
+
+        renderHome(gameweek);
+        renderResults(gameweek);
+        renderTable();
+        renderStats(gameweek);
+        renderRecords();
+
+
+        showPage("home");
+
+
+    } catch (error) {
+
+        document.getElementById(
+            "loading"
+        ).innerHTML = `
+            <strong>
+                Unable to load Super 8s data.
+            </strong>
+            <br><br>
+            ${error.message}
+        `;
+
+        console.error(error);
+
+    }
+
+}
+
+
+loadData();
+
+</script>
+
+</body>
+</html>
+```
