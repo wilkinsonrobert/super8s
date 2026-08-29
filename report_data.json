@@ -1,3094 +1,473 @@
 {
-  "league_name": "Super 8s",
-  "gameweek": 1,
+  "report_version": 3,
+  "league": {
+    "name": "Super 8s",
+    "gameweek": 2,
+    "matches_this_week": 7
+  },
+  "weekly_summary": {
+    "highest_score": 33,
+    "lowest_score": 0,
+    "biggest_margin": 24,
+    "narrowest_margin": 0,
+    "highest_scoring_match": {
+      "match_id": 3151934,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 2859462,
+        "team_name": "BeLucky Again",
+        "manager": "Kevin Walsh",
+        "score": 26,
+        "result": "draw"
+      },
+      "team_2": {
+        "entry_id": 3983373,
+        "team_name": "Change Name FC",
+        "manager": "David Woolman",
+        "score": 26,
+        "result": "draw"
+      },
+      "result": "draw",
+      "margin": 0,
+      "total_points": 52
+    },
+    "lowest_scoring_match": {
+      "match_id": 3151930,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 4541269,
+        "team_name": "Prince Majid Rd FC",
+        "manager": "Rami El-Dahshan",
+        "score": 0,
+        "result": "loss"
+      },
+      "team_2": {
+        "entry_id": 266577,
+        "team_name": "Woolbrohampton",
+        "manager": "Ben Woolman",
+        "score": 13,
+        "result": "win"
+      },
+      "result": "away_win",
+      "margin": 13,
+      "total_points": 13
+    },
+    "narrowest_match": {
+      "match_id": 3151934,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 2859462,
+        "team_name": "BeLucky Again",
+        "manager": "Kevin Walsh",
+        "score": 26,
+        "result": "draw"
+      },
+      "team_2": {
+        "entry_id": 3983373,
+        "team_name": "Change Name FC",
+        "manager": "David Woolman",
+        "score": 26,
+        "result": "draw"
+      },
+      "result": "draw",
+      "margin": 0,
+      "total_points": 52
+    },
+    "biggest_match": {
+      "match_id": 3151933,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 3237255,
+        "team_name": "Seattle Scorchers",
+        "manager": "Andrew Crystal",
+        "score": 9,
+        "result": "loss"
+      },
+      "team_2": {
+        "entry_id": 166304,
+        "team_name": "el Guapo",
+        "manager": "Tom Curtis",
+        "score": 33,
+        "result": "win"
+      },
+      "result": "away_win",
+      "margin": 24,
+      "total_points": 42
+    }
+  },
+  "matches": [
+    {
+      "match_id": 3151930,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 4541269,
+        "team_name": "Prince Majid Rd FC",
+        "manager": "Rami El-Dahshan",
+        "score": 0,
+        "result": "loss"
+      },
+      "team_2": {
+        "entry_id": 266577,
+        "team_name": "Woolbrohampton",
+        "manager": "Ben Woolman",
+        "score": 13,
+        "result": "win"
+      },
+      "result": "away_win",
+      "margin": 13,
+      "total_points": 13
+    },
+    {
+      "match_id": 3151931,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 3829660,
+        "team_name": "Turf Less",
+        "manager": "Martyn Bradshaw",
+        "score": 13,
+        "result": "loss"
+      },
+      "team_2": {
+        "entry_id": 3426860,
+        "team_name": "ChampagneSuperRovers",
+        "manager": "James Dunne",
+        "score": 26,
+        "result": "win"
+      },
+      "result": "away_win",
+      "margin": 13,
+      "total_points": 39
+    },
+    {
+      "match_id": 3151932,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 1325193,
+        "team_name": "Atletico Waspo",
+        "manager": "Ben Foster",
+        "score": 31,
+        "result": "win"
+      },
+      "team_2": {
+        "entry_id": 3090456,
+        "team_name": "FC Dangerous",
+        "manager": "Rob Watson",
+        "score": 19,
+        "result": "loss"
+      },
+      "result": "home_win",
+      "margin": 12,
+      "total_points": 50
+    },
+    {
+      "match_id": 3151933,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 3237255,
+        "team_name": "Seattle Scorchers",
+        "manager": "Andrew Crystal",
+        "score": 9,
+        "result": "loss"
+      },
+      "team_2": {
+        "entry_id": 166304,
+        "team_name": "el Guapo",
+        "manager": "Tom Curtis",
+        "score": 33,
+        "result": "win"
+      },
+      "result": "away_win",
+      "margin": 24,
+      "total_points": 42
+    },
+    {
+      "match_id": 3151934,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 2859462,
+        "team_name": "BeLucky Again",
+        "manager": "Kevin Walsh",
+        "score": 26,
+        "result": "draw"
+      },
+      "team_2": {
+        "entry_id": 3983373,
+        "team_name": "Change Name FC",
+        "manager": "David Woolman",
+        "score": 26,
+        "result": "draw"
+      },
+      "result": "draw",
+      "margin": 0,
+      "total_points": 52
+    },
+    {
+      "match_id": 3151935,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 2773052,
+        "team_name": "Bielsa's Babes",
+        "manager": "Patrick Walsh",
+        "score": 13,
+        "result": "win"
+      },
+      "team_2": {
+        "entry_id": 2736650,
+        "team_name": "Humorous Name United",
+        "manager": "Rob Wilkinson",
+        "score": 0,
+        "result": "loss"
+      },
+      "result": "home_win",
+      "margin": 13,
+      "total_points": 13
+    },
+    {
+      "match_id": 3151936,
+      "gameweek": 2,
+      "team_1": {
+        "entry_id": 2470603,
+        "team_name": "Roped in again",
+        "manager": "Paul Nightingale",
+        "score": 31,
+        "result": "win"
+      },
+      "team_2": {
+        "entry_id": 1458705,
+        "team_name": "Richard",
+        "manager": "Rich Sutton",
+        "score": 13,
+        "result": "loss"
+      },
+      "result": "home_win",
+      "margin": 18,
+      "total_points": 44
+    }
+  ],
   "league_table": [
     {
-      "entry_id": 2773052,
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "played": 1,
-      "wins": 1,
+      "team_name": "Woolbrohampton",
+      "manager": "Ben Woolman",
+      "played": 2,
+      "wins": 2,
       "draws": 0,
       "losses": 0,
-      "points": 3,
-      "fpl_points": 76,
-      "points_for": 76,
-      "points_against": 67,
+      "points": 6,
+      "fpl_points": 0,
+      "for": 84,
+      "against": 50,
+      "difference": 34,
+      "win_percentage": 100.0,
       "position": 1
     },
     {
-      "entry_id": 2736650,
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "played": 1,
-      "wins": 1,
+      "team_name": "Bielsa's Babes",
+      "manager": "Patrick Walsh",
+      "played": 2,
+      "wins": 2,
       "draws": 0,
       "losses": 0,
-      "points": 3,
-      "fpl_points": 72,
-      "points_for": 72,
-      "points_against": 71,
+      "points": 6,
+      "fpl_points": 0,
+      "for": 89,
+      "against": 67,
+      "difference": 22,
+      "win_percentage": 100.0,
       "position": 2
     },
     {
-      "entry_id": 266577,
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "played": 1,
-      "wins": 1,
+      "team_name": "Atletico Waspo",
+      "manager": "Ben Foster",
+      "played": 2,
+      "wins": 2,
       "draws": 0,
       "losses": 0,
-      "points": 3,
-      "fpl_points": 71,
-      "points_for": 71,
-      "points_against": 50,
+      "points": 6,
+      "fpl_points": 0,
+      "for": 90,
+      "against": 74,
+      "difference": 16,
+      "win_percentage": 100.0,
       "position": 3
     },
     {
-      "entry_id": 1325193,
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "played": 1,
+      "team_name": "BeLucky Again",
+      "manager": "Kevin Walsh",
+      "played": 2,
       "wins": 1,
-      "draws": 0,
+      "draws": 1,
       "losses": 0,
-      "points": 3,
-      "fpl_points": 59,
-      "points_for": 59,
-      "points_against": 55,
+      "points": 4,
+      "fpl_points": 0,
+      "for": 77,
+      "against": 73,
+      "difference": 4,
+      "win_percentage": 50.0,
       "position": 4
     },
     {
-      "entry_id": 4541269,
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "played": 1,
+      "team_name": "el Guapo",
+      "manager": "Tom Curtis",
+      "played": 2,
       "wins": 1,
       "draws": 0,
-      "losses": 0,
+      "losses": 1,
       "points": 3,
-      "fpl_points": 57,
-      "points_for": 57,
-      "points_against": 56,
+      "fpl_points": 0,
+      "for": 80,
+      "against": 60,
+      "difference": 20,
+      "win_percentage": 50.0,
       "position": 5
     },
     {
-      "entry_id": 2859462,
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "played": 1,
+      "team_name": "Roped in again",
+      "manager": "Paul Nightingale",
+      "played": 2,
       "wins": 1,
       "draws": 0,
-      "losses": 0,
+      "losses": 1,
       "points": 3,
-      "fpl_points": 51,
-      "points_for": 51,
-      "points_against": 47,
+      "fpl_points": 0,
+      "for": 102,
+      "against": 85,
+      "difference": 17,
+      "win_percentage": 50.0,
       "position": 6
     },
     {
-      "entry_id": 3090456,
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "played": 1,
-      "wins": 0,
-      "draws": 1,
-      "losses": 0,
-      "points": 1,
-      "fpl_points": 50,
-      "points_for": 50,
-      "points_against": 50,
+      "team_name": "ChampagneSuperRovers",
+      "manager": "James Dunne",
+      "played": 2,
+      "wins": 1,
+      "draws": 0,
+      "losses": 1,
+      "points": 3,
+      "fpl_points": 0,
+      "for": 81,
+      "against": 72,
+      "difference": 9,
+      "win_percentage": 50.0,
       "position": 7
     },
     {
-      "entry_id": 3237255,
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "played": 1,
-      "wins": 0,
-      "draws": 1,
-      "losses": 0,
-      "points": 1,
-      "fpl_points": 50,
-      "points_for": 50,
-      "points_against": 50,
+      "team_name": "Humorous Name United",
+      "manager": "Rob Wilkinson",
+      "played": 2,
+      "wins": 1,
+      "draws": 0,
+      "losses": 1,
+      "points": 3,
+      "fpl_points": 0,
+      "for": 72,
+      "against": 84,
+      "difference": -12,
+      "win_percentage": 50.0,
       "position": 8
     },
     {
-      "entry_id": 2470603,
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "played": 1,
-      "wins": 0,
+      "team_name": "Prince Majid Rd FC",
+      "manager": "Rami El-Dahshan",
+      "played": 2,
+      "wins": 1,
       "draws": 0,
       "losses": 1,
-      "points": 0,
-      "fpl_points": 71,
-      "points_for": 71,
-      "points_against": 72,
+      "points": 3,
+      "fpl_points": 0,
+      "for": 57,
+      "against": 69,
+      "difference": -12,
+      "win_percentage": 50.0,
       "position": 9
     },
     {
-      "entry_id": 3983373,
       "team_name": "Change Name FC",
       "manager": "David Woolman",
-      "played": 1,
+      "played": 2,
       "wins": 0,
-      "draws": 0,
+      "draws": 1,
       "losses": 1,
-      "points": 0,
-      "fpl_points": 67,
-      "points_for": 67,
-      "points_against": 76,
+      "points": 1,
+      "fpl_points": 0,
+      "for": 93,
+      "against": 102,
+      "difference": -9,
+      "win_percentage": 0.0,
       "position": 10
     },
     {
-      "entry_id": 1458705,
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "played": 1,
+      "team_name": "FC Dangerous",
+      "manager": "Rob Watson",
+      "played": 2,
       "wins": 0,
-      "draws": 0,
+      "draws": 1,
       "losses": 1,
-      "points": 0,
-      "fpl_points": 56,
-      "points_for": 56,
-      "points_against": 57,
+      "points": 1,
+      "fpl_points": 0,
+      "for": 69,
+      "against": 81,
+      "difference": -12,
+      "win_percentage": 0.0,
       "position": 11
     },
     {
-      "entry_id": 3426860,
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "played": 1,
+      "team_name": "Seattle Scorchers",
+      "manager": "Andrew Crystal",
+      "played": 2,
       "wins": 0,
-      "draws": 0,
+      "draws": 1,
       "losses": 1,
-      "points": 0,
-      "fpl_points": 55,
-      "points_for": 55,
-      "points_against": 59,
+      "points": 1,
+      "fpl_points": 0,
+      "for": 59,
+      "against": 83,
+      "difference": -24,
+      "win_percentage": 0.0,
       "position": 12
     },
     {
-      "entry_id": 3829660,
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "played": 1,
+      "team_name": "Richard",
+      "manager": "Rich Sutton",
+      "played": 2,
       "wins": 0,
       "draws": 0,
-      "losses": 1,
+      "losses": 2,
       "points": 0,
-      "fpl_points": 50,
-      "points_for": 50,
-      "points_against": 71,
+      "fpl_points": 0,
+      "for": 69,
+      "against": 88,
+      "difference": -19,
+      "win_percentage": 0.0,
       "position": 13
     },
     {
-      "entry_id": 166304,
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "played": 1,
+      "team_name": "Turf Less",
+      "manager": "Martyn Bradshaw",
+      "played": 2,
       "wins": 0,
       "draws": 0,
-      "losses": 1,
+      "losses": 2,
       "points": 0,
-      "fpl_points": 47,
-      "points_for": 47,
-      "points_against": 51,
+      "fpl_points": 0,
+      "for": 63,
+      "against": 97,
+      "difference": -34,
+      "win_percentage": 0.0,
       "position": 14
     }
   ],
-  "gameweek_analysis": {
-    "gameweek": 1,
-    "matches": [
-      {
-        "team_1": "Richard",
-        "manager_1": "Rich Sutton",
-        "score_1": 56,
-        "team_2": "Prince Majid Rd FC",
-        "manager_2": "Rami El-Dahshan",
-        "score_2": 57,
-        "result": "away_win",
-        "margin": 1,
-        "total_points": 113
-      },
-      {
-        "team_1": "Humorous Name United",
-        "manager_1": "Rob Wilkinson",
-        "score_1": 72,
-        "team_2": "Roped in again",
-        "manager_2": "Paul Nightingale",
-        "score_2": 71,
-        "result": "home_win",
-        "margin": 1,
-        "total_points": 143
-      },
-      {
-        "team_1": "Change Name FC",
-        "manager_1": "David Woolman",
-        "score_1": 67,
-        "team_2": "Bielsa's Babes",
-        "manager_2": "Patrick Walsh",
-        "score_2": 76,
-        "result": "away_win",
-        "margin": 9,
-        "total_points": 143
-      },
-      {
-        "team_1": "el Guapo",
-        "manager_1": "Tom Curtis",
-        "score_1": 47,
-        "team_2": "BeLucky Again",
-        "manager_2": "Kevin Walsh",
-        "score_2": 51,
-        "result": "away_win",
-        "margin": 4,
-        "total_points": 98
-      },
-      {
-        "team_1": "FC Dangerous",
-        "manager_1": "Rob Watson",
-        "score_1": 50,
-        "team_2": "Seattle Scorchers",
-        "manager_2": "Andrew Crystal",
-        "score_2": 50,
-        "result": "draw",
-        "margin": 0,
-        "total_points": 100
-      },
-      {
-        "team_1": "ChampagneSuperRovers",
-        "manager_1": "James Dunne",
-        "score_1": 55,
-        "team_2": "Atletico Waspo",
-        "manager_2": "Ben Foster",
-        "score_2": 59,
-        "result": "away_win",
-        "margin": 4,
-        "total_points": 114
-      },
-      {
-        "team_1": "Woolbrohampton",
-        "manager_1": "Ben Woolman",
-        "score_1": 71,
-        "team_2": "Turf Less",
-        "manager_2": "Martyn Bradshaw",
-        "score_2": 50,
-        "result": "home_win",
-        "margin": 21,
-        "total_points": 121
-      }
-    ],
-    "summary": {
-      "highest_score": 76,
-      "lowest_score": 47,
-      "biggest_margin": 21,
-      "narrowest_margin": 1,
-      "highest_scoring_match": {
-        "team_1": "Humorous Name United",
-        "manager_1": "Rob Wilkinson",
-        "score_1": 72,
-        "team_2": "Roped in again",
-        "manager_2": "Paul Nightingale",
-        "score_2": 71,
-        "result": "home_win",
-        "margin": 1,
-        "total_points": 143
-      },
-      "lowest_scoring_match": {
-        "team_1": "el Guapo",
-        "manager_1": "Tom Curtis",
-        "score_1": 47,
-        "team_2": "BeLucky Again",
-        "manager_2": "Kevin Walsh",
-        "score_2": 51,
-        "result": "away_win",
-        "margin": 4,
-        "total_points": 98
-      },
-      "narrowest_match": {
-        "team_1": "Richard",
-        "manager_1": "Rich Sutton",
-        "score_1": 56,
-        "team_2": "Prince Majid Rd FC",
-        "manager_2": "Rami El-Dahshan",
-        "score_2": 57,
-        "result": "away_win",
-        "margin": 1,
-        "total_points": 113
-      },
-      "biggest_match": {
-        "team_1": "Woolbrohampton",
-        "manager_1": "Ben Woolman",
-        "score_1": 71,
-        "team_2": "Turf Less",
-        "manager_2": "Martyn Bradshaw",
-        "score_2": 50,
-        "result": "home_win",
-        "margin": 21,
-        "total_points": 121
-      }
-    }
+  "player_highlights": {
+    "highest_player_scores": [],
+    "biggest_bench_points": [],
+    "best_captains": [],
+    "worst_captains": []
   },
-  "player_analysis": [
-    {
-      "name": "Antonín Kinský",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Joško Gvardiol",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Luke Shaw",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Morgan Rogers",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Iliman Ndiaye",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Brian Brobbey",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 10
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 11
-    },
-    {
-      "name": "Martin Dubravka",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Matty Cash",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Michael Kayode",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "Will Hughes",
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "Senne Lammens",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Daniel Muñoz Mejía",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Cristhian Mosquera",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Daniel Ballard",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Martin Ødegaard",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Morgan Rogers",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Dominik Szoboszlai",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 9
-    },
-    {
-      "name": "Igor Thiago Nascimento Rodrigues",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 10
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Bart Verbruggen",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Anton Stach",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Ezri Konsa Ngoyo",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "Leif Davis",
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "Bart Verbruggen",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Benjamin White",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Luke Shaw",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Dominik Szoboszlai",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Martin Ødegaard",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 10
-    },
-    {
-      "name": "Dominic Calvert-Lewin",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Antonín Kinský",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 12
-    },
-    {
-      "name": "Joe Rodon",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 13
-    },
-    {
-      "name": "Leif Davis",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 14
-    },
-    {
-      "name": "Will Hughes",
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 15
-    },
-    {
-      "name": "Antonín Kinský",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Harry Maguire",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Gabriel dos Santos Magalhães",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Iliman Ndiaye",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Granit Xhaka",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 10
-    },
-    {
-      "name": "Dominic Calvert-Lewin",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Martin Dubravka",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Issa Diop",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Will Hughes",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "Bobby Thomas",
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "Antonín Kinský",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Luke Shaw",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Neco Williams",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Iliman Ndiaye",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Dominik Szoboszlai",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 10
-    },
-    {
-      "name": "Dominic Calvert-Lewin",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Bart Verbruggen",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 12
-    },
-    {
-      "name": "Pascal Groß",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 13
-    },
-    {
-      "name": "Joe Rodon",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 14
-    },
-    {
-      "name": "Issa Diop",
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 15
-    },
-    {
-      "name": "Antonín Kinský",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Luke Shaw",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Andrew Robertson",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Marc Guéhi",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Antoine Semenyo",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Morgan Rogers",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Harry Wilson",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 10
-    },
-    {
-      "name": "Dominic Calvert-Lewin",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Dillon Phillips",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Granit Xhaka",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Tarik Muharemović",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "António João Pereira de Albuquerque Tavares da Silva",
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "David Raya Martín",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Neco Williams",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Leif Davis",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "James Tarkowski",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Kevin Schade",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Morgan Gibbs-White",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Martin Ødegaard",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Norberto Bercique Gomes Betuncal",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 10
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 11
-    },
-    {
-      "name": "Martin Dubravka",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Moisés Caicedo Corozo",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Ferdi Kadıoğlu",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "Bobby Thomas",
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "Robin Roefs",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Benjamin White",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Harry Maguire",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Gabriel dos Santos Magalhães",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 6
-    },
-    {
-      "name": "Iliman Ndiaye",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Dominik Szoboszlai",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 10
-    },
-    {
-      "name": "Alexander Isak",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Bart Verbruggen",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 12
-    },
-    {
-      "name": "Dominic Calvert-Lewin",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 13
-    },
-    {
-      "name": "Enzo Le Fée",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 14
-    },
-    {
-      "name": "Daniel Ballard",
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 15
-    },
-    {
-      "name": "Robin Roefs",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Nikola Milenković",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Ronald Araujo",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Nathan Collins",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Kiernan Dewsbury-Hall",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 6
-    },
-    {
-      "name": "Bukayo Saka",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Martin Ødegaard",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Pedro Lomba Neto",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Igor Thiago Nascimento Rodrigues",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 10
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Christian Walton",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Ousmane Diomande",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Pedro Porro Sauceda",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "Jean-Philippe Mateta",
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "Bart Verbruggen",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Joe Rodon",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Harry Maguire",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Christos Tzolis",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Dominik Szoboszlai",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 8
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 10
-    },
-    {
-      "name": "Dominic Calvert-Lewin",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Antonín Kinský",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Diego Gómez Amarilla",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Issa Diop",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "Kristoffer Ajer",
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "Antonín Kinský",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Diogo Dalot Teixeira",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "James Tarkowski",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Kristoffer Ajer",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Florian Wirtz",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Kevin Schade",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Martin Ødegaard",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Igor Jesus Maciel da Cruz",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 10
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Bart Verbruggen",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 12
-    },
-    {
-      "name": "Nico O'Reilly",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 13
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 14
-    },
-    {
-      "name": "Elliot Anderson",
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 15
-    },
-    {
-      "name": "James Trafford",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Gabriel dos Santos Magalhães",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Matt Targett",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Tyrick Mitchell",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Bobby Thomas",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Bukayo Saka",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Harry Wilson",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Pascal Groß",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 10
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Fraser Forster",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Michael Keane",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Will Hughes",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "Jonah Kusi-Asare",
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "Antonín Kinský",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Luke Shaw",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Milan van Ewijk",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Issa Diop",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Cole Palmer",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Bryan Mbeumo",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Morgan Rogers",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Kai Havertz",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 10
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 11
-    },
-    {
-      "name": "Martin Dubravka",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 12
-    },
-    {
-      "name": "Will Hughes",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 13
-    },
-    {
-      "name": "Ezri Konsa Ngoyo",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 14
-    },
-    {
-      "name": "Jonah Kusi-Asare",
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": false,
-      "multiplier": 0,
-      "slot": 15
-    },
-    {
-      "name": "Bart Verbruggen",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 1
-    },
-    {
-      "name": "Jeremie Frimpong",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 2
-    },
-    {
-      "name": "Luke Shaw",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 3
-    },
-    {
-      "name": "Riccardo Calafiori",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 4
-    },
-    {
-      "name": "Iliman Ndiaye",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 5
-    },
-    {
-      "name": "Pascal Groß",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 6
-    },
-    {
-      "name": "Bruno Borges Fernandes",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 7
-    },
-    {
-      "name": "Dominik Szoboszlai",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 8
-    },
-    {
-      "name": "Dominic Calvert-Lewin",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 9
-    },
-    {
-      "name": "Erling Haaland",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": true,
-      "multiplier": 2,
-      "slot": 10
-    },
-    {
-      "name": "João Pedro Junqueira de Jesus",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 11
-    },
-    {
-      "name": "Antonín Kinský",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 12
-    },
-    {
-      "name": "Morgan Rogers",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 13
-    },
-    {
-      "name": "Joe Rodon",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 14
-    },
-    {
-      "name": "Leif Davis",
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": false,
-      "multiplier": 1,
-      "slot": 15
-    }
-  ],
-  "captain_bench_analysis": [
-    {
-      "team_name": "Atletico Waspo",
-      "manager": "Ben Foster",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 11,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 426,
-        "name": "Bruno Borges Fernandes",
-        "position": 3,
-        "slot": 5,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 497,
-          "name": "Martin Dubravka",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 32,
-          "name": "Matty Cash",
-          "position": 2,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": -1,
-          "effective_points": 0
-        },
-        {
-          "id": 88,
-          "name": "Michael Kayode",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 13,
-          "effective_points": 0
-        },
-        {
-          "id": 212,
-          "name": "Will Hughes",
-          "position": 3,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": []
-    },
-    {
-      "team_name": "BeLucky Again",
-      "manager": "Kevin Walsh",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 9,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 427,
-        "name": "Bryan Mbeumo",
-        "position": 3,
-        "slot": 5,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 109,
-          "name": "Bart Verbruggen",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 0
-        },
-        {
-          "id": 335,
-          "name": "Anton Stach",
-          "position": 3,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 13,
-          "effective_points": 0
-        },
-        {
-          "id": 31,
-          "name": "Ezri Konsa Ngoyo",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 305,
-          "name": "Leif Davis",
-          "position": 2,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": []
-    },
-    {
-      "team_name": "Bielsa's Babes",
-      "manager": "Patrick Walsh",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 10,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 426,
-        "name": "Bruno Borges Fernandes",
-        "position": 3,
-        "slot": 5,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 496,
-          "name": "Antonín Kinský",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        },
-        {
-          "id": 329,
-          "name": "Joe Rodon",
-          "position": 2,
-          "slot": 13,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 6
-        },
-        {
-          "id": 305,
-          "name": "Leif Davis",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        },
-        {
-          "id": 212,
-          "name": "Will Hughes",
-          "position": 3,
-          "slot": 15,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": "bboost",
-      "automatic_subs": []
-    },
-    {
-      "team_name": "ChampagneSuperRovers",
-      "manager": "James Dunne",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 10,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 426,
-        "name": "Bruno Borges Fernandes",
-        "position": 3,
-        "slot": 7,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 497,
-          "name": "Martin Dubravka",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 259,
-          "name": "Issa Diop",
-          "position": 2,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 0
-        },
-        {
-          "id": 212,
-          "name": "Will Hughes",
-          "position": 3,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 173,
-          "name": "Bobby Thomas",
-          "position": 2,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 3,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": []
-    },
-    {
-      "team_name": "Change Name FC",
-      "manager": "David Woolman",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 10,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 427,
-        "name": "Bryan Mbeumo",
-        "position": 3,
-        "slot": 6,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 109,
-          "name": "Bart Verbruggen",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 6
-        },
-        {
-          "id": 124,
-          "name": "Pascal Groß",
-          "position": 3,
-          "slot": 13,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        },
-        {
-          "id": 329,
-          "name": "Joe Rodon",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 6
-        },
-        {
-          "id": 259,
-          "name": "Issa Diop",
-          "position": 2,
-          "slot": 15,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        }
-      ],
-      "active_chip": "bboost",
-      "automatic_subs": []
-    },
-    {
-      "team_name": "el Guapo",
-      "manager": "Tom Curtis",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 10,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 496,
-        "name": "Antonín Kinský",
-        "position": 1,
-        "slot": 1,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 273,
-          "name": "Dillon Phillips",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 544,
-          "name": "Granit Xhaka",
-          "position": 3,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 9,
-          "effective_points": 0
-        },
-        {
-          "id": 334,
-          "name": "Tarik Muharemović",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 0
-        },
-        {
-          "id": 566,
-          "name": "António João Pereira de Albuquerque Tavares da Silva",
-          "position": 2,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": []
-    },
-    {
-      "team_name": "FC Dangerous",
-      "manager": "Rob Watson",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 11,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 165,
-        "name": "João Pedro Junqueira de Jesus",
-        "position": 4,
-        "slot": 10,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 11,
-        "effective_points": 11
-      },
-      "bench": [
-        {
-          "id": 497,
-          "name": "Martin Dubravka",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 159,
-          "name": "Moisés Caicedo Corozo",
-          "position": 3,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 113,
-          "name": "Ferdi Kadıoğlu",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 173,
-          "name": "Bobby Thomas",
-          "position": 2,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 3,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": [
-        {
-          "entry": 3090456,
-          "element_in": 305,
-          "element_out": 113,
-          "event": 1
-        },
-        {
-          "entry": 3090456,
-          "element_in": 248,
-          "element_out": 159,
-          "event": 1
-        }
-      ]
-    },
-    {
-      "team_name": "Humorous Name United",
-      "manager": "Rob Wilkinson",
-      "captain": {
-        "id": 426,
-        "name": "Bruno Borges Fernandes",
-        "position": 3,
-        "slot": 6,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 4,
-        "name": "Gabriel dos Santos Magalhães",
-        "position": 2,
-        "slot": 4,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 5,
-        "effective_points": 5
-      },
-      "bench": [
-        {
-          "id": 109,
-          "name": "Bart Verbruggen",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 6
-        },
-        {
-          "id": 346,
-          "name": "Dominic Calvert-Lewin",
-          "position": 4,
-          "slot": 13,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 1,
-          "effective_points": 1
-        },
-        {
-          "id": 542,
-          "name": "Enzo Le Fée",
-          "position": 3,
-          "slot": 14,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        },
-        {
-          "id": 532,
-          "name": "Daniel Ballard",
-          "position": 2,
-          "slot": 15,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": "bboost",
-      "automatic_subs": []
-    },
-    {
-      "team_name": "Prince Majid Rd FC",
-      "manager": "Rami El-Dahshan",
-      "captain": {
-        "id": 426,
-        "name": "Bruno Borges Fernandes",
-        "position": 3,
-        "slot": 6,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 15,
-        "name": "Martin Ødegaard",
-        "position": 3,
-        "slot": 8,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 11,
-        "effective_points": 11
-      },
-      "bench": [
-        {
-          "id": 300,
-          "name": "Christian Walton",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 581,
-          "name": "Ousmane Diomande",
-          "position": 2,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 499,
-          "name": "Pedro Porro Sauceda",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 223,
-          "name": "Jean-Philippe Mateta",
-          "position": 4,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": [
-        {
-          "entry": 4541269,
-          "element_in": 236,
-          "element_out": 499,
-          "event": 1
-        }
-      ]
-    },
-    {
-      "team_name": "Richard",
-      "manager": "Rich Sutton",
-      "captain": {
-        "id": 426,
-        "name": "Bruno Borges Fernandes",
-        "position": 3,
-        "slot": 8,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 9,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 496,
-          "name": "Antonín Kinský",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 0
-        },
-        {
-          "id": 127,
-          "name": "Diego Gómez Amarilla",
-          "position": 3,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 0
-        },
-        {
-          "id": 259,
-          "name": "Issa Diop",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 0
-        },
-        {
-          "id": 87,
-          "name": "Kristoffer Ajer",
-          "position": 2,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 8,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": []
-    },
-    {
-      "team_name": "Roped in again",
-      "manager": "Paul Nightingale",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 10,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 427,
-        "name": "Bryan Mbeumo",
-        "position": 3,
-        "slot": 7,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 109,
-          "name": "Bart Verbruggen",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 6
-        },
-        {
-          "id": 387,
-          "name": "Nico O'Reilly",
-          "position": 2,
-          "slot": 13,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        },
-        {
-          "id": 8,
-          "name": "Riccardo Calafiori",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 9,
-          "effective_points": 9
-        },
-        {
-          "id": 481,
-          "name": "Elliot Anderson",
-          "position": 3,
-          "slot": 15,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        }
-      ],
-      "active_chip": "bboost",
-      "automatic_subs": []
-    },
-    {
-      "team_name": "Seattle Scorchers",
-      "manager": "Andrew Crystal",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 10,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 12,
-        "name": "Bukayo Saka",
-        "position": 3,
-        "slot": 6,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 9,
-        "effective_points": 9
-      },
-      "bench": [
-        {
-          "id": 58,
-          "name": "Fraser Forster",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 231,
-          "name": "Michael Keane",
-          "position": 2,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 212,
-          "name": "Will Hughes",
-          "position": 3,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 272,
-          "name": "Jonah Kusi-Asare",
-          "position": 4,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": [
-        {
-          "entry": 3237255,
-          "element_in": 556,
-          "element_out": 231,
-          "event": 1
-        },
-        {
-          "entry": 3237255,
-          "element_in": 173,
-          "element_out": 212,
-          "event": 1
-        }
-      ]
-    },
-    {
-      "team_name": "Turf Less",
-      "manager": "Martyn Bradshaw",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 11,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 426,
-        "name": "Bruno Borges Fernandes",
-        "position": 3,
-        "slot": 6,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 497,
-          "name": "Martin Dubravka",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 212,
-          "name": "Will Hughes",
-          "position": 3,
-          "slot": 13,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 31,
-          "name": "Ezri Konsa Ngoyo",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        },
-        {
-          "id": 272,
-          "name": "Jonah Kusi-Asare",
-          "position": 4,
-          "slot": 15,
-          "multiplier": 0,
-          "captain": false,
-          "vice_captain": false,
-          "points": 0,
-          "effective_points": 0
-        }
-      ],
-      "active_chip": null,
-      "automatic_subs": [
-        {
-          "entry": 3829660,
-          "element_in": 175,
-          "element_out": 31,
-          "event": 1
-        }
-      ]
-    },
-    {
-      "team_name": "Woolbrohampton",
-      "manager": "Ben Woolman",
-      "captain": {
-        "id": 411,
-        "name": "Erling Haaland",
-        "position": 4,
-        "slot": 10,
-        "multiplier": 2,
-        "captain": true,
-        "vice_captain": false,
-        "points": 2,
-        "effective_points": 4
-      },
-      "vice_captain": {
-        "id": 426,
-        "name": "Bruno Borges Fernandes",
-        "position": 3,
-        "slot": 7,
-        "multiplier": 1,
-        "captain": false,
-        "vice_captain": true,
-        "points": 2,
-        "effective_points": 2
-      },
-      "bench": [
-        {
-          "id": 496,
-          "name": "Antonín Kinský",
-          "position": 1,
-          "slot": 12,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        },
-        {
-          "id": 40,
-          "name": "Morgan Rogers",
-          "position": 3,
-          "slot": 13,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 8,
-          "effective_points": 8
-        },
-        {
-          "id": 329,
-          "name": "Joe Rodon",
-          "position": 2,
-          "slot": 14,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 6,
-          "effective_points": 6
-        },
-        {
-          "id": 305,
-          "name": "Leif Davis",
-          "position": 2,
-          "slot": 15,
-          "multiplier": 1,
-          "captain": false,
-          "vice_captain": false,
-          "points": 2,
-          "effective_points": 2
-        }
-      ],
-      "active_chip": "bboost",
-      "automatic_subs": []
-    }
-  ]
+  "reporting_notes": {
+    "match_count": 7,
+    "all_matches_should_be_reported": true,
+    "british_tone": true,
+    "include_team_names": true,
+    "occasionally_reference_managers": true,
+    "use_banter": true
+  }
 }
