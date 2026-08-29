@@ -1,0 +1,27 @@
+name: Test FPL Data Collection
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  test-fpl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run FPL data collector
+        run: python fpl_data.py
+
+      - name: Show collected data
+        run: |
+          echo "===== GAMEWEEK DATA ====="
+          head -100 gameweek_data.json
