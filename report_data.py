@@ -1,653 +1,586 @@
 import json
 from pathlib import Path
-from collections import defaultdict
 
 
-INPUT_FILE = Path("gameweek_data.json")
-OUTPUT_FILE = Path("report_data.json")
+DATA_FILE = Path("gameweek_data.json")
+REPORT_FILE = Path("report_data.json")
 
 
 def load_data():
-    with open(INPUT_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+    with DATA_FILE.open("r", encoding="utf-8") as file:
+        return json.load(file)
 
 
-def save_data(data):
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-
-
-def safe_int(value, default=0):
-    try:
-        return int(value)
-    except (TypeError, ValueError):
-        return default
-
-
-def get_matches(data):
-    """
-    Supports the current gameweek_data structure and extracts
-    completed H2H matches.
-    """
-    if isinstance(data, list):
-        return data
-
-    if "matches" in data:
-        return data["matches"]
-
-    if "gameweeks" in data:
-        matches = []
-        for gw in data["gameweeks"]:
-            matches.extend(gw.get("matches", []))
-        return matches
-
-    return []
-
-
-def get_current_gameweek(data):
-    if isinstance(data, dict):
-        if "current_gameweek" in data:
-            return safe_int(data["current_gameweek"])
-
-        if "gameweek" in data:
-            return safe_int(data["gameweek"])
-
-        if "current_gameweek" in data.get("metadata", {}):
-            return safe_int(data["metadata"]["current_gameweek"])
-
-    matches = get_matches(data)
-    completed = [
-        safe_int(m.get("event"))
-        for m in matches
-        if safe_int(m.get("event")) > 0
+def get_week_matches(data, gameweek):
+    return [
+        match
+        for match in data.get("matches", [])
+        if int(match["event"]) == int(gameweek)
     ]
 
-    return max(completed) if completed else 0
+
+def get_next_week_matches(data, gameweek):
+    next_gameweek = int(gameweek) + 1
+
+    return [
+        match
+        for match in data.get("matches", [])
+        if int(match["event"]) == next_gameweek
+    ]
 
 
-def get_match_gameweek(match):
-    return safe_int(match.get("event"))
+def get_week_players(data, gameweek):
+    weekly = data.get(
+        "weekly_team_data",
+        {}
+    ).get(
+        str(gameweek),
+        {}
+    )
+
+    players = []
+
+    for team_data in weekly.values():
+        for player in team_data.get("players", []):
+            players.append({
+                "team_name": team_data["team_name"],
+                "manager": team_data["manager"],
+                "player": player["name"],
+                "points": player["points"],
+                "effective_points": player[
+                    "effective_points"
+                ],
+                "captain": player["captain"],
+                "multiplier": player["multiplier"]
+            })
+
+    return players
 
 
-def get_completed_matches(data):
-    matches = get_matches(data)
+def get_team_data(data, gameweek):
+    return data.get(
+        "weekly_team_data",
+        {}
+    ).get(
+        str(gameweek),
+        {}
+    )
 
-    completed = []
+
+def calculate_weekly_statistics(matches):
+    if not matches:
+        return {
+            "highest_score": None,
+            "lowest_score": None,
+            "biggest_margin": None,
+            "narrowest_margin": None,
+            "highest_scoring_match": None,
+            "lowest_scoring_match": None,
+            "biggest_match": None,
+            "narrowest_match": None
+        }
+
+    scores = []
+
+    match_summaries = []
 
     for match in matches:
-        score_1 = match.get("entry_1_points")
-        score_2 = match.get("entry_2_points")
+        score_1 = int(match["entry_1_points"])
+        score_2 = int(match["entry_2_points"])
 
-        if score_1 is None or score_2 is None:
-            continue
+        margin = abs(score_1 - score_2)
 
-        event = get_match_gameweek(match)
-
-        if event <= 0:
-            continue
-
-        # Ignore completely unplayed future fixtures.
-        if safe_int(score_1) == 0 and safe_int(score_2) == 0:
-            continue
-
-        completed.append(match)
-
-    return completed
-
-
-def get_latest_completed_gameweek(data):
-    matches = get_completed_matches(data)
-
-    if not matches:
-        return 0
-
-    return max(get_match_gameweek(m) for m in matches)
-
-
-def calculate_match_result(score_1, score_2):
-    score_1 = safe_int(score_1)
-    score_2 = safe_int(score_2)
-
-    if score_1 > score_2:
-        return "home_win"
-    elif score_2 > score_1:
-        return "away_win"
-    else:
-        return "draw"
-
-
-def player_effective_points(player):
-    return safe_int(player.get("effective_points"))
-
-
-def player_actual_points(player):
-    return safe_int(player.get("points"))
-
-
-def analyse_players(players):
-    """
-    Produces useful facts for the eventual AI-written report.
-    """
-
-    selected = []
-    bench = []
-    captains = []
-    vice_captains = []
-
-    for player in players:
-        multiplier = safe_int(player.get("multiplier"), 1)
-        actual = player_actual_points(player)
-        effective = player_effective_points(player)
-
-        enriched = {
-            "id": player.get("id"),
-            "name": player.get("name"),
-            "position": player.get("position"),
-            "slot": player.get("slot"),
-            "points": actual,
-            "effective_points": effective,
-            "multiplier": multiplier,
-            "captain": bool(player.get("captain")),
-            "vice_captain": bool(player.get("vice_captain")),
-        }
-
-        # multiplier 0 means the player was on the bench.
-        if multiplier == 0:
-            bench.append(enriched)
+        if score_1 > score_2:
+            result = "home_win"
+        elif score_2 > score_1:
+            result = "away_win"
         else:
-            selected.append(enriched)
+            result = "draw"
 
-        if player.get("captain"):
-            captains.append(enriched)
-
-        if player.get("vice_captain"):
-            vice_captains.append(enriched)
-
-    selected_sorted = sorted(
-        selected,
-        key=lambda p: p["effective_points"],
-        reverse=True
-    )
-
-    bench_sorted = sorted(
-        bench,
-        key=lambda p: p["points"],
-        reverse=True
-    )
-
-    captain = captains[0] if captains else None
-
-    captain_analysis = None
-
-    if captain:
-        captain_analysis = {
-            "name": captain["name"],
-            "points": captain["points"],
-            "effective_points": captain["effective_points"],
-            "multiplier": captain["multiplier"],
+        summary = {
+            "match_id": match["id"],
+            "gameweek": match["event"],
+            "team_1": {
+                "entry_id": match["entry_1_entry"],
+                "team_name": match["entry_1_name"],
+                "manager": match[
+                    "entry_1_player_name"
+                ],
+                "score": score_1,
+                "result": (
+                    "win"
+                    if result == "home_win"
+                    else "loss"
+                    if result == "away_win"
+                    else "draw"
+                )
+            },
+            "team_2": {
+                "entry_id": match["entry_2_entry"],
+                "team_name": match["entry_2_name"],
+                "manager": match[
+                    "entry_2_player_name"
+                ],
+                "score": score_2,
+                "result": (
+                    "win"
+                    if result == "away_win"
+                    else "loss"
+                    if result == "home_win"
+                    else "draw"
+                )
+            },
+            "result": result,
+            "margin": margin,
+            "total_points": score_1 + score_2
         }
 
-    return {
-        "selected_players": selected_sorted,
-        "bench_players": bench_sorted,
-        "captain": captain_analysis,
-        "vice_captain": (
-            {
-                "name": vice_captains[0]["name"],
-                "points": vice_captains[0]["points"],
-            }
-            if vice_captains
-            else None
-        ),
-        "highest_scorer": (
-            selected_sorted[0]
-            if selected_sorted
-            else None
-        ),
-        "lowest_scorer": (
-            selected_sorted[-1]
-            if selected_sorted
-            else None
-        ),
-        "bench_points": sum(p["points"] for p in bench),
-        "selected_actual_points": sum(
-            p["points"] for p in selected
-        ),
-        "selected_effective_points": sum(
-            p["effective_points"] for p in selected
-        ),
-    }
+        match_summaries.append(summary)
 
+        scores.append(score_1)
+        scores.append(score_2)
 
-def build_match_analysis(match):
-    score_1 = safe_int(match.get("entry_1_points"))
-    score_2 = safe_int(match.get("entry_2_points"))
+    highest_score = max(scores)
+    lowest_score = min(scores)
 
-    result = calculate_match_result(score_1, score_2)
-
-    team_1 = {
-        "entry_id": match.get("entry_1_entry"),
-        "team_name": match.get("entry_1_name"),
-        "manager": match.get("entry_1_player_name"),
-        "score": score_1,
-        "result": (
-            "win" if result == "home_win"
-            else "draw" if result == "draw"
-            else "loss"
-        ),
-    }
-
-    team_2 = {
-        "entry_id": match.get("entry_2_entry"),
-        "team_name": match.get("entry_2_name"),
-        "manager": match.get("entry_2_player_name"),
-        "score": score_2,
-        "result": (
-            "win" if result == "away_win"
-            else "draw" if result == "draw"
-            else "loss"
-        ),
-    }
-
-    return {
-        "match_id": match.get("id"),
-        "gameweek": get_match_gameweek(match),
-        "team_1": team_1,
-        "team_2": team_2,
-        "result": result,
-        "margin": abs(score_1 - score_2),
-        "total_points": score_1 + score_2,
-    }
-
-
-def build_team_data(data, latest_gameweek):
-    """
-    Build a list of teams and their latest player information.
-    """
-
-    teams = {}
-
-    # The player-analysis information produced by fpl_data.py
-    # may be stored at the top level.
-    player_analysis = []
-
-    if isinstance(data, dict):
-        player_analysis = data.get("player_analysis", [])
-
-    for player in player_analysis:
-        entry_id = player.get("entry_id")
-
-        if entry_id is None:
-            entry_id = player.get("team_entry")
-
-        if entry_id is None:
-            continue
-
-        if entry_id not in teams:
-            teams[entry_id] = {
-                "entry_id": entry_id,
-                "team_name": player.get("team_name"),
-                "manager": player.get("manager"),
-                "players": [],
-            }
-
-        teams[entry_id]["players"].append(player)
-
-    return list(teams.values())
-
-
-def calculate_week_summary(matches):
-    if not matches:
-        return {}
-
-    highest_score = max(
-        max(
-            safe_int(m["entry_1_points"]),
-            safe_int(m["entry_2_points"])
-        )
-        for m in matches
+    biggest_margin = max(
+        match["margin"]
+        for match in match_summaries
     )
 
-    lowest_score = min(
-        min(
-            safe_int(m["entry_1_points"]),
-            safe_int(m["entry_2_points"])
-        )
-        for m in matches
-    )
-
-    biggest_margin_match = max(
-        matches,
-        key=lambda m: abs(
-            safe_int(m["entry_1_points"])
-            - safe_int(m["entry_2_points"])
-        )
-    )
-
-    narrowest_margin_match = min(
-        matches,
-        key=lambda m: abs(
-            safe_int(m["entry_1_points"])
-            - safe_int(m["entry_2_points"])
-        )
+    narrowest_margin = min(
+        match["margin"]
+        for match in match_summaries
     )
 
     highest_scoring_match = max(
-        matches,
-        key=lambda m:
-        safe_int(m["entry_1_points"])
-        + safe_int(m["entry_2_points"])
+        match_summaries,
+        key=lambda match: match["total_points"]
     )
 
     lowest_scoring_match = min(
-        matches,
-        key=lambda m:
-        safe_int(m["entry_1_points"])
-        + safe_int(m["entry_2_points"])
+        match_summaries,
+        key=lambda match: match["total_points"]
+    )
+
+    biggest_match = max(
+        match_summaries,
+        key=lambda match: match["margin"]
+    )
+
+    narrowest_match = min(
+        match_summaries,
+        key=lambda match: match["margin"]
     )
 
     return {
         "highest_score": highest_score,
         "lowest_score": lowest_score,
-
-        "biggest_margin": abs(
-            safe_int(biggest_margin_match["entry_1_points"])
-            - safe_int(biggest_margin_match["entry_2_points"])
-        ),
-
-        "narrowest_margin": abs(
-            safe_int(narrowest_margin_match["entry_1_points"])
-            - safe_int(narrowest_margin_match["entry_2_points"])
-        ),
-
-        "highest_scoring_match": build_match_analysis(
-            highest_scoring_match
-        ),
-
-        "lowest_scoring_match": build_match_analysis(
-            lowest_scoring_match
-        ),
-
-        "narrowest_match": build_match_analysis(
-            narrowest_margin_match
-        ),
-
-        "biggest_match": build_match_analysis(
-            biggest_margin_match
-        ),
+        "biggest_margin": biggest_margin,
+        "narrowest_margin": narrowest_margin,
+        "highest_scoring_match": highest_scoring_match,
+        "lowest_scoring_match": lowest_scoring_match,
+        "biggest_match": biggest_match,
+        "narrowest_match": narrowest_match
     }
 
 
-def calculate_team_records(matches):
-    records = defaultdict(
-        lambda: {
-            "team_name": "",
-            "manager": "",
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "points": 0,
-            "fpl_points": 0,
-            "for": 0,
-            "against": 0,
-        }
-    )
+def calculate_table(matches, gameweek):
+    teams = {}
 
     for match in matches:
-        event = get_match_gameweek(match)
-
-        if event <= 0:
+        if int(match["event"]) > int(gameweek):
             continue
 
-        score_1 = safe_int(match.get("entry_1_points"))
-        score_2 = safe_int(match.get("entry_2_points"))
+        for side in [1, 2]:
+            entry_id = match[
+                f"entry_{side}_entry"
+            ]
 
-        entry_1 = match.get("entry_1_entry")
-        entry_2 = match.get("entry_2_entry")
+            if entry_id not in teams:
+                teams[entry_id] = {
+                    "entry_id": entry_id,
+                    "team_name": match[
+                        f"entry_{side}_name"
+                    ],
+                    "manager": match[
+                        f"entry_{side}_player_name"
+                    ],
+                    "played": 0,
+                    "wins": 0,
+                    "draws": 0,
+                    "losses": 0,
+                    "points": 0,
+                    "scored": 0,
+                    "conceded": 0
+                }
 
-        team_1 = records[entry_1]
-        team_1["team_name"] = match.get("entry_1_name")
-        team_1["manager"] = match.get("entry_1_player_name")
+        home = teams[
+            match["entry_1_entry"]
+        ]
 
-        team_2 = records[entry_2]
-        team_2["team_name"] = match.get("entry_2_name")
-        team_2["manager"] = match.get("entry_2_player_name")
+        away = teams[
+            match["entry_2_entry"]
+        ]
 
-        team_1["played"] += 1
-        team_2["played"] += 1
+        home_score = int(
+            match["entry_1_points"]
+        )
 
-        team_1["for"] += score_1
-        team_1["against"] += score_2
+        away_score = int(
+            match["entry_2_points"]
+        )
 
-        team_2["for"] += score_2
-        team_2["against"] += score_1
+        home["played"] += 1
+        away["played"] += 1
 
-        if score_1 > score_2:
-            team_1["wins"] += 1
-            team_1["points"] += 3
-            team_2["losses"] += 1
+        home["scored"] += home_score
+        home["conceded"] += away_score
 
-        elif score_2 > score_1:
-            team_2["wins"] += 1
-            team_2["points"] += 3
-            team_1["losses"] += 1
+        away["scored"] += away_score
+        away["conceded"] += home_score
+
+        if home_score > away_score:
+            home["wins"] += 1
+            home["points"] += 3
+            away["losses"] += 1
+
+        elif away_score > home_score:
+            away["wins"] += 1
+            away["points"] += 3
+            home["losses"] += 1
 
         else:
-            team_1["draws"] += 1
-            team_2["draws"] += 1
-            team_1["points"] += 1
-            team_2["points"] += 1
+            home["draws"] += 1
+            away["draws"] += 1
+            home["points"] += 1
+            away["points"] += 1
 
-    # Sort by H2H league rules:
-    # points first, then points difference, then points scored.
-    table = list(records.values())
-
-    for team in table:
-        team["difference"] = (
-            team["for"] - team["against"]
+    table = sorted(
+        teams.values(),
+        key=lambda team: (
+            -team["points"],
+            -(
+                team["scored"] -
+                team["conceded"]
+            ),
+            -team["scored"],
+            team["team_name"].lower()
         )
-
-        team["win_percentage"] = (
-            round(
-                (team["wins"] / team["played"]) * 100,
-                1
-            )
-            if team["played"]
-            else 0
-        )
-
-    table.sort(
-        key=lambda t: (
-            t["points"],
-            t["difference"],
-            t["for"]
-        ),
-        reverse=True
     )
 
-    for position, team in enumerate(table, start=1):
+    for position, team in enumerate(
+        table,
+        start=1
+    ):
         team["position"] = position
+        team["goal_difference"] = (
+            team["scored"] -
+            team["conceded"]
+        )
 
     return table
 
 
-def build_player_highlights(data, latest_gameweek):
-    """
-    Look for standout individual player performances across
-    the teams appearing in the latest completed gameweek.
-    """
+def calculate_movement(
+    matches,
+    gameweek
+):
+    gameweek = int(gameweek)
 
-    player_analysis = []
+    current = calculate_table(
+        matches,
+        gameweek
+    )
 
-    if isinstance(data, dict):
-        player_analysis = data.get("player_analysis", [])
+    if gameweek <= 1:
+        return {
+            team["entry_id"]: {
+                "direction": "new",
+                "amount": None,
+                "previous_position": None
+            }
+            for team in current
+        }
 
-    latest_players = []
+    previous = calculate_table(
+        matches,
+        gameweek - 1
+    )
 
-    for player in player_analysis:
-        # If gameweek information is available, respect it.
-        player_gw = player.get("gameweek")
+    previous_positions = {
+        team["entry_id"]: team["position"]
+        for team in previous
+    }
 
-        if player_gw is None or safe_int(player_gw) == latest_gameweek:
-            latest_players.append(player)
+    movement = {}
 
-    if not latest_players:
-        latest_players = player_analysis
+    for team in current:
+        entry_id = team["entry_id"]
+        current_position = team["position"]
+        previous_position = previous_positions.get(
+            entry_id
+        )
 
-    enriched = []
+        if previous_position is None:
+            movement[entry_id] = {
+                "direction": "new",
+                "amount": None,
+                "previous_position": None
+            }
 
-    for player in latest_players:
-        actual = player_actual_points(player)
-        multiplier = safe_int(player.get("multiplier"), 1)
-        effective = player_effective_points(player)
+        elif current_position < previous_position:
+            movement[entry_id] = {
+                "direction": "up",
+                "amount": (
+                    previous_position -
+                    current_position
+                ),
+                "previous_position": previous_position
+            }
 
-        enriched.append({
-            "name": player.get("name"),
-            "team_name": player.get("team_name"),
-            "manager": player.get("manager"),
-            "points": actual,
-            "effective_points": effective,
-            "multiplier": multiplier,
-            "captain": bool(player.get("captain")),
-            "bench": multiplier == 0,
+        elif current_position > previous_position:
+            movement[entry_id] = {
+                "direction": "down",
+                "amount": (
+                    current_position -
+                    previous_position
+                ),
+                "previous_position": previous_position
+            }
+
+        else:
+            movement[entry_id] = {
+                "direction": "same",
+                "amount": 0,
+                "previous_position": previous_position
+            }
+
+    return movement
+
+
+def build_report_data(
+    data,
+    gameweek
+):
+    matches = data.get(
+        "matches",
+        []
+    )
+
+    week_matches = get_week_matches(
+        data,
+        gameweek
+    )
+
+    next_week_matches = get_next_week_matches(
+        data,
+        gameweek
+    )
+
+    players = get_week_players(
+        data,
+        gameweek
+    )
+
+    team_data = get_team_data(
+        data,
+        gameweek
+    )
+
+    table = calculate_table(
+        matches,
+        gameweek
+    )
+
+    movement = calculate_movement(
+        matches,
+        gameweek
+    )
+
+    statistics = calculate_weekly_statistics(
+        week_matches
+    )
+
+    match_data = []
+
+    for match in week_matches:
+        score_1 = int(
+            match["entry_1_points"]
+        )
+
+        score_2 = int(
+            match["entry_2_points"]
+        )
+
+        if score_1 > score_2:
+            result = "home_win"
+        elif score_2 > score_1:
+            result = "away_win"
+        else:
+            result = "draw"
+
+        team_1_players = team_data.get(
+            str(match["entry_1_entry"]),
+            {}
+        ).get(
+            "players",
+            []
+        )
+
+        team_2_players = team_data.get(
+            str(match["entry_2_entry"]),
+            {}
+        ).get(
+            "players",
+            []
+        )
+
+        match_data.append({
+            "match_id": match["id"],
+            "team_1": {
+                "entry_id": match[
+                    "entry_1_entry"
+                ],
+                "team_name": match[
+                    "entry_1_name"
+                ],
+                "manager": match[
+                    "entry_1_player_name"
+                ],
+                "score": score_1,
+                "players": team_1_players
+            },
+            "team_2": {
+                "entry_id": match[
+                    "entry_2_entry"
+                ],
+                "team_name": match[
+                    "entry_2_name"
+                ],
+                "manager": match[
+                    "entry_2_player_name"
+                ],
+                "score": score_2,
+                "players": team_2_players
+            },
+            "result": result,
+            "margin": abs(
+                score_1 - score_2
+            )
         })
 
-    selected = [
-        p for p in enriched
-        if not p["bench"]
-    ]
+    next_matches = []
 
-    bench = [
-        p for p in enriched
-        if p["bench"]
-    ]
+    for match in next_week_matches:
+        next_matches.append({
+            "match_id": match["id"],
+            "team_1": {
+                "entry_id": match[
+                    "entry_1_entry"
+                ],
+                "team_name": match[
+                    "entry_1_name"
+                ],
+                "manager": match[
+                    "entry_1_player_name"
+                ]
+            },
+            "team_2": {
+                "entry_id": match[
+                    "entry_2_entry"
+                ],
+                "team_name": match[
+                    "entry_2_name"
+                ],
+                "manager": match[
+                    "entry_2_player_name"
+                ]
+            }
+        })
 
-    selected.sort(
-        key=lambda p: p["effective_points"],
-        reverse=True
-    )
+    table_with_movement = []
 
-    bench.sort(
-        key=lambda p: p["points"],
-        reverse=True
-    )
+    for team in table:
+        team_copy = dict(team)
 
-    captains = [
-        p for p in enriched
-        if p["captain"]
-    ]
+        team_copy["movement"] = movement.get(
+            team["entry_id"],
+            {
+                "direction": "new",
+                "amount": None,
+                "previous_position": None
+            }
+        )
 
-    captains.sort(
-        key=lambda p: p["points"],
-        reverse=True
-    )
-
-    worst_captains = sorted(
-        captains,
-        key=lambda p: p["points"]
-    )
+        table_with_movement.append(
+            team_copy
+        )
 
     return {
-        "highest_player_scores": selected[:10],
-        "biggest_bench_points": bench[:10],
-        "best_captains": captains[:10],
-        "worst_captains": worst_captains[:10],
+        "gameweek": gameweek,
+        "weekly_statistics": statistics,
+        "matches": match_data,
+        "players": players,
+        "league_table": table_with_movement,
+        "next_gameweek_matches": next_matches
     }
-
-
-def build_report_data(data):
-    latest_gameweek = get_latest_completed_gameweek(data)
-
-    all_matches = get_completed_matches(data)
-
-    week_matches = [
-        m for m in all_matches
-        if get_match_gameweek(m) == latest_gameweek
-    ]
-
-    week_analysis = [
-        build_match_analysis(m)
-        for m in week_matches
-    ]
-
-    week_analysis.sort(
-        key=lambda m: m["match_id"]
-        if m["match_id"] is not None
-        else 0
-    )
-
-    league_table = calculate_team_records(all_matches)
-
-    report = {
-        "report_version": 3,
-
-        "league": {
-            "name": "Super 8s",
-            "gameweek": latest_gameweek,
-            "matches_this_week": len(week_analysis),
-        },
-
-        "weekly_summary": calculate_week_summary(
-            week_matches
-        ),
-
-        "matches": week_analysis,
-
-        "league_table": league_table,
-
-        "player_highlights": build_player_highlights(
-            data,
-            latest_gameweek
-        ),
-
-        "reporting_notes": {
-            "match_count": len(week_analysis),
-            "all_matches_should_be_reported": True,
-            "british_tone": True,
-            "include_team_names": True,
-            "occasionally_reference_managers": True,
-            "use_banter": True,
-        },
-    }
-
-    return report
 
 
 def main():
     print("Reading Super 8s data...")
 
-    if not INPUT_FILE.exists():
-        raise FileNotFoundError(
-            "gameweek_data.json was not found."
-        )
-
     data = load_data()
 
-    print("Building report analysis...")
-
-    report = build_report_data(data)
-
-    save_data(report)
-
-    gameweek = report["league"]["gameweek"]
-    match_count = report["league"]["matches_this_week"]
-
-    print(
-        f"Report analysis complete for Gameweek {gameweek}"
+    completed_gameweeks = data.get(
+        "completed_gameweeks",
+        []
     )
 
     print(
-        f"Matches analysed: {match_count}"
+        f"Found {len(completed_gameweeks)} "
+        f"completed gameweeks"
     )
 
-    print(
-        f"League table teams: "
-        f"{len(report['league_table'])}"
-    )
+    reports = {}
+
+    for gameweek in completed_gameweeks:
+        print(
+            f"Building report data for "
+            f"Gameweek {gameweek}..."
+        )
+
+        reports[str(gameweek)] = (
+            build_report_data(
+                data,
+                gameweek
+            )
+        )
+
+    output = {
+        "league": {
+            "id": data.get("league_id"),
+            "name": data.get(
+                "league_name",
+                "Super 8s"
+            )
+        },
+        "gameweeks": reports
+    }
+
+    with REPORT_FILE.open(
+        "w",
+        encoding="utf-8"
+    ) as file:
+        json.dump(
+            output,
+            file,
+            indent=2,
+            ensure_ascii=False
+        )
 
     print(
-        f"Saved analysis to {OUTPUT_FILE}"
+        f"Report data saved to {REPORT_FILE}"
     )
 
 
