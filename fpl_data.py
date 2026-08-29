@@ -12,7 +12,13 @@ BASE_URL = "https://fantasy.premierleague.com/api"
 def get_json(endpoint):
     url = f"{BASE_URL}/{endpoint}"
     response = requests.get(url, timeout=30)
-    response.raise_for_status()
+
+    if response.status_code != 200:
+        raise RuntimeError(
+            f"FPL API returned {response.status_code} "
+            f"for {url}"
+        )
+
     return response.json()
 
 
@@ -34,21 +40,6 @@ def load_existing_data():
     }
 
 
-def get_league_teams():
-    data = get_json(f"leagues-classic/{LEAGUE_ID}/standings/")
-
-    teams = []
-
-    for result in data["standings"]["results"]:
-        teams.append({
-            "entry_id": result["entry"],
-            "team_name": result["entry_name"],
-            "manager": result["player_name"],
-        })
-
-    return teams
-
-
 def get_league_matches():
     matches = []
 
@@ -60,7 +51,6 @@ def get_league_matches():
         )
 
         results = data.get("results", [])
-
         matches.extend(results)
 
         if not data.get("has_next"):
@@ -71,22 +61,56 @@ def get_league_matches():
     return matches
 
 
+def get_teams_from_matches(matches):
+    """
+    Build the Super 8s team list from the H2H matches.
+
+    This avoids relying on the classic-league endpoint.
+    """
+
+    teams = {}
+
+    for match in matches:
+
+        entry_1 = match["entry_1_entry"]
+
+        teams[entry_1] = {
+            "entry_id": entry_1,
+            "team_name": match["entry_1_name"],
+            "manager": match["entry_1_player_name"],
+        }
+
+        entry_2 = match["entry_2_entry"]
+
+        teams[entry_2] = {
+            "entry_id": entry_2,
+            "team_name": match["entry_2_name"],
+            "manager": match["entry_2_player_name"],
+        }
+
+    return sorted(
+        teams.values(),
+        key=lambda team: team["team_name"].lower()
+    )
+
+
 def get_current_gameweek():
     data = get_json("bootstrap-static/")
 
-    current_event = None
-
     for event in data["events"]:
         if event["is_current"]:
-            current_event = event["id"]
-            break
+            return event["id"]
 
-    if current_event is None:
-        for event in data["events"]:
-            if event["finished"]:
-                current_event = event["id"]
+    finished = [
+        event["id"]
+        for event in data["events"]
+        if event["finished"]
+    ]
 
-    return current_event
+    if finished:
+        return max(finished)
+
+    return None
 
 
 def get_finished_gameweeks():
@@ -105,6 +129,7 @@ def get_player_data():
     players = {}
 
     for player in data["elements"]:
+
         players[player["id"]] = {
             "id": player["id"],
             "name": (
@@ -125,12 +150,6 @@ def get_team_picks(entry_id, gameweek):
 
 
 def get_gameweek_player_points(gameweek):
-    """
-    Get individual player points for a gameweek.
-
-    The live endpoint gives us the actual points scored
-    by every player in that gameweek.
-    """
 
     data = get_json(
         f"event/{gameweek}/live/"
@@ -139,7 +158,10 @@ def get_gameweek_player_points(gameweek):
     points = {}
 
     for player in data.get("elements", []):
-        points[player["id"]] = player["stats"]["total_points"]
+
+        points[player["id"]] = (
+            player["stats"]["total_points"]
+        )
 
     return points
 
@@ -150,6 +172,7 @@ def build_weekly_team_data(
     player_data,
     player_points
 ):
+
     weekly_data = {}
 
     for team in teams:
@@ -157,15 +180,19 @@ def build_weekly_team_data(
         entry_id = team["entry_id"]
 
         try:
+
             picks_data = get_team_picks(
                 entry_id,
                 gameweek
             )
+
         except Exception as error:
+
             print(
                 f"Could not retrieve picks for "
                 f"{team['team_name']}: {error}"
             )
+
             continue
 
         players = []
@@ -179,41 +206,61 @@ def build_weekly_team_data(
                 {}
             )
 
+            points = player_points.get(
+                player_id,
+                0
+            )
+
             players.append({
+
                 "id": player_id,
+
                 "name": player.get(
                     "name",
                     f"Player {player_id}"
                 ),
+
                 "position": player.get(
                     "position"
                 ),
+
                 "slot": pick["position"],
+
                 "multiplier": pick["multiplier"],
-                "captain": pick["is_captain"],
+
+                "captain": pick[
+                    "is_captain"
+                ],
+
                 "vice_captain": pick[
                     "is_vice_captain"
                 ],
-                "points": player_points.get(
-                    player_id,
-                    0
-                ),
+
+                "points": points,
+
                 "effective_points": (
-                    player_points.get(
-                        player_id,
-                        0
-                    ) * pick["multiplier"]
+                    points * pick["multiplier"]
                 ),
             })
 
         weekly_data[str(entry_id)] = {
+
             "entry_id": entry_id,
-            "team_name": team["team_name"],
-            "manager": team["manager"],
+
+            "team_name": team[
+                "team_name"
+            ],
+
+            "manager": team[
+                "manager"
+            ],
+
             "players": players,
+
             "active_chip": picks_data.get(
                 "active_chip"
             ),
+
             "automatic_subs": picks_data.get(
                 "automatic_subs",
                 []
@@ -224,35 +271,45 @@ def build_weekly_team_data(
 
 
 def clean_match_data(matches):
+
     cleaned = []
 
     for match in matches:
 
         cleaned.append({
+
             "id": match["id"],
+
             "event": match["event"],
 
             "entry_1_entry": match[
                 "entry_1_entry"
             ],
+
             "entry_1_name": match[
                 "entry_1_name"
             ],
+
             "entry_1_player_name": match[
                 "entry_1_player_name"
             ],
+
             "entry_1_points": match[
                 "entry_1_points"
             ],
+
             "entry_1_win": match[
                 "entry_1_win"
             ],
+
             "entry_1_draw": match[
                 "entry_1_draw"
             ],
+
             "entry_1_loss": match[
                 "entry_1_loss"
             ],
+
             "entry_1_total": match[
                 "entry_1_total"
             ],
@@ -260,24 +317,31 @@ def clean_match_data(matches):
             "entry_2_entry": match[
                 "entry_2_entry"
             ],
+
             "entry_2_name": match[
                 "entry_2_name"
             ],
+
             "entry_2_player_name": match[
                 "entry_2_player_name"
             ],
+
             "entry_2_points": match[
                 "entry_2_points"
             ],
+
             "entry_2_win": match[
                 "entry_2_win"
             ],
+
             "entry_2_draw": match[
                 "entry_2_draw"
             ],
+
             "entry_2_loss": match[
                 "entry_2_loss"
             ],
+
             "entry_2_total": match[
                 "entry_2_total"
             ],
@@ -292,32 +356,41 @@ def main():
 
     existing = load_existing_data()
 
-    teams = get_league_teams()
-
-    print(
-        f"Found {len(teams)} teams"
-    )
-
     matches = get_league_matches()
 
     print(
         f"Found {len(matches)} H2H matches"
     )
 
-    current_gameweek = get_current_gameweek()
-
-    finished_gameweeks = get_finished_gameweeks()
+    teams = get_teams_from_matches(
+        matches
+    )
 
     print(
-        f"Current gameweek: {current_gameweek}"
+        f"Found {len(teams)} teams"
+    )
+
+    current_gameweek = (
+        get_current_gameweek()
+    )
+
+    print(
+        f"Current gameweek: "
+        f"{current_gameweek}"
+    )
+
+    finished_gameweeks = (
+        get_finished_gameweeks()
     )
 
     player_data = get_player_data()
 
     existing["teams"] = teams
-    existing["matches"] = clean_match_data(
-        matches
+
+    existing["matches"] = (
+        clean_match_data(matches)
     )
+
     existing["completed_gameweeks"] = (
         finished_gameweeks
     )
@@ -325,8 +398,8 @@ def main():
     for gameweek in finished_gameweeks:
 
         print(
-            f"Collecting player data for "
-            f"Gameweek {gameweek}..."
+            f"Collecting player data "
+            f"for Gameweek {gameweek}..."
         )
 
         player_points = (
@@ -344,9 +417,9 @@ def main():
             )
         )
 
-        existing["weekly_team_data"][
-            str(gameweek)
-        ] = weekly_team_data
+        existing[
+            "weekly_team_data"
+        ][str(gameweek)] = weekly_team_data
 
     with DATA_FILE.open(
         "w",
