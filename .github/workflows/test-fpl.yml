@@ -1,3 +1,4 @@
+```yaml
 name: Test FPL Data Collection
 
 on:
@@ -25,9 +26,9 @@ jobs:
         run: pip install requests
 
       - name: Run FPL data collection
-  env:
-    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-  run: python fpl_data.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python fpl_data.py
 
       - name: Analyse Super 8s data
         run: python report_data.py
@@ -47,3 +48,4 @@ jobs:
           git add gameweek_data.json report_data.json
           git diff --cached --quiet || git commit -m "Update Super 8s data"
           git push
+```
