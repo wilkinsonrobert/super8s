@@ -25,3 +25,10 @@ jobs:
         run: |
           echo "===== GAMEWEEK DATA ====="
           head -100 gameweek_data.json
+      - name: Save collected data
+        run: |
+          git config user.name "Super 8s Bot"
+          git config user.email "actions@github.com"
+          git add gameweek_data.json
+          git diff --cached --quiet || git commit -m "Update FPL data"
+          git push
