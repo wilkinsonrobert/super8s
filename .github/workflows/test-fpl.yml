@@ -1,4 +1,3 @@
-```yaml
 name: Test FPL Data Collection
 
 on:
@@ -48,4 +47,3 @@ jobs:
           git add gameweek_data.json report_data.json
           git diff --cached --quiet || git commit -m "Update Super 8s data"
           git push
-```
