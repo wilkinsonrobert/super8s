@@ -1,12 +1,14 @@
 import json
 from pathlib import Path
 
+
 DATA_FILE = Path("gameweek_data.json")
 REPORT_FILE = Path("report_data.json")
 
+
 def load_data():
-with DATA_FILE.open("r", encoding="utf-8") as file:
-return json.load(file)
+    with DATA_FILE.open("r", encoding="utf-8") as file:
+        return json.load(file)
 
 def get_week_matches(data, gameweek):
 return [
