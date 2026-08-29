@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 * * * *"
 
+permissions:
+  contents: write
+
 jobs:
   test-fpl:
     runs-on: ubuntu-latest
@@ -21,14 +24,21 @@ jobs:
       - name: Run FPL data collector
         run: python fpl_data.py
 
+      - name: Analyse Super 8s data
+        run: python report_data.py
+
       - name: Show collected data
         run: |
           echo "===== GAMEWEEK DATA ====="
           head -100 gameweek_data.json
+
+          echo "===== REPORT DATA ====="
+          head -200 report_data.json
+
       - name: Save collected data
         run: |
           git config user.name "Super 8s Bot"
           git config user.email "actions@github.com"
-          git add gameweek_data.json
-          git diff --cached --quiet || git commit -m "Update FPL data"
+          git add gameweek_data.json report_data.json
+          git diff --cached --quiet || git commit -m "Update Super 8s data"
           git push
