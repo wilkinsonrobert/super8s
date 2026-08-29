@@ -1,6 +1,10 @@
 {
   "league_id": 54930,
+  "league_name": "Super 8s",
   "current_gameweek": 2,
+  "completed_gameweeks": [
+    1
+  ],
   "number_of_teams": 14,
   "teams": [
     {
@@ -7258,5 +7262,2050 @@
       "knockout_name": ""
     }
   ],
-  "player_count": 622
+  "weekly_team_data": {
+    "1": {
+      "1458705": {
+        "team_name": "Richard",
+        "manager": "Rich Sutton",
+        "players": [
+          {
+            "player_id": 109,
+            "name": "Bart Verbruggen",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 329,
+            "name": "Joe Rodon",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 418,
+            "name": "Harry Maguire",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 557,
+            "name": "Christos Tzolis",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 368,
+            "name": "Dominik Szoboszlai",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 346,
+            "name": "Dominic Calvert-Lewin",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 127,
+            "name": "Diego Gómez Amarilla",
+            "position": 3,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 259,
+            "name": "Issa Diop",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 87,
+            "name": "Kristoffer Ajer",
+            "position": 2,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": []
+      },
+      "4541269": {
+        "team_name": "Prince Majid Rd FC",
+        "manager": "Rami El-Dahshan",
+        "players": [
+          {
+            "player_id": 529,
+            "name": "Robin Roefs",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 471,
+            "name": "Nikola Milenković",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 579,
+            "name": "Ronald Araujo",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 84,
+            "name": "Nathan Collins",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 236,
+            "name": "Kiernan Dewsbury-Hall",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 12,
+            "name": "Bukayo Saka",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 15,
+            "name": "Martin Ødegaard",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 156,
+            "name": "Pedro Lomba Neto",
+            "position": 3,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 106,
+            "name": "Igor Thiago Nascimento Rodrigues",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 300,
+            "name": "Christian Walton",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 581,
+            "name": "Ousmane Diomande",
+            "position": 2,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 499,
+            "name": "Pedro Porro Sauceda",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 223,
+            "name": "Jean-Philippe Mateta",
+            "position": 4,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": [
+          {
+            "entry": 4541269,
+            "element_in": 236,
+            "element_out": 499,
+            "event": 1
+          }
+        ]
+      },
+      "2736650": {
+        "team_name": "Humorous Name United",
+        "manager": "Rob Wilkinson",
+        "players": [
+          {
+            "player_id": 529,
+            "name": "Robin Roefs",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 10,
+            "name": "Benjamin White",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 418,
+            "name": "Harry Maguire",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 4,
+            "name": "Gabriel dos Santos Magalhães",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 237,
+            "name": "Iliman Ndiaye",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 368,
+            "name": "Dominik Szoboszlai",
+            "position": 3,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 379,
+            "name": "Alexander Isak",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 109,
+            "name": "Bart Verbruggen",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 346,
+            "name": "Dominic Calvert-Lewin",
+            "position": 4,
+            "slot": 13,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 542,
+            "name": "Enzo Le Fée",
+            "position": 3,
+            "slot": 14,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 532,
+            "name": "Daniel Ballard",
+            "position": 2,
+            "slot": 15,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": "bboost",
+        "automatic_subs": []
+      },
+      "2470603": {
+        "team_name": "Roped in again",
+        "manager": "Paul Nightingale",
+        "players": [
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 417,
+            "name": "Diogo Dalot Teixeira",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 229,
+            "name": "James Tarkowski",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 87,
+            "name": "Kristoffer Ajer",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 366,
+            "name": "Florian Wirtz",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 94,
+            "name": "Kevin Schade",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 15,
+            "name": "Martin Ødegaard",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 491,
+            "name": "Igor Jesus Maciel da Cruz",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 109,
+            "name": "Bart Verbruggen",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 387,
+            "name": "Nico O'Reilly",
+            "position": 2,
+            "slot": 13,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 481,
+            "name": "Elliot Anderson",
+            "position": 3,
+            "slot": 15,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": "bboost",
+        "automatic_subs": []
+      },
+      "3983373": {
+        "team_name": "Change Name FC",
+        "manager": "David Woolman",
+        "players": [
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 423,
+            "name": "Luke Shaw",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 469,
+            "name": "Neco Williams",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 237,
+            "name": "Iliman Ndiaye",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 368,
+            "name": "Dominik Szoboszlai",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 346,
+            "name": "Dominic Calvert-Lewin",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 109,
+            "name": "Bart Verbruggen",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 124,
+            "name": "Pascal Groß",
+            "position": 3,
+            "slot": 13,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 329,
+            "name": "Joe Rodon",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 259,
+            "name": "Issa Diop",
+            "position": 2,
+            "slot": 15,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": "bboost",
+        "automatic_subs": []
+      },
+      "2773052": {
+        "team_name": "Bielsa's Babes",
+        "manager": "Patrick Walsh",
+        "players": [
+          {
+            "player_id": 109,
+            "name": "Bart Verbruggen",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 10,
+            "name": "Benjamin White",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 423,
+            "name": "Luke Shaw",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 368,
+            "name": "Dominik Szoboszlai",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 15,
+            "name": "Martin Ødegaard",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 346,
+            "name": "Dominic Calvert-Lewin",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 329,
+            "name": "Joe Rodon",
+            "position": 2,
+            "slot": 13,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 305,
+            "name": "Leif Davis",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 212,
+            "name": "Will Hughes",
+            "position": 3,
+            "slot": 15,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": "bboost",
+        "automatic_subs": []
+      },
+      "166304": {
+        "team_name": "el Guapo",
+        "manager": "Tom Curtis",
+        "players": [
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 423,
+            "name": "Luke Shaw",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 502,
+            "name": "Andrew Robertson",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 388,
+            "name": "Marc Guéhi",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 397,
+            "name": "Antoine Semenyo",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 40,
+            "name": "Morgan Rogers",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 260,
+            "name": "Harry Wilson",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 346,
+            "name": "Dominic Calvert-Lewin",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 273,
+            "name": "Dillon Phillips",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 544,
+            "name": "Granit Xhaka",
+            "position": 3,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 334,
+            "name": "Tarik Muharemović",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 566,
+            "name": "António João Pereira de Albuquerque Tavares da Silva",
+            "position": 2,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": []
+      },
+      "2859462": {
+        "team_name": "BeLucky Again",
+        "manager": "Kevin Walsh",
+        "players": [
+          {
+            "player_id": 412,
+            "name": "Senne Lammens",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 201,
+            "name": "Daniel Muñoz Mejía",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 11,
+            "name": "Cristhian Mosquera",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 532,
+            "name": "Daniel Ballard",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 15,
+            "name": "Martin Ødegaard",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 40,
+            "name": "Morgan Rogers",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 368,
+            "name": "Dominik Szoboszlai",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 106,
+            "name": "Igor Thiago Nascimento Rodrigues",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 109,
+            "name": "Bart Verbruggen",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 335,
+            "name": "Anton Stach",
+            "position": 3,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 31,
+            "name": "Ezri Konsa Ngoyo",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 305,
+            "name": "Leif Davis",
+            "position": 2,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": []
+      },
+      "3090456": {
+        "team_name": "FC Dangerous",
+        "manager": "Rob Watson",
+        "players": [
+          {
+            "player_id": 1,
+            "name": "David Raya Martín",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 469,
+            "name": "Neco Williams",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 305,
+            "name": "Leif Davis",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 229,
+            "name": "James Tarkowski",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 94,
+            "name": "Kevin Schade",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 480,
+            "name": "Morgan Gibbs-White",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 15,
+            "name": "Martin Ødegaard",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 248,
+            "name": "Norberto Bercique Gomes Betuncal",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 497,
+            "name": "Martin Dubravka",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 159,
+            "name": "Moisés Caicedo Corozo",
+            "position": 3,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 113,
+            "name": "Ferdi Kadıoğlu",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 173,
+            "name": "Bobby Thomas",
+            "position": 2,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": [
+          {
+            "entry": 3090456,
+            "element_in": 305,
+            "element_out": 113,
+            "event": 1
+          },
+          {
+            "entry": 3090456,
+            "element_in": 248,
+            "element_out": 159,
+            "event": 1
+          }
+        ]
+      },
+      "3237255": {
+        "team_name": "Seattle Scorchers",
+        "manager": "Andrew Crystal",
+        "players": [
+          {
+            "player_id": 385,
+            "name": "James Trafford",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 4,
+            "name": "Gabriel dos Santos Magalhães",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 556,
+            "name": "Matt Targett",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 204,
+            "name": "Tyrick Mitchell",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 173,
+            "name": "Bobby Thomas",
+            "position": 2,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 12,
+            "name": "Bukayo Saka",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 260,
+            "name": "Harry Wilson",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 124,
+            "name": "Pascal Groß",
+            "position": 3,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 58,
+            "name": "Fraser Forster",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 231,
+            "name": "Michael Keane",
+            "position": 2,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 212,
+            "name": "Will Hughes",
+            "position": 3,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 272,
+            "name": "Jonah Kusi-Asare",
+            "position": 4,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": [
+          {
+            "entry": 3237255,
+            "element_in": 556,
+            "element_out": 231,
+            "event": 1
+          },
+          {
+            "entry": 3237255,
+            "element_in": 173,
+            "element_out": 212,
+            "event": 1
+          }
+        ]
+      },
+      "3426860": {
+        "team_name": "ChampagneSuperRovers",
+        "manager": "James Dunne",
+        "players": [
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 418,
+            "name": "Harry Maguire",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 4,
+            "name": "Gabriel dos Santos Magalhães",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 237,
+            "name": "Iliman Ndiaye",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 544,
+            "name": "Granit Xhaka",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 346,
+            "name": "Dominic Calvert-Lewin",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 497,
+            "name": "Martin Dubravka",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 259,
+            "name": "Issa Diop",
+            "position": 2,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 212,
+            "name": "Will Hughes",
+            "position": 3,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 173,
+            "name": "Bobby Thomas",
+            "position": 2,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": []
+      },
+      "1325193": {
+        "team_name": "Atletico Waspo",
+        "manager": "Ben Foster",
+        "players": [
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 391,
+            "name": "Joško Gvardiol",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 423,
+            "name": "Luke Shaw",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 40,
+            "name": "Morgan Rogers",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 237,
+            "name": "Iliman Ndiaye",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 552,
+            "name": "Brian Brobbey",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 497,
+            "name": "Martin Dubravka",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 32,
+            "name": "Matty Cash",
+            "position": 2,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 88,
+            "name": "Michael Kayode",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 212,
+            "name": "Will Hughes",
+            "position": 3,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": []
+      },
+      "266577": {
+        "team_name": "Woolbrohampton",
+        "manager": "Ben Woolman",
+        "players": [
+          {
+            "player_id": 109,
+            "name": "Bart Verbruggen",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 357,
+            "name": "Jeremie Frimpong",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 423,
+            "name": "Luke Shaw",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 237,
+            "name": "Iliman Ndiaye",
+            "position": 3,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 124,
+            "name": "Pascal Groß",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 368,
+            "name": "Dominik Szoboszlai",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 346,
+            "name": "Dominic Calvert-Lewin",
+            "position": 4,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 165,
+            "name": "João Pedro Junqueira de Jesus",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 40,
+            "name": "Morgan Rogers",
+            "position": 3,
+            "slot": 13,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 329,
+            "name": "Joe Rodon",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 305,
+            "name": "Leif Davis",
+            "position": 2,
+            "slot": 15,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": "bboost",
+        "automatic_subs": []
+      },
+      "3829660": {
+        "team_name": "Turf Less",
+        "manager": "Martyn Bradshaw",
+        "players": [
+          {
+            "player_id": 496,
+            "name": "Antonín Kinský",
+            "position": 1,
+            "slot": 1,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 423,
+            "name": "Luke Shaw",
+            "position": 2,
+            "slot": 2,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 8,
+            "name": "Riccardo Calafiori",
+            "position": 2,
+            "slot": 3,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 175,
+            "name": "Milan van Ewijk",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 259,
+            "name": "Issa Diop",
+            "position": 2,
+            "slot": 5,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 426,
+            "name": "Bruno Borges Fernandes",
+            "position": 3,
+            "slot": 6,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": true
+          },
+          {
+            "player_id": 154,
+            "name": "Cole Palmer",
+            "position": 3,
+            "slot": 7,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 427,
+            "name": "Bryan Mbeumo",
+            "position": 3,
+            "slot": 8,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 40,
+            "name": "Morgan Rogers",
+            "position": 3,
+            "slot": 9,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 26,
+            "name": "Kai Havertz",
+            "position": 4,
+            "slot": 10,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false
+          },
+          {
+            "player_id": 497,
+            "name": "Martin Dubravka",
+            "position": 1,
+            "slot": 12,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 212,
+            "name": "Will Hughes",
+            "position": 3,
+            "slot": 13,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 31,
+            "name": "Ezri Konsa Ngoyo",
+            "position": 2,
+            "slot": 14,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          },
+          {
+            "player_id": 272,
+            "name": "Jonah Kusi-Asare",
+            "position": 4,
+            "slot": 15,
+            "multiplier": 0,
+            "captain": false,
+            "vice_captain": false
+          }
+        ],
+        "active_chip": null,
+        "automatic_subs": [
+          {
+            "entry": 3829660,
+            "element_in": 175,
+            "element_out": 31,
+            "event": 1
+          }
+        ]
+      }
+    }
+  }
 }
