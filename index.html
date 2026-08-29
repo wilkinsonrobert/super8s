@@ -359,15 +359,15 @@ function getMatches(gameweek) {
 
 function getReport(gameweek) {
 
-    if (!reportData) {
+    if (!data) {
         return null;
     }
 
-    if (!reportData.weekly_reports) {
+    if (!data.weekly_reports) {
         return null;
     }
 
-    return reportData.weekly_reports[String(gameweek)] || null;
+    return data.weekly_reports[String(gameweek)] || null;
 }
 
 
