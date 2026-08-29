@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Install Python dependencies
+        run: pip install requests
+
       - name: Run FPL data collector
         run: python fpl_data.py
 
