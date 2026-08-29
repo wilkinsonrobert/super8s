@@ -7882,13 +7882,68 @@
   },
   "weekly_reports": {
     "1": {
-      "headline": "Gameweek 1",
-      "introduction": "The Super 8s have completed another gameweek.",
-      "matches": [],
-      "awards": [],
-      "table_commentary": "",
-      "preview": [],
-      "closing": ""
+      "headline": "Woolbrohampton Lead the Charge as Super 8s Begins with a One-Point Epidemic",
+      "introduction": "Gameweek 1 delivered six wins, one draw and three victories decided by a single point, which is precisely the sort of needless emotional damage this league was created to inflict. Ben Woolman sits top after the biggest win of the week, while several managers have already discovered that a respectable score is not the same thing as a result.",
+      "matches": [
+        {
+          "title": "Richard 56–57 Prince Majid Rd FC",
+          "text": "Rami El-Dahshan began with an away win so narrow it requires a magnifying glass: Prince Majid Rd FC edged Rich Sutton by a single point. Martin Ødegaard, Kiernan Dewsbury-Hall and João Pedro all supplied 11 points, while Bukayo Saka added 9, giving Rami just enough attacking class to survive. Rich had useful contributions from Riccardo Calafiori, Dominik Szoboszlai and João Pedro, but the decision to captain Bruno Fernandes for four effective points was not exactly a masterclass. A one-point defeat is harsh, although being on the wrong side of one is generally considered the point of head-to-head fantasy football."
+        },
+        {
+          "title": "Humorous Name United 72–71 Roped in again",
+          "text": "Rob Wilkinson claimed the highest-scoring one-point win of the week, defeating Paul Nightingale 72–71 in a match that appears to have been settled by whoever blinked last. Benjamin White scored 11, Riccardo Calafiori 9, Iliman Ndiaye 9 and João Pedro 11 for Humorous Name United, with the Arsenal contingent particularly helpful after Arsenal beat Coventry City 3–0, including an assist from White. Paul received 11 points from Ødegaard, 11 from João Pedro and 9 from Calafiori, but even that considerable haul was insufficient. Roped in again is already living up to its name: involved, committed and somehow still losing."
+        },
+        {
+          "title": "Change Name FC 67–76 Bielsa's Babes",
+          "text": "Patrick Walsh produced the highest score of the week as Bielsa's Babes beat David Woolman's Change Name FC by nine points. Benjamin White led the way with 11, joined by Ødegaard and João Pedro on 11, while Calafiori added 9 and Szoboszlai 8. Those Arsenal returns were backed by the real-life 3–0 victory over Coventry, with Ødegaard scoring and collecting bonus points, and White providing an assist. David's side was hardly disastrous, with João Pedro on 11, Calafiori on 9 and several useful mid-range scores, but the defence provided too much beige. The name may be awaiting a change; the result certainly needs one."
+        },
+        {
+          "title": "el Guapo 47–51 BeLucky Again",
+          "text": "Kevin Walsh secured a four-point away victory over Tom Curtis in the week's lowest-scoring contest. BeLucky Again relied on Ødegaard's 11, João Pedro's 11, Morgan Rogers' 8 and Szoboszlai's 8, with Haaland's captaincy producing only four effective points. Tom at least had João Pedro on 11, Marc Guéhi on 10 and Morgan Rogers on 8, but the supporting cast fell away rather dramatically. Guéhi's 10 was especially notable after scoring for Manchester City in their 2–1 win over Bournemouth, though it was not enough to haul el Guapo out of the basement of the opening-week scoring. Kevin's team was not lucky in the traditional sense; it was simply four points less unfortunate."
+        },
+        {
+          "title": "FC Dangerous 50–50 Seattle Scorchers",
+          "text": "Rob Watson and Andrew Crystal shared the only draw of Gameweek 1, with FC Dangerous and Seattle Scorchers finishing on 50 apiece. Rob had 11 from Ødegaard and 11 from João Pedro, but a largely anaemic supporting cast; Andrew received João Pedro's 11, Saka's 9 and goalkeeper James Trafford's 9, which proved sufficient to avoid defeat but not to earn the full prize. Trafford's return was supported by Leeds keeping a clean sheet in their 1–0 win at Nottingham Forest, while Saka scored for Arsenal against Coventry. Both managers leave unbeaten, which is a polite way of saying neither managed to win."
+        },
+        {
+          "title": "ChampagneSuperRovers 55–59 Atletico Waspo",
+          "text": "Ben Foster's Atletico Waspo took a four-point victory over James Dunne's ChampagneSuperRovers, despite a captaincy choice that produced only four effective points from Haaland. João Pedro's 11, Calafiori's 9, Gvardiol's 9 and Ndiaye's 9 did the serious work, with Gvardiol scoring in Manchester City's 2–1 win over Bournemouth and Ndiaye assisting in Everton's 2–0 victory over Crystal Palace. James had João Pedro on 11, Ndiaye on 9, Calafiori on 9 and Xhaka on 9, but the rest of the side failed to turn promise into points. Champagne was therefore served warm and without cause for celebration."
+        },
+        {
+          "title": "Woolbrohampton 71–50 Turf Less",
+          "text": "Ben Woolman opened the season with the week's biggest margin, beating Martyn Bradshaw's Turf Less by 21 points and taking top spot in the process. João Pedro led Woolbrohampton with 11, while Calafiori and Ndiaye supplied 9 apiece, Szoboszlai and Rogers added 8, and the team avoided the sort of catastrophic collapse that usually follows excessive confidence. Turf Less had the week's highest individual score in Cole Palmer's 13, plus useful returns from Rogers and Kai Havertz, but too many one- and two-point contributions left Martyn with nowhere to hide. The result was not quite a massacre, but it was sufficiently one-sided to make the post-match handshake awkward."
+        }
+      ],
+      "awards": [
+        {
+          "award": "The Barely Legal Victory Award",
+          "winner": "Prince Majid Rd FC and Humorous Name United",
+          "text": "Both managers won by a single point. Rami El-Dahshan and Rob Wilkinson have demonstrated that tactical genius and administrative error can look remarkably similar in the final standings."
+        },
+        {
+          "award": "The Golden Spreadsheet Award",
+          "winner": "Bielsa's Babes",
+          "text": "Patrick Walsh produced the highest score of the week with 76 points. White, Ødegaard and João Pedro all reached 11, proving that sometimes the spreadsheet does, briefly, know what it is doing."
+        },
+        {
+          "award": "The Captaincy in Name Only Award",
+          "winner": "Every manager who captained Erling Haaland",
+          "text": "Haaland returned two points, doubled to four for most captainers. A collective act of faith, tradition or simply refusal to look at the numbers."
+        },
+        {
+          "award": "The Wooden Spoon with Extra Gravy Award",
+          "winner": "Turf Less",
+          "text": "Martyn Bradshaw recorded the lowest score, 50, and suffered the largest defeat, a 21-point drubbing by Woolbrohampton. Cole Palmer's 13-point effort was left to carry an entire committee."
+        }
+      ],
+      "table_commentary": "Ben Woolman leads the table on points difference after the week's biggest win, with Bielsa's Babes second after posting the highest score. Atletico Waspo and BeLucky Again also began with victories, while Humorous Name United and Prince Majid Rd FC occupy fifth and sixth despite winning by the narrowest possible margin. FC Dangerous and Seattle Scorchers share the middle ground on one point, the only two managers spared both victory and defeat. At the bottom, Turf Less are last on scoring difference, with Change Name FC, el Guapo and ChampagneSuperRovers also starting with losses. It is far too early for panic, naturally, which means panic is already entirely justified.",
+      "preview": [
+        {
+          "fixture": "Following Gameweek fixtures",
+          "text": "The next Super 8s fixture list has not been supplied, so it would be irresponsible to invent two or three matches and pretend this league has already been scheduled by a competent authority. The obvious contests to watch once the pairings are confirmed are Woolbrohampton against one of the other unbeaten sides, and the early pressure games involving Turf Less, Change Name FC or el Guapo."
+        }
+      ],
+      "closing": "One week in, Woolbrohampton have the lead, six managers have a win and nobody has yet earned the right to relax."
     }
   }
 }
