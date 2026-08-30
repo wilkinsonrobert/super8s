@@ -684,6 +684,14 @@ There must be one match object for every match supplied.
         gameweek
     )
 
+        print("LEAGUE TABLE BEING SENT TO AI:")
+    for position, team in enumerate(league_table, 1):
+        print(
+            f"{position}. {team['team_name']} "
+            f"- {team['points']} H2H points, "
+            f"{team['scored']} FPL points"
+        )
+
     user_prompt = f"""
 Generate the Super 8s report for Gameweek {gameweek}.
 
