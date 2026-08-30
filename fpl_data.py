@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import requests
@@ -97,11 +98,7 @@ def get_current_gameweek():
         if event["is_current"]:
             return event["id"]
 
-    finished = [
-        event["id"]
-        for event in data["events"]
-        if event["finished"]
-    ]
+    finished = get_finished_gameweeks()
 
     if finished:
         return max(finished)
@@ -112,11 +109,43 @@ def get_current_gameweek():
 def get_finished_gameweeks():
     data = get_json("bootstrap-static/")
 
-    return [
-        event["id"]
-        for event in data["events"]
-        if event["finished"]
-    ]
+    now = datetime.now(timezone.utc)
+
+    completed = []
+
+    for event in data["events"]:
+
+        gameweek = event["id"]
+
+        matches = [
+            fixture
+            for fixture in get_json(
+                f"fixtures/?event={gameweek}"
+            )
+            if fixture.get("kickoff_time")
+        ]
+
+        if not matches:
+            continue
+
+        final_kickoff = max(
+            datetime.fromisoformat(
+                fixture["kickoff_time"].replace(
+                    "Z",
+                    "+00:00"
+                )
+            )
+            for fixture in matches
+        )
+
+        available_from = (
+            final_kickoff + timedelta(hours=12)
+        )
+
+        if now >= available_from:
+            completed.append(gameweek)
+
+    return completed
 
 
 def get_player_data():
