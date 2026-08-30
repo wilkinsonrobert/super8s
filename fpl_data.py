@@ -570,24 +570,29 @@ for gameweek in finished_gameweeks:
         f"Generating AI report for "
         f"Gameweek {gameweek}..."
     )
-            try:
 
-                ai_report = generate_ai_report(
-                    gameweek,
-                    gameweeks[gameweek_key]
-                )
+    try:
 
-                existing[
-                    "weekly_reports"
-                ][gameweek_key] = ai_report
+        ai_report = generate_ai_report(
+            gameweek,
+            gameweeks[gameweek_key]
+        )
 
-                print(
-                    f"AI report generated for "
-                    f"Gameweek {gameweek}"
-                )
+        existing[
+            "weekly_reports"
+        ][gameweek_key] = ai_report
 
-            except Exception as error:
+        print(
+            f"AI report generated for "
+            f"Gameweek {gameweek}"
+        )
 
+    except Exception as error:
+
+        print(
+            f"AI report failed for "
+            f"Gameweek {gameweek}: {error}"
+        )
                 print(
                     f"AI report failed for "
                     f"Gameweek {gameweek}: {error}"
