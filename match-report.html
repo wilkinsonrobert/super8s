@@ -39,25 +39,39 @@ header {
 }
 
 .header-inner {
-    max-width: 1000px;
+    max-width: 1150px;
     margin: auto;
+    padding: 24px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-.brand h1 {
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.crest {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.brand-text h1 {
     margin: 0;
-    font-size: 34px;
-    letter-spacing: -0.5px;
+    font-size: 31px;
+    letter-spacing: -1px;
+    font-weight: 900;
 }
 
-.brand p {
-    margin: 4px 0 0;
-    color: #b8c2cc;
-    font-size: 14px;
+.brand-text p {
+    margin: 3px 0 0;
+    color: #aeb8c0;
+    font-size: 13px;
+    font-weight: 500;
 }
-
 /* MAIN */
 
 main {
@@ -319,8 +333,11 @@ footer {
 <header>
     <div class="header-inner">
         <div class="brand">
-            <h1>Super 8s</h1>
-            <p>FPL taken unnecessarily seriously</p>
+            <img class="crest" src="super8s-logo.jpg" alt="Super 8s logo">
+            <div class="brand-text">
+                <h1>Super 8s</h1>
+                <p>FPL taken unnecessarily seriously</p>
+            </div>
         </div>
     </div>
 </header>
