@@ -746,12 +746,7 @@ Remember:
 
     report = json.loads(text)
 
-    name_replacements = {
-        "Martyn Bradshaw": "Bradshaw",
-        "Martyn": "Bradshaw",
-        "Ben Woolman": "Woolly",
-        "Ben": "Woolly",
-        "Ben Foster": "Foz",
+    manager_name_replacements = {
         "Rami El-Dahshan": "Rami",
         "Kevin Walsh": "Kev",
         "Rob Watson": "Watson",
@@ -760,29 +755,35 @@ Remember:
         "David Woolman": "Dave",
         "Rich Sutton": "Rich",
         "James Dunne": "Dunne",
+        "Martyn Bradshaw": "Bradshaw",
         "Tom Curtis": "Tom",
         "Patrick Walsh": "Paddy",
         "Rob Wilkinson": "Rob",
+        "Ben Woolman": "Woolly",
+        "Ben Foster": "Foz",
     }
 
-    def replace_names(value):
+    def replace_manager_names(value):
         if isinstance(value, str):
-            for old, new in name_replacements.items():
+            for old, new in manager_name_replacements.items():
                 value = value.replace(old, new)
             return value
 
         if isinstance(value, list):
-            return [replace_names(item) for item in value]
+            return [
+                replace_manager_names(item)
+                for item in value
+            ]
 
         if isinstance(value, dict):
             return {
-                key: replace_names(item)
+                key: replace_manager_names(item)
                 for key, item in value.items()
             }
 
         return value
 
-    return replace_names(report)
+    return replace_manager_names(report)
 
 
 def main():
