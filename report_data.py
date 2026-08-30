@@ -744,7 +744,45 @@ Remember:
             ""
         ).strip()
 
-    return json.loads(text)
+    report = json.loads(text)
+
+    name_replacements = {
+        "Martyn Bradshaw": "Bradshaw",
+        "Martyn": "Bradshaw",
+        "Ben Woolman": "Woolly",
+        "Ben": "Woolly",
+        "Ben Foster": "Foz",
+        "Rami El-Dahshan": "Rami",
+        "Kevin Walsh": "Kev",
+        "Rob Watson": "Watson",
+        "Andrew Crystal": "Crystal",
+        "Paul Nightingale": "Paul",
+        "David Woolman": "Dave",
+        "Rich Sutton": "Rich",
+        "James Dunne": "Dunne",
+        "Tom Curtis": "Tom",
+        "Patrick Walsh": "Paddy",
+        "Rob Wilkinson": "Rob",
+    }
+
+    def replace_names(value):
+        if isinstance(value, str):
+            for old, new in name_replacements.items():
+                value = value.replace(old, new)
+            return value
+
+        if isinstance(value, list):
+            return [replace_names(item) for item in value]
+
+        if isinstance(value, dict):
+            return {
+                key: replace_names(item)
+                for key, item in value.items()
+            }
+
+        return value
+
+    return replace_names(report)
 
 
 def main():
