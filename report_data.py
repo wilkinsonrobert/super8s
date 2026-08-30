@@ -537,6 +537,33 @@ data supports it.
 
 Do not simply reproduce the table in prose.
 
+IMPORTANT LEAGUE TABLE RULE:
+
+When discussing the current Super 8s league table, use the H2H league
+points and the official FPL tie-breaker of total FPL points scored.
+
+Do NOT use goal difference as a tie-breaker.
+
+The league standings should therefore be treated for GW1 as:
+
+1. Bielsa's Babes
+2. HNU
+3. Woolbrohampton
+4. Atletico Waspo
+5. Prince Majid Rd FC
+6. BeLucky Again
+7. FC Dangerous
+8. Seattle Scorchers
+9. Roped in again
+10. Change Name FC
+11. Richard
+12. ChampagneSuperRovers
+13. Turf Less
+14. el Guapo
+
+Do not describe a team as leading, second, third, etc. unless that
+position is supported by the supplied data and this tie-breaker.
+
 PREVIEW:
 
 Preview two or three of the most interesting actual fixtures from the
