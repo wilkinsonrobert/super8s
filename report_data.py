@@ -684,7 +684,7 @@ There must be one match object for every match supplied.
         gameweek
     )
 
-        print("LEAGUE TABLE BEING SENT TO AI:")
+    print("LEAGUE TABLE BEING SENT TO AI:")
     for position, team in enumerate(league_table, 1):
         print(
             f"{position}. {team['team_name']} "
