@@ -851,10 +851,14 @@ function buildTable(gameweek) {
     */
 
     return Object.values(teams)
-        .sort(
-            (a, b) =>
-                b.points - a.points
-        );
+    .sort((a, b) => {
+
+        if (b.points !== a.points) {
+            return b.points - a.points;
+        }
+
+        return b.scored - a.scored;
+    });
 
 }
 
