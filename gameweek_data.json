@@ -7882,76 +7882,76 @@
   },
   "weekly_reports": {
     "1": {
-      "headline": "Haaland wins a few friends but not many matches — and someone still lost with 71",
-      "introduction": "Gameweek 1 handed out more tiny margins and missed opportunities than sense. Paddy tops the official table with 76, Woolly thumped someone by 21, Tom managed the week's low score while sitting on nine points on the bench, and Paul scored 71 and went home gutted. All in all: predictable chaos, but fun chaos.",
+      "headline": "One-point heartbreaks, a 143‑point thriller and Woolly spanking Bradshaw by 21 — GW1 served up everything except common sense",
+      "introduction": "Gameweek 1 did what Gameweek 1 does: captaincy herd behaviour, horrible bench decisions and a couple of matches decided by the width of a referee's eyebrow. There were 143 points in one tie, 47 in another and more managers doubling up on Erling Haaland than you can shake a stat pad at. Onwards.",
       "matches": [
         {
-          "title": "Richard (Rich) 56 — Prince Majid Rd FC (Rami) 57",
-          "text": "Rich lost the kind of one-point scrap that makes you check your captain choice three times. Both sides leaned on Bruno for a double (four points) and João Pedro did his usual quiet 11 — but Rami's extra point was enough. Rich will now invent an injury to blame for next week."
+          "title": "Richard 56 — 57 Prince Majid Rd FC",
+          "text": "Rami edged Rich by a single point, which is the sort of result that ruins friendship group groupchats. Both managers inexplicably gave Bruno the armband and both got four from him — symmetry is cruel. Rami’s Kiernan Dewsbury‑Hall (11) and Bukayo Saka (9) did the proper work, while Rich's squad quietly underperformed and lost by the smallest of margins."
         },
         {
-          "title": "Humorous Name United (Rob) 72 — Roped in again (Paul) 71",
-          "text": "An actual thriller. Rob nicks it by one and Paul gets the modern FPL equivalent of a slap in the face: 71 and no points to show for it. Both captained the big names and both had João Pedro's 11, so this was decided by spite and marginal gains — Paul will be properly raging."
+          "title": "Humorous Name United 72 — 71 Roped in again",
+          "text": "The highest‑scoring match of the week (143 points) and a one‑point thriller that will be replayed in smug WhatsApp threads for days. Rob just pipmed Paul despite both sides packing João Pedro (11) and both captaining premium options — Rob took the win with Bruno as captain and Paul will be inventing excuses about VAR."
         },
         {
-          "title": "Change Name FC (Dave) 67 — Bielsa's Babes (Paddy) 76",
-          "text": "Paddy went top of the official table with the week's highest score — 76 — and, despite captaining Haaland for a meagre four, still walked away with a comfortable nine-point win. Dave's 67 is nothing to sniff at, but 'Change Name FC' didn't come up with a new result to match Paddy's sheet."
+          "title": "Change Name FC 67 — 76 Bielsa's Babes",
+          "text": "Paddy delivered the week’s top score (76) and made it look cleanly done: Benjamin White 11, Ødegaard 11 and João Pedro 11 is a neat little combo. Dave captained Haaland and still lost; the common theme of GW1 – Captain Haaland = 4 points – strikes again."
         },
         {
-          "title": "el Guapo (Tom) 47 — BeLucky Again (Kev) 51",
-          "text": "Tom posted the week's lowest total (47) and then remembered Granit Xhaka had nine points... on the bench. Kev shuffled his golf clubs for 51 and a neat win — Tom will insist he 'meant' to bench Xhaka, which is the same defence all of us use when we're embarrassed."
+          "title": "el Guapo 47 — 51 BeLucky Again",
+          "text": "Lowest score of the week courtesy of Tom (47). Tom had Granit Xhaka’s nine points sitting on the bench and somehow managed to make that look like a crime — lovely work. Kev won a modest 51 while presumably being off playing golf, as is tradition."
         },
         {
-          "title": "FC Dangerous (Watson) 50 — Seattle Scorchers (Crystal) 50",
-          "text": "A 50-50 draw — literally. Both managers somehow produced identical scores and identical heartbreak levels. Lots of template picks and both captained Haaland into a four-point cameo; neither leaves with bragging rights, just a point each and a feeling of mild irritation."
+          "title": "FC Dangerous 50 — 50 Seattle Scorchers",
+          "text": "Watson and Crystal both finished on 50, which is the most polite draw you can have in FPL: no-one can really gloat. Both captained Haaland and both got the same return, so it was basically a coin toss in matching lineups rather than managerial brilliance."
         },
         {
-          "title": "ChampagneSuperRovers (Dunne) 55 — Atletico Waspo (Foz) 59",
-          "text": "Foz's 59 edged past Dunne's 55. The usual suspects (João Pedro, a cautious defence) did the work; Dunne will complain about something being off with his midfield, Foz will sip his victory martini and remind everyone he was right about his team selection — whether they asked or not."
+          "title": "ChampagneSuperRovers 55 — 59 Atletico Waspo",
+          "text": "Foz sneaks past Dunne by four. There was a glaring bench crime here: Michael Kayode produced 13 points but sat with effective_points 0 — that will sting. Small margins, big regrets."
         },
         {
-          "title": "Woolbrohampton (Woolly) 71 — Turf Less (Bradshaw) 50",
-          "text": "Woolly administered the week's biggest spanking, winning by 21. Bradshaw had Cole Palmer's 13 but it wasn't nearly enough — which is what you expect when you're a Burnley fan and someone hands you a reality check. Woolly can now spend whatever he wants and celebrate properly."
+          "title": "Woolbrohampton 71 — 50 Turf Less",
+          "text": "Biggest winning margin of the week — Woolly put Bradshaw to the sword by 21. Woolly’s team looked the steadier machine; Bradshaw had Cole Palmer's 13 and it still wasn’t enough. Burnley jokes aside, Turf Less now have something to rebuild."
         }
       ],
       "awards": [
         {
-          "award": "The Absolutely Robbed Award",
+          "award": "The 143‑Point Classic Award",
+          "winner": "Rob",
+          "text": "Won for being on the right side of the highest‑scoring match of the week (72‑71). Margins this tight deserve a small commemorative drink (supplied by the loser)."
+        },
+        {
+          "award": "The One‑Point Heartbreak Award",
           "winner": "Paul",
-          "text": "71 points and a loss. Paul will be replaying this one into the small hours and blaming cosmic injustice. Fair play — unlucky doesn’t cover it."
+          "text": "71 points and you still lose. Paul will be replaying that minute between games and drafting furious texts to his bench."
         },
         {
-          "award": "The Benched Brilliance Award",
-          "winner": "Tom",
-          "text": "Tom scored the week's lowest total (47) and left Granit Xhaka's nine on the bench. That is criminal levels of bench placement. Xhaka would like a word."
+          "award": "The Bench of Shame",
+          "winner": "Kev",
+          "text": "Anton Stach scored 13 and sat with effective_points 0. That’s a bench you only get away with if you’re actually on the golf course — which, of course, Kev probably was."
         },
         {
-          "award": "The Captain's Lottery",
-          "winner": "Paul, Kev, Dave, Dunne, Watson, Crystal, Foz, Woolly, Tom, Bradshaw",
-          "text": "Everyone listed trusted Erling Haaland with the armband and got a generous four points. Congratulations on the shared misfortune — it's like buying a winning ticket for a scratchcard that says 'better luck next week'."
-        },
-        {
-          "award": "The Big Stick",
+          "award": "The 21‑Point Flog",
           "winner": "Woolly",
-          "text": "Biggest margin of the week: 21. Woolly turned up, spent money (probably), and left Bradshaw asking how it all went wrong. Proper textbook thump."
+          "text": "Biggest margin of the week: a tidy 21 points. Bradshaw’s Turf Less are encouraged to buy a fainting couch."
         }
       ],
-      "table_commentary": "Using the official Super 8s ordering (H2H points, then total FPL points), Paddy sits top with Bielsa's Babes on 76. Rob (Humorous Name United) is second with 72 and Woolly is third on 71 — tidy clustering at the top. Foz and Rami occupy the next slots, while Kev's BeLucky Again sneaks into the top half. Mid-table is tight thanks to that 50-50 draw, and at the bottom Bradshaw and Tom are nursing bruises after low scores. It’s early, but plenty to complain about already.",
+      "table_commentary": "The official Super 8s table — using H2H points and the FPL tie‑breaker — is delightfully awkward for some: Paddy (Bielsa's Babes) tops the list on goals scored, Rob (Humorous Name United) is second and Woolly is third. Foz and Rami round out the top five. There are a few oddities to enjoy: Paul sits in ninth with 71 points yet zero league points — proper GW1 cruelty. Watson and Crystal both earned a polite one point each for their 50‑50 draw. Tom’s 47 leaves him bottom of the pile and plenty of targets for trash‑talk next week.",
       "preview": [
         {
-          "fixture": "Prince Majid Rd FC (Rami) vs Woolbrohampton (Woolly)",
-          "text": "Rami scraped past Rich by a single point this week while Woolly put 71 on the board. This looks like a revenge/greed match: Rami will try to nick another narrow win, but Woolly's form (and willingness to spend) suggests he won't be coming quietly."
+          "fixture": "Prince Majid Rd FC (Rami) v Woolbrohampton (Woolly)",
+          "text": "Woolly heads across to face Rami after a big opening day win. Rami's side managed a narrow victory last time and will be looking to upset the early pecking order; Woolly will fancy his chances after that 71‑50 showing. Expect more of the same: packed midfields and the Haaland captains doing the rounds."
         },
         {
-          "fixture": "Bielsa's Babes (Paddy) vs Humorous Name United (Rob)",
-          "text": "Paddy 76 v Rob 72 was the weekend's stand-out clash — now they meet head-to-head. Expect another high-scoring tussle and bitter post-match chat. Whoever loses will have very little dignity left."
+          "fixture": "Turf Less (Bradshaw) v ChampagneSuperRovers (Dunne)",
+          "text": "Bradshaw has a point to prove after being on the wrong end of GW1’s biggest loss. Dunne will be quietly confident after a close defeat. This is the sort of fixture where a single Cole Palmer cameo or a bench blunder changes everything."
         },
         {
-          "fixture": "Turf Less (Bradshaw) vs ChampagneSuperRovers (Dunne)",
-          "text": "Bradshaw got flattened 21 by Woolly and will be desperate to prove it was an anomaly; Dunne was decent but short of points. This is a chance for Bradshaw to stop the rot — or to provide more comic fodder for the rest of us."
+          "fixture": "Bielsa's Babes (Paddy) v Humorous Name United (Rob)",
+          "text": "Rematch of two of GW1’s top scorers — Paddy’s 76 against Rob’s 72 makes this a tasty fixture. Both managers showed they can pile up 70s; whoever avoids the captaincy herd and gets their bench right could walk away very happy."
         }
       ],
-      "closing": "Week 1 delivered the usual mix of narrow margins, captaincy regrets and bench-induced shame. Keep your transfers tasteful, your captains guesswork-free and your group chat full of excuses — we'll need them next week."
+      "closing": "That’s it for GW1 — plenty to moan about, a few managers already planning revenge, and the rest of us waiting for enough VAR to decide our collective fates. See you next week; bring sensible benches and slightly fewer identical captain choices."
     }
   }
 }
