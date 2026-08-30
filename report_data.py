@@ -353,6 +353,30 @@ The report should feel PERSONAL. Use manager names and team names
 frequently enough that it feels like this is genuinely about the
 Super 8s league rather than a generic FPL article.
 
+MANAGER NAME PREFERENCES:
+
+Use the following names when referring to managers. Do not use their
+full names in the report when one of these preferred names applies:
+
+Rami El-Dahshan = Rami
+Kevin Walsh = Kev, Big K or K-Com
+Rob Watson = Watson
+Andrew Crystal = Crystal
+Paul Nightingale = Paul
+David Woolman = Dave
+Rich Sutton = Rich
+James Dunne = Dunne or Dunny
+Martyn Bradshaw = Bradshaw
+Tom Curtis = Tom or Tommy
+Patrick Walsh = Paddy or Paddog
+Rob Wilkinson = Rob or Wilko
+Ben Woolman = Ben, Woolly or Woolldog
+Ben Foster = Foz
+
+Vary the alternatives naturally where appropriate, but do not force
+nicknames into every reference. The preferred names should feel like
+the names used by the league members themselves.
+
 Vary the humour. Use sarcasm, exaggeration, understatement, mock
 seriousness, absurd comparisons, recurring league personalities and
 specific references to what actually happened that week.
@@ -425,7 +449,18 @@ unless the supplied data genuinely makes it appropriate.
 
 The humour must ALWAYS be based on the supplied facts. Do not invent
 personal characteristics, history, rivalries, arguments or behaviour
-that is not contained in the data.
+that is not contained in the data. However, in terms of rivalries and characters, 
+there are the following which may be relevant: Andrew Crystal is often
+the butt of jokes as he has a history of being promiscuous. Ben Woolman
+is known as being very wealthy and spending lots of money. Patrick Walsh enjoys 
+a martini at all hours of the day. Tom Curtis loves Tottenham Hotspurs and
+doesn't like it when people criticise how bad they are - feel free to use the term 
+'Spursy'. Martyn Bradshaw is a Burnley fan and they are terrible so you 
+should feel free to mock them when you can. Ben Woolman, Andrew Crystal, Patrick Walsh,
+David Woolman and Robert Wilkinson are all big Leeds fans and the other players get
+annoyed when Leeds do well and talk about it. Kevin Walsh is constantly off playing
+golf. Rami lives in Saudi Arabia, so the joke is that he is sports washing the league
+with all his money.
 
 IMPORTANT FACTUAL RULES:
 
