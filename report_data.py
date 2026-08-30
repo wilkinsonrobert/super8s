@@ -287,10 +287,82 @@ def clean_match_data(matches):
 
     return cleaned
 
+def build_league_table(matches, gameweek):
+    teams = {}
+
+    for match in matches:
+
+        if int(match["event"]) > int(gameweek):
+            continue
+
+        entry_1 = match["entry_1_entry"]
+        entry_2 = match["entry_2_entry"]
+
+        if entry_1 not in teams:
+            teams[entry_1] = {
+                "entry_id": entry_1,
+                "team_name": match["entry_1_name"],
+                "manager": match["entry_1_player_name"],
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "points": 0,
+                "scored": 0,
+            }
+
+        if entry_2 not in teams:
+            teams[entry_2] = {
+                "entry_id": entry_2,
+                "team_name": match["entry_2_name"],
+                "manager": match["entry_2_player_name"],
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "points": 0,
+                "scored": 0,
+            }
+
+        home = teams[entry_1]
+        away = teams[entry_2]
+
+        home["played"] += 1
+        away["played"] += 1
+
+        home["scored"] += match["entry_1_points"]
+        away["scored"] += match["entry_2_points"]
+
+        home["points"] += match["entry_1_total"]
+        away["points"] += match["entry_2_total"]
+
+        if match["entry_1_win"]:
+            home["wins"] += 1
+            away["losses"] += 1
+
+        elif match["entry_2_win"]:
+            away["wins"] += 1
+            home["losses"] += 1
+
+        else:
+            home["draws"] += 1
+            away["draws"] += 1
+
+    table = list(teams.values())
+
+    table.sort(
+        key=lambda team: (
+            -team["points"],
+            -team["scored"]
+        )
+    )
+
+    return table
 
 def generate_ai_report(
     gameweek,
-    report_data
+    report_data,
+    matches
 ):
     api_key = os.environ.get(
         "OPENAI_API_KEY"
@@ -607,6 +679,10 @@ Return ONLY valid JSON with exactly this structure:
 There must be one match object for every match supplied.
 """
 
+    league_table = build_league_table(
+        matches,
+        gameweek
+    )
 
     user_prompt = f"""
 Generate the Super 8s report for Gameweek {gameweek}.
@@ -615,6 +691,14 @@ Here is the factual report data:
 
 {json.dumps(
     report_data,
+    indent=2,
+    ensure_ascii=False
+)}
+
+Here is the official Super 8s league table for this gameweek:
+
+{json.dumps(
+    league_table,
     indent=2,
     ensure_ascii=False
 )}
@@ -762,7 +846,8 @@ def main():
 
                 ai_report = generate_ai_report(
                     gameweek,
-                    gameweeks[gameweek_key]
+                    gameweeks[gameweek_key],
+                    matches
                 )
 
                 existing[
