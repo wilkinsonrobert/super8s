@@ -552,18 +552,24 @@ def main():
             {}
         )
 
-        for gameweek in finished_gameweeks:
+for gameweek in finished_gameweeks:
 
-            gameweek_key = str(gameweek)
+    gameweek_key = str(gameweek)
 
-            if gameweek_key not in gameweeks:
-                continue
+    if gameweek_key not in gameweeks:
+        continue
 
-            print(
-                f"Generating AI report for "
-                f"Gameweek {gameweek}..."
-            )
+    if gameweek_key in existing["weekly_reports"]:
+        print(
+            f"AI report already exists for "
+            f"Gameweek {gameweek} - skipping."
+        )
+        continue
 
+    print(
+        f"Generating AI report for "
+        f"Gameweek {gameweek}..."
+    )
             try:
 
                 ai_report = generate_ai_report(
