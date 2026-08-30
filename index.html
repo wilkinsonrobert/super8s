@@ -67,8 +67,6 @@ header {
     gap: 15px;
 }
 
-/* CSS CREST */
-
 .crest {
     width: 58px;
     height: 68px;
@@ -171,7 +169,9 @@ main {
     text-decoration: none;
     white-space: nowrap;
     box-shadow: 0 3px 0 #ae8a2d;
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
 }
 
 .report-link:hover {
@@ -295,7 +295,9 @@ main {
     align-items: center;
     gap: 15px;
     box-shadow: 0 2px 8px rgba(16,25,35,.035);
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
 }
 
 .match:hover {
@@ -512,7 +514,7 @@ footer strong {
     }
 
     table {
-        min-width: 650px;
+        min-width: 600px;
     }
 
     .table-wrap {
@@ -525,6 +527,7 @@ footer strong {
 <body>
 
 <header>
+
     <div class="header-inner">
 
         <div class="brand">
@@ -544,24 +547,29 @@ footer strong {
         </select>
 
     </div>
+
 </header>
 
 
 <main>
 
     <div id="content">
+
         <div class="empty">
             Loading Super 8s data...
         </div>
+
     </div>
 
 </main>
 
 
 <footer>
+
     <strong>SUPER 8s</strong>
     &nbsp;·&nbsp;
     Officially taking FPL too seriously since 2013
+
 </footer>
 
 
@@ -579,12 +587,16 @@ async function loadData() {
         );
 
     if (!response.ok) {
+
         throw new Error(
             "Could not load gameweek_data.json"
         );
+
     }
 
-    data = await response.json();
+    data =
+        await response.json();
+
 
     try {
 
@@ -594,8 +606,10 @@ async function loadData() {
             );
 
         if (reportResponse.ok) {
+
             reportData =
                 await reportResponse.json();
+
         }
 
     } catch (error) {
@@ -603,6 +617,7 @@ async function loadData() {
         reportData = null;
 
     }
+
 
     setup();
 }
@@ -613,26 +628,32 @@ function setup() {
     const completed =
         data.completed_gameweeks || [];
 
+
     if (completed.length === 0) {
 
         document.getElementById(
             "content"
         ).innerHTML =
+
             '<div class="empty">' +
             'No completed gameweeks yet.' +
             '</div>';
 
         return;
+
     }
+
 
     const selector =
         document.getElementById(
             "gameweek"
         );
 
+
     completed.sort(
         (a, b) => a - b
     );
+
 
     completed.forEach(gw => {
 
@@ -646,23 +667,32 @@ function setup() {
         option.textContent =
             "Gameweek " + gw;
 
-        selector.appendChild(option);
+        selector.appendChild(
+            option
+        );
 
     });
+
 
     const latest =
         Math.max(...completed);
 
-    selector.value = latest;
+
+    selector.value =
+        latest;
+
 
     selector.addEventListener(
         "change",
         function() {
+
             render(
                 Number(this.value)
             );
+
         }
     );
+
 
     render(latest);
 }
@@ -675,6 +705,7 @@ function getMatches(gameweek) {
             Number(match.event) ===
             Number(gameweek)
     );
+
 }
 
 
@@ -691,6 +722,7 @@ function getReport(gameweek) {
     return data.weekly_reports[
         String(gameweek)
     ] || null;
+
 }
 
 
@@ -698,12 +730,14 @@ function buildTable(gameweek) {
 
     const teams = {};
 
+
     const matches =
         data.matches.filter(
             match =>
                 Number(match.event) <=
                 Number(gameweek)
         );
+
 
     matches.forEach(match => {
 
@@ -729,7 +763,9 @@ function buildTable(gameweek) {
                 conceded: 0
 
             };
+
         }
+
 
         if (!teams[match.entry_2_entry]) {
 
@@ -753,7 +789,9 @@ function buildTable(gameweek) {
                 conceded: 0
 
             };
+
         }
+
 
         const home =
             teams[match.entry_1_entry];
@@ -761,8 +799,10 @@ function buildTable(gameweek) {
         const away =
             teams[match.entry_2_entry];
 
+
         home.played++;
         away.played++;
+
 
         home.scored +=
             match.entry_1_points;
@@ -770,17 +810,20 @@ function buildTable(gameweek) {
         home.conceded +=
             match.entry_2_points;
 
+
         away.scored +=
             match.entry_2_points;
 
         away.conceded +=
             match.entry_1_points;
 
+
         home.points +=
             match.entry_1_total;
 
         away.points +=
             match.entry_2_total;
+
 
         if (match.entry_1_win) {
 
@@ -801,38 +844,18 @@ function buildTable(gameweek) {
 
     });
 
+
+    /*
+        The Super 8s league table is ordered
+        by league points only.
+    */
+
     return Object.values(teams)
-        .map(team => ({
+        .sort(
+            (a, b) =>
+                b.points - a.points
+        );
 
-            ...team,
-
-            difference:
-                team.scored -
-                team.conceded
-
-        }))
-        .sort((a, b) => {
-
-            if (b.points !== a.points) {
-                return b.points - a.points;
-            }
-
-            if (
-                b.difference !==
-                a.difference
-            ) {
-                return (
-                    b.difference -
-                    a.difference
-                );
-            }
-
-            return (
-                b.scored -
-                a.scored
-            );
-
-        });
 }
 
 
@@ -843,13 +866,16 @@ function getPreviousTable(gameweek) {
             gw => gw < gameweek
         );
 
+
     if (!previous.length) {
         return null;
     }
 
+
     return buildTable(
         Math.max(...previous)
     );
+
 }
 
 
@@ -858,29 +884,36 @@ function render(gameweek) {
     const matches =
         getMatches(gameweek);
 
+
     const report =
         getReport(gameweek);
+
 
     const table =
         buildTable(gameweek);
 
+
     const previousTable =
         getPreviousTable(gameweek);
+
 
     if (!matches.length) {
 
         document.getElementById(
             "content"
         ).innerHTML =
+
             '<div class="empty">' +
             'No completed data for this gameweek.' +
             '</div>';
 
         return;
+
     }
 
 
     const scores = [];
+
 
     matches.forEach(match => {
 
@@ -897,6 +930,7 @@ function render(gameweek) {
 
     const highest =
         Math.max(...scores);
+
 
     const lowest =
         Math.min(...scores);
@@ -948,6 +982,7 @@ function render(gameweek) {
             }
 
         </div>
+
     `;
 
 
@@ -972,63 +1007,96 @@ function render(gameweek) {
             </div>
 
         `;
+
     }
 
 
     html += `
 
         <div class="section-heading">
-            <h3>Gameweek Statistics</h3>
-            <span>${matches.length} matches played</span>
+
+            <h3>
+                Gameweek Statistics
+            </h3>
+
+            <span>
+                ${matches.length} matches played
+            </span>
+
         </div>
+
 
         <div class="stats">
 
             <div class="stat">
+
                 <div class="stat-label">
                     Matches
                 </div>
+
                 <div class="stat-value">
                     ${matches.length}
                 </div>
+
             </div>
 
+
             <div class="stat">
+
                 <div class="stat-label">
                     Highest Score
                 </div>
+
                 <div class="stat-value">
                     ${highest}
                 </div>
+
             </div>
 
+
             <div class="stat">
+
                 <div class="stat-label">
                     Lowest Score
                 </div>
+
                 <div class="stat-value">
                     ${lowest}
                 </div>
+
             </div>
 
+
             <div class="stat">
+
                 <div class="stat-label">
                     Biggest Margin
                 </div>
+
                 <div class="stat-value">
                     ${biggest}
                 </div>
+
             </div>
 
         </div>
 
 
         <div class="section-heading">
-            <h3>Results</h3>
-            <span>Head-to-head</span>
+
+            <h3>
+                Results
+            </h3>
+
+            <span>
+                Head-to-head
+            </span>
+
         </div>
 
+
         <div class="matches">
+
     `;
 
 
@@ -1037,6 +1105,7 @@ function render(gameweek) {
         const homeWin =
             match.entry_1_points >
             match.entry_2_points;
+
 
         const awayWin =
             match.entry_2_points >
@@ -1062,9 +1131,11 @@ function render(gameweek) {
                     }
 
                     <span class="manager">
+
                         ${safe(
                             match.entry_1_player_name
                         )}
+
                     </span>
 
                 </div>
@@ -1072,15 +1143,9 @@ function render(gameweek) {
 
                 <div class="score">
 
-                    ${
-                        match.entry_1_points
-                    }
-
+                    ${match.entry_1_points}
                     –
-
-                    ${
-                        match.entry_2_points
-                    }
+                    ${match.entry_2_points}
 
                 </div>
 
@@ -1100,9 +1165,11 @@ function render(gameweek) {
                     )}
 
                     <span class="manager">
+
                         ${safe(
                             match.entry_2_player_name
                         )}
+
                     </span>
 
                 </div>
@@ -1110,6 +1177,7 @@ function render(gameweek) {
             </div>
 
         `;
+
     });
 
 
@@ -1119,9 +1187,17 @@ function render(gameweek) {
 
 
         <div class="section-heading">
-            <h3>League Table</h3>
-            <span>After Gameweek ${gameweek}</span>
+
+            <h3>
+                League Table
+            </h3>
+
+            <span>
+                After Gameweek ${gameweek}
+            </span>
+
         </div>
+
 
         <div class="table-wrap">
 
@@ -1130,127 +1206,179 @@ function render(gameweek) {
                 <thead>
 
                     <tr>
-                        <th>Pos</th>
-                        <th>Team</th>
-                        <th>Manager</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>Pts</th>
-                        <th>Diff</th>
+
+                        <th>
+                            Pos
+                        </th>
+
+                        <th>
+                            Team
+                        </th>
+
+                        <th>
+                            Manager
+                        </th>
+
+                        <th>
+                            P
+                        </th>
+
+                        <th>
+                            W
+                        </th>
+
+                        <th>
+                            D
+                        </th>
+
+                        <th>
+                            L
+                        </th>
+
+                        <th>
+                            Pts
+                        </th>
+
                     </tr>
 
                 </thead>
 
+
                 <tbody>
+
     `;
 
 
-    table.forEach((team, index) => {
+    table.forEach(
+        (team, index) => {
 
-        const position =
-            index + 1;
-
-        let movement = "";
-
-
-        if (previousTable) {
-
-            const oldIndex =
-                previousTable.findIndex(
-                    previous =>
-                        previous.id ===
-                        team.id
-                );
+            const position =
+                index + 1;
 
 
-            if (oldIndex !== -1) {
-
-                const oldPosition =
-                    oldIndex + 1;
+            let movement = "";
 
 
-                if (
-                    oldPosition >
-                    position
-                ) {
+            if (previousTable) {
 
-                    movement =
-                        `<span class="movement up">
-                            ▲ ${
-                                oldPosition -
-                                position
-                            }
-                         </span>`;
+                const oldIndex =
+                    previousTable.findIndex(
+                        previous =>
+                            previous.id ===
+                            team.id
+                    );
 
-                } else if (
-                    oldPosition <
-                    position
-                ) {
 
-                    movement =
-                        `<span class="movement down">
-                            ▼ ${
-                                position -
-                                oldPosition
-                            }
-                         </span>`;
+                if (oldIndex !== -1) {
 
-                } else {
+                    const oldPosition =
+                        oldIndex + 1;
 
-                    movement =
-                        `<span class="movement same">
-                            —
-                         </span>`;
+
+                    if (
+                        oldPosition >
+                        position
+                    ) {
+
+                        movement =
+
+                            `<span class="movement up">
+                                ▲ ${
+                                    oldPosition -
+                                    position
+                                }
+                             </span>`;
+
+                    } else if (
+                        oldPosition <
+                        position
+                    ) {
+
+                        movement =
+
+                            `<span class="movement down">
+                                ▼ ${
+                                    position -
+                                    oldPosition
+                                }
+                             </span>`;
+
+                    } else {
+
+                        movement =
+
+                            `<span class="movement same">
+                                —
+                             </span>`;
+
+                    }
+
                 }
+
             }
+
+
+            html += `
+
+                <tr>
+
+                    <td>
+
+                        <span class="position">
+                            ${position}
+                        </span>
+
+                        ${movement}
+
+                    </td>
+
+
+                    <td class="team-name">
+
+                        ${safe(team.name)}
+
+                    </td>
+
+
+                    <td class="manager-name">
+
+                        ${safe(team.manager)}
+
+                    </td>
+
+
+                    <td>
+                        ${team.played}
+                    </td>
+
+
+                    <td>
+                        ${team.wins}
+                    </td>
+
+
+                    <td>
+                        ${team.draws}
+                    </td>
+
+
+                    <td>
+                        ${team.losses}
+                    </td>
+
+
+                    <td class="points">
+
+                        ${team.points}
+
+                    </td>
+
+                </tr>
+
+            `;
+
         }
-
-
-        html += `
-
-            <tr>
-
-                <td>
-                    <span class="position">
-                        ${position}
-                    </span>
-                    ${movement}
-                </td>
-
-                <td class="team-name">
-                    ${safe(team.name)}
-                </td>
-
-                <td class="manager-name">
-                    ${safe(team.manager)}
-                </td>
-
-                <td>${team.played}</td>
-
-                <td>${team.wins}</td>
-
-                <td>${team.draws}</td>
-
-                <td>${team.losses}</td>
-
-                <td class="points">
-                    ${team.points}
-                </td>
-
-                <td>
-                    ${
-                        team.difference >= 0
-                        ? "+"
-                        : ""
-                    }${team.difference}
-                </td>
-
-            </tr>
-
-        `;
-    });
+    );
 
 
     html += `
@@ -1267,6 +1395,7 @@ function render(gameweek) {
     document.getElementById(
         "content"
     ).innerHTML = html;
+
 }
 
 
@@ -1276,30 +1405,39 @@ function safe(value) {
         value === null ||
         value === undefined
     ) {
+
         return "";
+
     }
 
+
     return String(value)
+
         .replace(
             /&/g,
             "&amp;"
         )
+
         .replace(
             /</g,
             "&lt;"
         )
+
         .replace(
             />/g,
             "&gt;"
         )
+
         .replace(
             /"/g,
             "&quot;"
         )
+
         .replace(
             /'/g,
             "&#039;"
         );
+
 }
 
 
@@ -1307,1261 +1445,19 @@ loadData().catch(error => {
 
     console.error(error);
 
-    document.getElementById(
-        "content"
-    ).innerHTML =
-
-        `<div class="empty">
-            Unable to load Super 8s data.<br><br>
-            ${safe(error.message)}
-         </div>`;
-
-});
-
-</script>
-
-</body>
-</html>        sans-serif;
-}
-
-/* HEADER */
-
-header {
-    background:
-        linear-gradient(
-            135deg,
-            var(--navy) 0%,
-            var(--navy-2) 60%,
-            #263747 100%
-        );
-    color: white;
-    border-bottom: 4px solid var(--gold);
-}
-
-.header-inner {
-    max-width: 1150px;
-    margin: auto;
-    padding: 24px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* CSS CREST */
-
-.crest {
-    width: 58px;
-    height: 68px;
-    background: var(--gold);
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 70%,
-        50% 100%,
-        0 70%
-    );
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--navy);
-    font-weight: 950;
-    font-size: 22px;
-    letter-spacing: -2px;
-    flex-shrink: 0;
-}
-
-.brand-text h1 {
-    margin: 0;
-    font-size: 31px;
-    letter-spacing: -1px;
-    font-weight: 900;
-}
-
-.brand-text p {
-    margin: 3px 0 0;
-    color: #aeb8c0;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.gameweek-select {
-    background: white;
-    color: var(--navy);
-    border: 0;
-    border-radius: 8px;
-    padding: 11px 14px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-/* MAIN */
-
-main {
-    max-width: 1150px;
-    margin: 0 auto;
-    padding: 30px 20px 60px;
-}
-
-/* GAMEWEEK HERO */
-
-.gameweek-hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 20px;
-    margin-bottom: 22px;
-}
-
-.gameweek-kicker {
-    color: var(--gold);
-    background: var(--navy);
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    margin-bottom: 7px;
-}
-
-.gameweek-title {
-    margin: 0;
-    font-size: 38px;
-    line-height: 1;
-    font-weight: 900;
-    letter-spacing: -1.5px;
-}
-
-.season-note {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 7px;
-}
-
-/* REPORT BUTTON */
-
-.report-link {
-    background: var(--gold);
-    color: var(--navy);
-    padding: 13px 18px;
-    border-radius: 8px;
-    font-weight: 900;
-    text-decoration: none;
-    white-space: nowrap;
-    box-shadow: 0 3px 0 #ae8a2d;
-    transition: transform .15s ease, box-shadow .15s ease;
-}
-
-.report-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 0 #ae8a2d;
-}
-
-/* HEADLINE */
-
-.headline {
-    background: var(--navy);
-    color: white;
-    border-radius: 12px;
-    padding: 27px 30px;
-    margin-bottom: 28px;
-    position: relative;
-    overflow: hidden;
-}
-
-.headline::after {
-    content: "8";
-    position: absolute;
-    right: 25px;
-    top: -28px;
-    font-size: 150px;
-    line-height: 1;
-    font-weight: 950;
-    color: rgba(255,255,255,.035);
-    pointer-events: none;
-}
-
-.headline-label {
-    color: var(--gold-light);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 900;
-    margin-bottom: 8px;
-}
-
-.headline h3 {
-    margin: 0 0 10px;
-    font-size: 25px;
-    line-height: 1.2;
-    max-width: 850px;
-}
-
-.headline p {
-    margin: 0;
-    color: #c3cbd1;
-    line-height: 1.55;
-    max-width: 850px;
-}
-
-/* SECTION HEADERS */
-
-.section-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 32px 0 12px;
-}
-
-.section-heading h3 {
-    margin: 0;
-    font-size: 19px;
-    font-weight: 900;
-}
-
-.section-heading span {
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* STATS */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-.stat {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    padding: 18px;
-    box-shadow: 0 2px 8px rgba(16,25,35,.04);
-}
-
-.stat-label {
-    color: var(--muted);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 800;
-}
-
-.stat-value {
-    font-size: 28px;
-    font-weight: 950;
-    margin-top: 5px;
-    color: var(--navy);
-}
-
-/* MATCHES */
-
-.matches {
-    display: grid;
-    gap: 10px;
-}
-
-.match {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 17px 20px;
-    display: grid;
-    grid-template-columns: 1fr 105px 1fr;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 2px 8px rgba(16,25,35,.035);
-    transition: transform .15s ease, box-shadow .15s ease;
-}
-
-.match:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 14px rgba(16,25,35,.08);
-}
-
-.team {
-    font-size: 15px;
-    font-weight: 750;
-}
-
-.team.home {
-    text-align: right;
-}
-
-.manager {
-    display: block;
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 500;
-    margin-top: 3px;
-}
-
-.score {
-    background: var(--navy);
-    color: white;
-    border-radius: 7px;
-    padding: 8px 10px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 950;
-    letter-spacing: 1px;
-}
-
-.winner {
-    color: var(--green);
-}
-
-.win-marker {
-    color: var(--gold);
-    font-weight: 950;
-    margin-left: 4px;
-}
-
-/* TABLE */
-
-.table-wrap {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(16,25,35,.035);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    background: var(--navy);
-    color: #cbd2d7;
-    padding: 12px 11px;
-    text-align: left;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .8px;
-}
-
-td {
-    padding: 13px 11px;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-}
-
-tr:last-child td {
-    border-bottom: 0;
-}
-
-tr:nth-child(-n+3) td:first-child {
-    color: var(--gold);
-}
-
-.position {
-    font-size: 16px;
-    font-weight: 950;
-}
-
-.team-name {
-    font-weight: 800;
-}
-
-.manager-name {
-    color: var(--muted);
-}
-
-.points {
-    font-size: 15px;
-    font-weight: 950;
-}
-
-.movement {
-    margin-left: 5px;
-    font-weight: 900;
-    font-size: 10px;
-}
-
-.up {
-    color: var(--green);
-}
-
-.down {
-    color: var(--red);
-}
-
-.same {
-    color: #a6adb3;
-}
-
-/* FOOTER */
-
-footer {
-    background: var(--navy);
-    color: #929da6;
-    text-align: center;
-    padding: 25px 20px;
-    font-size: 12px;
-    border-top: 3px solid var(--gold);
-}
-
-footer strong {
-    color: var(--gold-light);
-}
-
-/* EMPTY */
-
-.empty {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 25px;
-}
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    .header-inner {
-        padding: 18px 15px;
-    }
-
-    .crest {
-        width: 48px;
-        height: 57px;
-        font-size: 18px;
-    }
-
-    .brand-text h1 {
-        font-size: 25px;
-    }
-
-    .brand-text p {
-        font-size: 11px;
-    }
-
-    main {
-        padding: 22px 13px 45px;
-    }
-
-    .gameweek-hero {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .gameweek-title {
-        font-size: 32px;
-    }
-
-    .report-link {
-        width: 100%;
-        text-align: center;
-    }
-
-    .headline {
-        padding: 22px;
-    }
-
-    .headline h3 {
-        font-size: 21px;
-    }
-
-    .stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .match {
-        grid-template-columns: 1fr 85px 1fr;
-        gap: 8px;
-        padding: 14px 10px;
-    }
-
-    .team {
-        font-size: 13px;
-    }
-
-    .manager {
-        font-size: 10px;
-    }
-
-    .score {
-        font-size: 17px;
-        padding: 7px 4px;
-    }
-
-    table {
-        min-width: 650px;
-    }
-
-    .table-wrap {
-        overflow-x: auto;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="header-inner">
-
-        <div class="brand">
-
-            <div class="crest">S8</div>
-
-            <div class="brand-text">
-                <h1>SUPER 8s</h1>
-                <p>FPL taken unnecessarily seriously</p>
-            </div>
-
-        </div>
-
-        <select
-            id="gameweek"
-            class="gameweek-select">
-        </select>
-
-    </div>
-</header>
-
-
-<main>
-
-    <div id="content">
-        <div class="empty">
-            Loading Super 8s data...
-        </div>
-    </div>
-
-</main>
-
-
-<footer>
-    <strong>SUPER 8s</strong>
-    &nbsp;·&nbsp;
-    Officially taking FPL too seriously since 2013
-</footer>
-
-
-<script>
-
-let data = null;
-let reportData = null;
-
-
-async function loadData() {
-
-    const response =
-        await fetch(
-            "gameweek_data.json?" + Date.now()
-        );
-
-    if (!response.ok) {
-        throw new Error(
-            "Could not load gameweek_data.json"
-        );
-    }
-
-    data = await response.json();
-
-    try {
-
-        const reportResponse =
-            await fetch(
-                "report_data.json?" + Date.now()
-            );
-
-        if (reportResponse.ok) {
-            reportData =
-                await reportResponse.json();
-        }
-
-    } catch (error) {
-
-        reportData = null;
-
-    }
-
-    setup();
-}
-
-
-function setup() {
-
-    const completed =
-        data.completed_gameweeks || [];
-
-    if (completed.length === 0) {
-
-        document.getElementById(
-            "content"
-        ).innerHTML =
-            '<div class="empty">' +
-            'No completed gameweeks yet.' +
-            '</div>';
-
-        return;
-    }
-
-    const selector =
-        document.getElementById(
-            "gameweek"
-        );
-
-    completed.sort(
-        (a, b) => a - b
-    );
-
-    completed.forEach(gw => {
-
-        const option =
-            document.createElement(
-                "option"
-            );
-
-        option.value = gw;
-
-        option.textContent =
-            "Gameweek " + gw;
-
-        selector.appendChild(option);
-
-    });
-
-    const latest =
-        Math.max(...completed);
-
-    selector.value = latest;
-
-    selector.addEventListener(
-        "change",
-        function() {
-            render(
-                Number(this.value)
-            );
-        }
-    );
-
-    render(latest);
-}
-
-
-function getMatches(gameweek) {
-
-    return data.matches.filter(
-        match =>
-            Number(match.event) ===
-            Number(gameweek)
-    );
-}
-
-
-function getReport(gameweek) {
-
-    if (!data) {
-        return null;
-    }
-
-    if (!data.weekly_reports) {
-        return null;
-    }
-
-    return data.weekly_reports[
-        String(gameweek)
-    ] || null;
-}
-
-
-function buildTable(gameweek) {
-
-    const teams = {};
-
-    const matches =
-        data.matches.filter(
-            match =>
-                Number(match.event) <=
-                Number(gameweek)
-        );
-
-    matches.forEach(match => {
-
-        if (!teams[match.entry_1_entry]) {
-
-            teams[match.entry_1_entry] = {
-
-                id:
-                    match.entry_1_entry,
-
-                name:
-                    match.entry_1_name,
-
-                manager:
-                    match.entry_1_player_name,
-
-                played: 0,
-                wins: 0,
-                draws: 0,
-                losses: 0,
-                points: 0,
-                scored: 0,
-                conceded: 0
-
-            };
-        }
-
-        if (!teams[match.entry_2_entry]) {
-
-            teams[match.entry_2_entry] = {
-
-                id:
-                    match.entry_2_entry,
-
-                name:
-                    match.entry_2_name,
-
-                manager:
-                    match.entry_2_player_name,
-
-                played: 0,
-                wins: 0,
-                draws: 0,
-                losses: 0,
-                points: 0,
-                scored: 0,
-                conceded: 0
-
-            };
-        }
-
-        const home =
-            teams[match.entry_1_entry];
-
-        const away =
-            teams[match.entry_2_entry];
-
-        home.played++;
-        away.played++;
-
-        home.scored +=
-            match.entry_1_points;
-
-        home.conceded +=
-            match.entry_2_points;
-
-        away.scored +=
-            match.entry_2_points;
-
-        away.conceded +=
-            match.entry_1_points;
-
-        home.points +=
-            match.entry_1_total;
-
-        away.points +=
-            match.entry_2_total;
-
-        if (match.entry_1_win) {
-
-            home.wins++;
-            away.losses++;
-
-        } else if (match.entry_2_win) {
-
-            away.wins++;
-            home.losses++;
-
-        } else {
-
-            home.draws++;
-            away.draws++;
-
-        }
-
-    });
-
-    return Object.values(teams)
-    .sort((a, b) => b.points - a.points);
-
-
-function getPreviousTable(gameweek) {
-
-    const previous =
-        data.completed_gameweeks.filter(
-            gw => gw < gameweek
-        );
-
-    if (!previous.length) {
-        return null;
-    }
-
-    return buildTable(
-        Math.max(...previous)
-    );
-}
-
-
-function render(gameweek) {
-
-    const matches =
-        getMatches(gameweek);
-
-    const report =
-        getReport(gameweek);
-
-    const table =
-        buildTable(gameweek);
-
-    const previousTable =
-        getPreviousTable(gameweek);
-
-    if (!matches.length) {
-
-        document.getElementById(
-            "content"
-        ).innerHTML =
-            '<div class="empty">' +
-            'No completed data for this gameweek.' +
-            '</div>';
-
-        return;
-    }
-
-
-    const scores = [];
-
-    matches.forEach(match => {
-
-        scores.push(
-            match.entry_1_points
-        );
-
-        scores.push(
-            match.entry_2_points
-        );
-
-    });
-
-
-    const highest =
-        Math.max(...scores);
-
-    const lowest =
-        Math.min(...scores);
-
-
-    const margins =
-        matches.map(match =>
-            Math.abs(
-                match.entry_1_points -
-                match.entry_2_points
-            )
-        );
-
-
-    const biggest =
-        Math.max(...margins);
-
-
-    let html = `
-
-        <div class="gameweek-hero">
-
-            <div>
-
-                <div class="gameweek-kicker">
-                    Super 8s · Head to Head
-                </div>
-
-                <h2 class="gameweek-title">
-                    Gameweek ${gameweek}
-                </h2>
-
-                <div class="season-note">
-                    The latest state of play in the Super 8s.
-                </div>
-
-            </div>
-
-            ${
-                report
-                ? `
-                    <a
-                        class="report-link"
-                        href="match-report.html?gw=${gameweek}">
-                        Read the Match Report →
-                    </a>
-                  `
-                : ""
-            }
-
-        </div>
-    `;
-
-
-    if (report) {
-
-        html += `
-
-            <div class="headline">
-
-                <div class="headline-label">
-                    This week's report
-                </div>
-
-                <h3>
-                    ${safe(report.headline)}
-                </h3>
-
-                <p>
-                    ${safe(report.introduction)}
-                </p>
-
-            </div>
-
-        `;
-    }
-
-
-    html += `
-
-        <div class="section-heading">
-            <h3>Gameweek Statistics</h3>
-            <span>${matches.length} matches played</span>
-        </div>
-
-        <div class="stats">
-
-            <div class="stat">
-                <div class="stat-label">
-                    Matches
-                </div>
-                <div class="stat-value">
-                    ${matches.length}
-                </div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-label">
-                    Highest Score
-                </div>
-                <div class="stat-value">
-                    ${highest}
-                </div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-label">
-                    Lowest Score
-                </div>
-                <div class="stat-value">
-                    ${lowest}
-                </div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-label">
-                    Biggest Margin
-                </div>
-                <div class="stat-value">
-                    ${biggest}
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="section-heading">
-            <h3>Results</h3>
-            <span>Head-to-head</span>
-        </div>
-
-        <div class="matches">
-    `;
-
-
-    matches.forEach(match => {
-
-        const homeWin =
-            match.entry_1_points >
-            match.entry_2_points;
-
-        const awayWin =
-            match.entry_2_points >
-            match.entry_1_points;
-
-
-        html += `
-
-            <div class="match">
-
-                <div class="team home ${
-                    homeWin ? "winner" : ""
-                }">
-
-                    ${safe(
-                        match.entry_1_name
-                    )}
-
-                    ${
-                        homeWin
-                        ? '<span class="win-marker">●</span>'
-                        : ""
-                    }
-
-                    <span class="manager">
-                        ${safe(
-                            match.entry_1_player_name
-                        )}
-                    </span>
-
-                </div>
-
-
-                <div class="score">
-
-                    ${
-                        match.entry_1_points
-                    }
-
-                    –
-
-                    ${
-                        match.entry_2_points
-                    }
-
-                </div>
-
-
-                <div class="team ${
-                    awayWin ? "winner" : ""
-                }">
-
-                    ${
-                        awayWin
-                        ? '<span class="win-marker">●</span>'
-                        : ""
-                    }
-
-                    ${safe(
-                        match.entry_2_name
-                    )}
-
-                    <span class="manager">
-                        ${safe(
-                            match.entry_2_player_name
-                        )}
-                    </span>
-
-                </div>
-
-            </div>
-
-        `;
-    });
-
-
-    html += `
-
-        </div>
-
-
-        <div class="section-heading">
-            <h3>League Table</h3>
-            <span>After Gameweek ${gameweek}</span>
-        </div>
-
-        <div class="table-wrap">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Pos</th>
-                        <th>Team</th>
-                        <th>Manager</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
-                        <th>Pts</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-    `;
-
-
-    table.forEach((team, index) => {
-
-        const position =
-            index + 1;
-
-        let movement = "";
-
-
-        if (previousTable) {
-
-            const oldIndex =
-                previousTable.findIndex(
-                    previous =>
-                        previous.id ===
-                        team.id
-                );
-
-
-            if (oldIndex !== -1) {
-
-                const oldPosition =
-                    oldIndex + 1;
-
-
-                if (
-                    oldPosition >
-                    position
-                ) {
-
-                    movement =
-                        `<span class="movement up">
-                            ▲ ${
-                                oldPosition -
-                                position
-                            }
-                         </span>`;
-
-                } else if (
-                    oldPosition <
-                    position
-                ) {
-
-                    movement =
-                        `<span class="movement down">
-                            ▼ ${
-                                position -
-                                oldPosition
-                            }
-                         </span>`;
-
-                } else {
-
-                    movement =
-                        `<span class="movement same">
-                            —
-                         </span>`;
-                }
-            }
-        }
-
-
-        html += `
-
-            <tr>
-
-                <td>
-                    <span class="position">
-                        ${position}
-                    </span>
-                    ${movement}
-                </td>
-
-                <td class="team-name">
-                    ${safe(team.name)}
-                </td>
-
-                <td class="manager-name">
-                    ${safe(team.manager)}
-                </td>
-
-                <td>${team.played}</td>
-
-                <td>${team.wins}</td>
-
-                <td>${team.draws}</td>
-
-                <td>${team.losses}</td>
-
-                <td class="points">
-                    ${team.points}
-                </td>
-
-
-            </tr>
-
-        `;
-    });
-
-
-    html += `
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    `;
-
-
-    document.getElementById(
-        "content"
-    ).innerHTML = html;
-}
-
-
-function safe(value) {
-
-    if (
-        value === null ||
-        value === undefined
-    ) {
-        return "";
-    }
-
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-}
-
-
-loadData().catch(error => {
-
-    console.error(error);
 
     document.getElementById(
         "content"
     ).innerHTML =
 
         `<div class="empty">
-            Unable to load Super 8s data.<br><br>
+
+            Unable to load Super 8s data.
+
+            <br><br>
+
             ${safe(error.message)}
+
          </div>`;
 
 });
