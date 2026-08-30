@@ -425,29 +425,37 @@ The report should feel PERSONAL. Use manager names and team names
 frequently enough that it feels like this is genuinely about the
 Super 8s league rather than a generic FPL article.
 
-MANAGER NAME PREFERENCES:
+MANAGER NAME RULES:
 
-Use the following names when referring to managers. Do not use their
-full names in the report when one of these preferred names applies:
+The following are the names used by the Super 8s managers. When
+referring to these managers, use ONLY the preferred names listed below.
+Do not use their full names or invent alternative forms.
 
 Rami El-Dahshan = Rami
-Kevin Walsh = Kev, Big K or K-Com
+Kevin Walsh = Kev
 Rob Watson = Watson
 Andrew Crystal = Crystal
 Paul Nightingale = Paul
 David Woolman = Dave
 Rich Sutton = Rich
-James Dunne = Dunne or Dunny
+James Dunne = Dunne
 Martyn Bradshaw = Bradshaw
-Tom Curtis = Tom or Tommy
-Patrick Walsh = Paddy or Paddog
-Rob Wilkinson = Rob or Wilko
-Ben Woolman = Ben, Woolly or Woolldog
+Tom Curtis = Tom
+Patrick Walsh = Paddy
+Rob Wilkinson = Rob
+Ben Woolman = Woolly
 Ben Foster = Foz
 
-Vary the alternatives naturally where appropriate, but do not force
-nicknames into every reference. The preferred names should feel like
-the names used by the league members themselves.
+These preferred names should be used consistently throughout the
+report, including match reports, awards, league-table commentary and
+preview sections.
+
+Do not use "Martyn" for Bradshaw, "Ben" for Woolman, "James" for Dunne,
+"Patrick" for Walsh, "Rob" for Watson, or any other shortened form that
+is not specifically listed above.
+
+Use the preferred manager name even when the underlying FPL data gives
+the manager's full name.
 
 Vary the humour. Use sarcasm, exaggeration, understatement, mock
 seriousness, absurd comparisons, recurring league personalities and
