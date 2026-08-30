@@ -30,6 +30,8 @@ jobs:
         run: python fpl_data.py
 
       - name: Analyse Super 8s data
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python report_data.py
 
       - name: Show collected data
