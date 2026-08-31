@@ -10,7 +10,6 @@
 
 :root {
     --navy: #17212b;
-    --navy-dark: #101820;
     --gold: #d4a72c;
     --gold-light: #e4c15a;
     --light: #f4f6f8;
@@ -44,7 +43,6 @@ header {
     padding: 24px 20px;
     display: flex;
     align-items: center;
-    gap: 15px;
 }
 
 .brand {
@@ -114,11 +112,11 @@ main {
     font-size: 16px;
 }
 
-/* MANAGER GRID */
+/* MANAGER CARDS */
 
-.manager-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.manager-list {
+    display: flex;
+    flex-direction: column;
     gap: 22px;
 }
 
@@ -127,33 +125,65 @@ main {
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
+    display: flex;
+    min-height: 300px;
 }
 
-.manager-header {
+.manager-photo {
+    width: 280px;
+    min-width: 280px;
     background: var(--navy);
-    color: white;
-    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.manager-name {
-    margin: 0;
-    font-size: 23px;
-    font-weight: 900;
+.manager-photo img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
 }
 
-.manager-team {
-    margin-top: 4px;
-    color: var(--gold-light);
+.photo-placeholder {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    color: #aeb8c0;
     font-size: 14px;
     font-weight: 700;
 }
 
-.manager-body {
-    padding: 20px;
+.manager-content {
+    padding: 28px 30px;
+    flex: 1;
+}
+
+.manager-header {
+    margin-bottom: 18px;
+}
+
+.manager-name {
+    margin: 0;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.manager-team {
+    margin-top: 4px;
+    color: var(--gold);
+    font-size: 15px;
+    font-weight: 800;
 }
 
 .manager-body p {
-    margin: 0 0 16px;
+    margin: 0 0 15px;
     color: var(--text);
     line-height: 1.6;
     font-size: 15px;
@@ -161,33 +191,6 @@ main {
 
 .manager-body p:last-child {
     margin-bottom: 0;
-}
-
-.manager-facts {
-    margin-top: 18px;
-    padding-top: 15px;
-    border-top: 1px solid var(--border);
-}
-
-.fact {
-    display: inline-block;
-    margin-right: 18px;
-    margin-bottom: 6px;
-}
-
-.fact-label {
-    display: block;
-    color: var(--muted);
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-}
-
-.fact-value {
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--navy);
 }
 
 /* FOOTER */
@@ -221,8 +224,32 @@ footer {
         font-size: 28px;
     }
 
-    .manager-grid {
-        grid-template-columns: 1fr;
+    .manager-card {
+        display: block;
+    }
+
+    .manager-photo {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+    }
+
+    .manager-photo img {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+    }
+
+    .photo-placeholder {
+        height: 250px;
+    }
+
+    .manager-content {
+        padding: 22px;
+    }
+
+    .manager-name {
+        font-size: 24px;
     }
 
 }
@@ -273,460 +300,616 @@ footer {
 
     </div>
 
-    <div class="manager-grid">
+    <div class="manager-list">
+
+
+        <!-- ROB -->
 
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Rob</h3>
-                <div class="manager-team">Humorous Name United</div>
+            <div class="manager-photo">
+                <img src="rob.jpg" alt="Rob">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    A founding member and one of the principal architects of the Super 8s,
-                    Rob has been around since the original 2013 WhatsApp conversation in
-                    which the idea of a mini-league was first floated.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Rob</h3>
+                    <div class="manager-team">Humorous Name United</div>
+                </div>
 
-                <p>
-                    He has subsequently developed the dual role of competitor and
-                    backroom operator, serving as the league's Vice Commissioner and
-                    taking on a substantial amount of the work behind the scenes.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    Humorous Name United has been Rob's home throughout his Super 8s
-                    career, making him one of the competition's longest-serving
-                    one-club managers.
-                </p>
+                    <p>
+                        A founding member and one of the principal architects of the
+                        Super 8s, Rob has been around since the original 2013 WhatsApp
+                        conversation in which the idea of a mini-league was first floated.
+                    </p>
+
+                    <p>
+                        He has subsequently developed the dual role of competitor and
+                        backroom operator, serving as the league's Vice Commissioner
+                        and taking on a substantial amount of the work behind the scenes.
+                    </p>
+
+                    <p>
+                        Humorous Name United has been Rob's home throughout his Super 8s
+                        career, making him one of the competition's longest-serving
+                        one-club managers.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- WOOLLY -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Woolly</h3>
-                <div class="manager-team">Woolbrohampton</div>
+            <div class="manager-photo">
+                <img src="woolly.jpg" alt="Woolly">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    If Super 8s had a Hall of Fame, Woolly would presumably have already
-                    complained that the trophy cabinet wasn't big enough.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Woolly</h3>
+                    <div class="manager-team">Woolbrohampton</div>
+                </div>
 
-                <p>
-                    A founding-era manager and the most decorated figure in Super 8s
-                    history, Woolly's Woolbrohampton produced the competition's historic
-                    quadruple.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    Woolly is the Commissioner of Super 8s, a position which has given
-                    him considerable influence over the running of the competition and
-                    an increasing reputation for Infantino-esque behind-the-scenes
-                    wheeling and dealing.
-                </p>
+                    <p>
+                        If Super 8s had a Hall of Fame, Woolly would presumably have
+                        already complained that the trophy cabinet wasn't big enough.
+                    </p>
+
+                    <p>
+                        A founding-era manager and the most decorated figure in Super 8s
+                        history, Woolly's Woolbrohampton produced the competition's
+                        historic quadruple.
+                    </p>
+
+                    <p>
+                        Woolly is the Commissioner of Super 8s, a position which has
+                        given him considerable influence over the running of the
+                        competition and an increasing reputation for Infantino-esque
+                        behind-the-scenes wheeling and dealing.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- DAVE -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Dave</h3>
-                <div class="manager-team">Change Name FC</div>
+            <div class="manager-photo">
+                <img src="dave.jpg" alt="Dave">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Dave is another of the competition's long-serving managers and one
-                    of its most successful. Change Name FC became a remarkably effective
-                    vehicle for collecting silverware.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Dave</h3>
+                    <div class="manager-team">Change Name FC</div>
+                </div>
 
-                <p>
-                    The origins of Change Name FC are rather less glamorous. Dave's
-                    first season began with the team name Black Hair FC, a reference to
-                    a disastrous trip to the hairdressers in which his hair was dyed
-                    completely black.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    The FPL authorities apparently considered the name potentially
-                    racist and instructed him to change it. Thus Change Name FC was born.
-                </p>
+                    <p>
+                        Dave is another of the competition's long-serving managers
+                        and one of its most successful. Change Name FC became a
+                        remarkably effective vehicle for collecting silverware.
+                    </p>
+
+                    <p>
+                        The origins of Change Name FC are rather less glamorous.
+                        Dave's first season began with the team name Black Hair FC,
+                        a reference to a disastrous trip to the hairdressers in
+                        which his hair was dyed completely black.
+                    </p>
+
+                    <p>
+                        The FPL authorities apparently considered the name potentially
+                        racist and instructed him to change it. Thus Change Name FC
+                        was born.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- PADDY -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Foz</h3>
-                <div class="manager-team">Atletico Waspo</div>
+            <div class="manager-photo">
+                <img src="paddy.jpg" alt="Paddy">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Foz's Atletico Waspo established themselves as one of the dominant
-                    H2H sides of the Super 8s era.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Paddy</h3>
+                    <div class="manager-team">Bielsa's Babes</div>
+                </div>
 
-                <p>
-                    He won consecutive H2H titles and also added a Classic League
-                    championship, making him one of the league's genuine serial winners.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    Away from the trophies, Foz has also been one of the more prolific
-                    contributors to the league's increasingly unnecessary WhatsApp
-                    infrastructure.
-                </p>
+                    <p>
+                        Paddy is one of the original Super 8s characters and was
+                        present in the conversation that created the league in
+                        August 2013.
+                    </p>
+
+                    <p>
+                        He subsequently became one of the competition's most
+                        successful managers, winning H2H titles with Bielsa's Babes
+                        and previously with other team identities.
+                    </p>
+
+                    <p>
+                        Bielsa's Babes became one of the league's great comeback
+                        stories, returning to the competition and immediately
+                        establishing themselves as a serious force.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- WATSON -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Paddy</h3>
-                <div class="manager-team">Bielsa's Babes</div>
+            <div class="manager-photo">
+                <img src="watson.jpg" alt="Watson">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Paddy is one of the original Super 8s characters and was present
-                    in the conversation that created the league in August 2013.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Watson</h3>
+                    <div class="manager-team">FC Dangerous</div>
+                </div>
 
-                <p>
-                    He subsequently became one of the competition's most successful
-                    managers, winning H2H titles with Bielsa's Babes and previously
-                    with other team identities.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    Bielsa's Babes became one of the league's great comeback stories,
-                    returning to the competition and immediately establishing themselves
-                    as a serious force.
-                </p>
+                    <p>
+                        Watson has been around Super 8s long enough to have
+                        accumulated both silverware and a highly developed ability
+                        to analyse the team he didn't pick.
+                    </p>
+
+                    <p>
+                        His major historical achievement came in the Classic League,
+                        where FC Dangerous B took the title. He also lifted the
+                        Super 8s Cup with the same club.
+                    </p>
+
+                    <p>
+                        For Watson, the fantasy football season apparently consists
+                        of two competitions: the one taking place on the pitch, and
+                        the considerably more detailed one taking place retrospectively
+                        in his head.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- DUNNE -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Watson</h3>
-                <div class="manager-team">FC Dangerous</div>
+            <div class="manager-photo">
+                <img src="dunne.jpg" alt="James Dunne">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Watson has been around Super 8s long enough to have accumulated
-                    both silverware and a highly developed ability to analyse the team
-                    he didn't pick.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">James Dunne</h3>
+                    <div class="manager-team">ChampagneSuperRovers</div>
+                </div>
 
-                <p>
-                    His major historical achievement came in the Classic League,
-                    where FC Dangerous B took the title. He also lifted the Super 8s
-                    Cup with the same club.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    For Watson, the fantasy football season apparently consists of
-                    two competitions: the one taking place on the pitch, and the
-                    considerably more detailed one taking place retrospectively in
-                    his head.
-                </p>
+                    <p>
+                        Dunne is one of the league's established managers and a former
+                        Classic League champion.
+                    </p>
+
+                    <p>
+                        His Super 8s career has included several memorable club
+                        identities, including Dinamo Dunlop, Dunston Czechsin and
+                        his current side, ChampagneSuperRovers.
+                    </p>
+
+                    <p>
+                        Having now spent several seasons around the top end of the
+                        league's managerial establishment, Dunne has developed the
+                        particularly useful Super 8s skill of looking like he knows
+                        exactly what he's doing, regardless of what his Gameweek
+                        points actually say.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- BRADSHAW -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">James Dunne</h3>
-                <div class="manager-team">ChampagneSuperRovers</div>
+            <div class="manager-photo">
+                <img src="bradshaw.jpg" alt="Bradshaw">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Dunne is one of the league's established managers and a former
-                    Classic League champion.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Bradshaw</h3>
+                    <div class="manager-team">Turf Less</div>
+                </div>
 
-                <p>
-                    His Super 8s career has included several memorable club identities,
-                    including Dinamo Dunlop, Dunston Czechsin and his current side,
-                    ChampagneSuperRovers.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    Having now spent several seasons around the top end of the league's
-                    managerial establishment, Dunne has developed the particularly useful
-                    Super 8s skill of looking like he knows exactly what he's doing,
-                    regardless of what his Gameweek points actually say.
-                </p>
+                    <p>
+                        Bradshaw has become one of the defining figures of the modern
+                        Super 8s era and is now into his eleventh year in the league.
+                    </p>
+
+                    <p>
+                        He is the league's foremost Burnley evangelist, seemingly
+                        capable of steering almost any conversation towards Turf Moor
+                        regardless of the subject matter.
+                    </p>
+
+                    <p>
+                        This, combined with a naturally dour outlook, has earned him
+                        a reputation as one of the more miserable figures in the league.
+                        That slightly undersells him, however: Bradshaw has a very
+                        sharp wit, an impressive appetite for puns and an apparently
+                        inexhaustible supply of things to say.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- TOM -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Bradshaw</h3>
-                <div class="manager-team">Turf Less</div>
+            <div class="manager-photo">
+                <img src="tom c.png" alt="Tom">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Bradshaw has become one of the defining figures of the modern
-                    Super 8s era and is now into his eleventh year in the league.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Tom</h3>
+                    <div class="manager-team">el Guapo</div>
+                </div>
 
-                <p>
-                    He is the league's foremost Burnley evangelist, seemingly capable
-                    of steering almost any conversation towards Turf Moor regardless
-                    of the subject matter.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    This, combined with a naturally dour outlook, has earned him a
-                    reputation as one of the more miserable figures in the league.
-                    That slightly undersells him, however: Bradshaw has a very sharp
-                    wit, an impressive appetite for puns and an apparently inexhaustible
-                    supply of things to say.
-                </p>
+                    <p>
+                        Tom is one of the central figures of Super 8s and one of
+                        its most recognisable characters, even if his trophy cabinet
+                        is not exactly threatening to collapse under its own weight.
+                    </p>
+
+                    <p>
+                        His defining managerial principles have been documented for
+                        posterity: do not select Arsenal players, and do not select
+                        decent players.
+                    </p>
+
+                    <p>
+                        He also has a notable preference for selecting Spurs players
+                        wherever possible, despite the repeated evidence that this
+                        may not be a particularly effective strategy.
+                    </p>
+
+                    <p>
+                        More importantly, Tom is one of the league's central
+                        characters and a much-loved presence within it. He was the sole
+                        cause of former coach Charlie Delaney leaving the league. For 
+                        that he deserves major respect.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- KEV -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Tom</h3>
-                <div class="manager-team">el Guapo</div>
+            <div class="manager-photo">
+                <img src="kev.jpg" alt="Kev">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Tom is one of the central figures of Super 8s and one of its most
-                    recognisable characters, even if his trophy cabinet is not exactly
-                    threatening to collapse under its own weight.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Kev</h3>
+                    <div class="manager-team">BeLucky Again</div>
+                </div>
 
-                <p>
-                    His defining managerial principles have been documented for
-                    posterity: do not select Arsenal players, and do not select
-                    decent players.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    He also has a notable preference for selecting Spurs players
-                    wherever possible, despite the repeated evidence that this may
-                    not be a particularly effective strategy.
-                </p>
+                    <p>
+                        Kev has had two separate stints in Super 8s, returning to
+                        the competition after an earlier spell and subsequently
+                        enjoying some of the most successful years of his managerial
+                        career.
+                    </p>
 
-                <p>
-                    More importantly, Tom is one of the league's central characters
-                    and a much-loved presence within it.
-                </p>
+                    <p>
+                        His recent return has been particularly productive, with
+                        BeLucky Again collecting plenty of silverware and Kev
+                        establishing himself as one of the more successful managers
+                        of the modern era.
+                    </p>
+
+                    <p>
+                        He spends his winnings sensibly on retirement, travelling
+                        the world and playing golf in increasingly exotic locations.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- CRYSTAL -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Kev</h3>
-                <div class="manager-team">BeLucky Again</div>
+            <div class="manager-photo">
+                <img src="crystal.jpg" alt="Crystal">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Kev has had two separate stints in Super 8s, returning to the
-                    competition after an earlier spell and subsequently enjoying some
-                    of the most successful years of his managerial career.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Crystal</h3>
+                    <div class="manager-team">Seattle Scorchers</div>
+                </div>
 
-                <p>
-                    His recent return has been particularly productive, with BeLucky
-                    Again collecting plenty of silverware and Kev establishing himself
-                    as one of the more successful managers of the modern era.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    He spends his winnings sensibly on retirement, travelling the
-                    world and playing golf in increasingly exotic locations.
-                </p>
+                    <p>
+                        Crystal manages Seattle Scorchers, which is perhaps the
+                        most geographically honest team name in Super 8s. He
+                        actually lives in Seattle.
+                    </p>
+
+                    <p>
+                        His managerial record is considerably less impressive.
+                    </p>
+
+                    <p>
+                        Crystal is, by almost any objective measure, terrible at
+                        Super 8s. Despite this, he continues to turn up year after
+                        year, throwing his money away, but displaying a level of 
+                        loyalty to the competition which is either admirable or a 
+                        failure to recognise when enough is enough.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- PAUL NIGHTINGALE -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Crystal</h3>
-                <div class="manager-team">Seattle Scorchers</div>
+            <div class="manager-photo">
+                <img src="paul.jpg" alt="Paul Nightingale">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Crystal manages Seattle Scorchers, which is perhaps the most
-                    geographically honest team name in Super 8s. He actually lives
-                    in Seattle.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Paul Nightingale</h3>
+                    <div class="manager-team">Roped In Again</div>
+                </div>
 
-                <p>
-                    His managerial record is considerably less impressive.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    Crystal is, by almost any objective measure, terrible at Super 8s.
-                    Despite this, he continues to turn up year after year, displaying
-                    a level of loyalty to the competition which is either admirable
-                    or a failure to recognise when enough is enough.
-                </p>
+                    <p>
+                        Paul Nightingale manages Roped In Again, a name which feels
+                        increasingly appropriate for a manager who has remained
+                        involved in Super 8s despite the obvious opportunity to escape.
+                    </p>
+
+                    <p>
+                        Paul is perhaps the quietest manager in the competition.
+                        While others fill the WhatsApp group with opinions, analysis
+                        and complaints, Paul tends to sit silently and observe.
+                    </p>
+
+                    <p>
+                        There is a growing suspicion that he is actually studying
+                        everything everyone says before spending several hours
+                        conducting an entirely disproportionate analysis of his
+                        squad for the following Gameweek. And then losing.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- RICH SUTTON -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Paul Nightingale</h3>
-                <div class="manager-team">Roped In Again</div>
+            <div class="manager-photo">
+                <div class="photo-placeholder">
+                    RICH SUTTON<br><br>
+                    PHOTO COMING SOON
+                </div>
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Paul Nightingale manages Roped In Again, a name which feels
-                    increasingly appropriate for a manager who has remained involved
-                    in Super 8s despite the obvious opportunity to escape.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Rich Sutton</h3>
+                    <div class="manager-team">Richard</div>
+                </div>
 
-                <p>
-                    Paul is perhaps the quietest manager in the competition. While
-                    others fill the WhatsApp group with opinions, analysis and
-                    complaints, Paul tends to sit silently and observe.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    There is a growing suspicion that he is actually studying
-                    everything everyone says before spending several hours conducting
-                    an entirely disproportionate analysis of his squad for the
-                    following Gameweek.
-                </p>
+                    <p>
+                        Rich currently manages Richard, which is not the most inventive 
+                        team name in Super 8s history.
+
+                    </p>
+
+                    <p>
+                        His previous managerial identities include FC Sunshiiiiiine and 
+                        Fish Rowe on Toast, suggesting that the naming department has, 
+                        at least historically, been considerably more ambitious.
+
+                    </p>
+
+                    <p>
+                        A massive Aston Villa fan, Rich brings the appropriate level of 
+                        optimism and suffering that supporting Villa requires. He is 
+                        also another member of the league with a fondness for a good pun.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- FOZ -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Rich</h3>
-                <div class="manager-team">Richard</div>
+            <div class="manager-photo">
+                <img src="foster.jpg" alt="Rich">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Rich currently manages Richard, which is not the most inventive
-                    team name in Super 8s history.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Foz</h3>
+                    <div class="manager-team">Atletico Waspo</div>
+                </div>
 
-                <p>
-                    His previous managerial identities include FC Sunshiiiiiine
-                    and Fish Rowe on Toast, suggesting that the naming department
-                    has, at least historically, been considerably more ambitious.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    A massive Aston Villa fan, Rich brings the appropriate level of
-                    optimism and suffering that supporting Villa requires. He is also
-                    another member of the league with a fondness for a good pun.
-                </p>
+                    <p>
+                        Foz's Atletico Waspo established themselves as one of the 
+                        dominant H2H sides of the Super 8s era.
+                    </p>
+
+                    <p>
+                        He won consecutive H2H titles and also added a Classic League 
+                        championship, making him one of the league's genuine serial winners.
+
+                    </p>
+
+                    <p>
+                        Away from the trophies, Foz has also been one of the more 
+                        prolific contributors to the league's increasingly unnecessary 
+                        WhatsApp infrastructure.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
+        <!-- RAMI -->
+
         <article class="manager-card">
 
-            <div class="manager-header">
-                <h3 class="manager-name">Rami</h3>
-                <div class="manager-team">Prince Majid Rd FC</div>
+            <div class="manager-photo">
+                <img src="rami.jpg" alt="Rami">
             </div>
 
-            <div class="manager-body">
+            <div class="manager-content">
 
-                <p>
-                    Rami is the new boy in Super 8s, joining the competition for the
-                    2026/27 season and taking over at Prince Majid Rd FC.
-                </p>
+                <div class="manager-header">
+                    <h3 class="manager-name">Rami</h3>
+                    <div class="manager-team">Prince Majid Rd FC</div>
+                </div>
 
-                <p>
-                    He now lives in Saudi Arabia, which has immediately created a
-                    number of expectations around his financial circumstances.
-                </p>
+                <div class="manager-body">
 
-                <p>
-                    Rami works in the world of fancy airline lounges in airports,
-                    so he is already considerably more glamorous than the average
-                    Super 8s manager.
-                </p>
+                    <p>
+                        Rami is the new boy in Super 8s, joining the competition
+                        for the 2026/27 season and taking over at Prince Majid Rd FC.
+                    </p>
 
-                <p>
-                    For now, his principal achievement is simply making it into the
-                    league. He is delighted to be competing in the top fantasy league
-                    in English football.
-                </p>
+                    <p>
+                        He now lives in Saudi Arabia, which has immediately created
+                        a number of expectations around his financial circumstances.
+                    </p>
+
+                    <p>
+                        Rami works in the world of fancy airline lounges in airports,
+                        so he is already considerably more glamorous than the average
+                        Super 8s manager.
+                    </p>
+
+                    <p>
+                        For now, his principal achievement is simply making it into
+                        the league. He is delighted to be competing in the top
+                        fantasy league in English football.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
+
 
     </div>
 
@@ -738,4 +921,3 @@ footer {
 
 </body>
 </html>
-```
