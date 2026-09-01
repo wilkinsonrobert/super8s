@@ -6,7 +6,6 @@ from openai import OpenAI
 
 
 DATA_FILE = Path("gameweek_data.json")
-REPORT_FILE = Path("report_data.json")
 
 
 def load_data():
@@ -16,19 +15,6 @@ def load_data():
         )
 
     with DATA_FILE.open(
-        "r",
-        encoding="utf-8"
-    ) as file:
-        return json.load(file)
-
-
-def load_report_data():
-    if not REPORT_FILE.exists():
-        raise RuntimeError(
-            "report_data.json does not exist."
-        )
-
-    with REPORT_FILE.open(
         "r",
         encoding="utf-8"
     ) as file:
@@ -72,41 +58,19 @@ You are the writer of the weekly Super 8s Fantasy Premier League report.
 Super 8s is a private 14-manager head-to-head FPL league between British
 friends. The report is written for the managers themselves and should
 feel like the sort of thing that gets circulated in a WhatsApp group
-where everyone knows each other and nobody is above taking the piss.
-
-TONE AND HUMOUR:
+where everyone knows exactly who is being mocked.
 
 The overriding objective is ENTERTAINMENT and BANTER.
 
 Write in natural British English. The humour should feel like a sharp,
 observational British mate taking the piss out of his friends — not like
-an American sports website, a corporate newsletter, a football
-commentator, or an AI trying to sound funny.
+an American sports website, corporate newsletter or AI trying to sound
+funny.
 
 Be cheeky, sarcastic, irreverent and occasionally ruthless.
 
-Managers are fair game. If someone's captaincy, transfer, team selection
-or general FPL decision-making was stupid, spectacularly unlucky,
-needlessly complicated or simply funny, take the piss out of them.
-
-Good performances should not automatically receive earnest praise.
-Look for the funny angle.
-
-Bad performances should be mocked properly.
-
-Use British expressions naturally where appropriate, including phrases
-such as "took the piss", "absolute shambles", "properly", "somehow",
-"fair play", "what on earth", "questionable", "criminal", "disaster",
-"nonsense", "embarrassing", "got away with it", "having a mare",
-"mugged off", "bottled it", "smash and grab", and similar language.
-
-Do NOT force British slang into every paragraph.
-
-Use understatement and sarcasm.
-
-The report should feel PERSONAL. Use manager names and team names
-frequently enough that it feels like this is genuinely about the
-Super 8s league rather than a generic FPL article.
+Use manager names and team names frequently enough that the report feels
+specific to the Super 8s league.
 
 MANAGER NAME RULES:
 
@@ -127,33 +91,28 @@ Ben Foster = Foz
 
 Use ONLY these preferred names when referring to managers.
 
-Do not use full names or invent alternative forms.
+Established league jokes may be used when genuinely relevant:
 
-The following established league jokes may be used when genuinely
-relevant to the week's FPL events:
+Andrew Crystal has a reputation for being promiscuous.
 
-Andrew Crystal is often the butt of jokes as he has a history of being
-promiscuous.
-
-Ben Woolman is known as being very wealthy and spending lots of money.
+Ben Woolman is very wealthy and spends lots of money.
 
 Patrick Walsh enjoys a martini at all hours of the day.
 
-Tom Curtis loves Tottenham Hotspur and doesn't like criticism of Spurs.
-The term "Spursy" may be used when relevant.
+Tom Curtis loves Tottenham Hotspur. "Spursy" may be used when relevant.
 
-Martyn Bradshaw is a Burnley fan and Burnley can be mocked when relevant.
+Martyn Bradshaw is a Burnley fan and Burnley can be mocked when
+relevant.
 
 Ben Woolman, Andrew Crystal, Patrick Walsh, David Woolman and Rob
-Wilkinson are big Leeds fans. The others get annoyed when Leeds do well
-and talk about it.
+Wilkinson are big Leeds fans.
 
 Kevin Walsh is constantly off playing golf.
 
 Rami lives in Saudi Arabia, so the joke is that he is sports washing
 the league with all his money.
 
-Do not force these jokes into the report. Use them only where they fit.
+Do not force these jokes into the report.
 
 IMPORTANT FACTUAL RULES:
 
@@ -161,31 +120,28 @@ IMPORTANT FACTUAL RULES:
 2. Never invent a score, player, fixture, result, league position or
    statistical record.
 3. Never invent a real-life football event.
-4. Do not claim that a player scored, assisted, kept a clean sheet or
-   did anything else in a real-life match unless that information is
-   actually present in the supplied data.
-5. If there is insufficient information to make a real-life football
-   reference, simply don't make one.
-6. Do not repeat the same joke excessively.
-7. Avoid generic filler.
-8. Do not invent jokes based on information you do not have.
-9. Do not make personal comments about managers unrelated to their FPL
-   performance.
+4. Do not claim a player scored, assisted, kept a clean sheet or did
+   anything else unless that information is actually present in the
+   supplied data.
+5. Do not invent rivalries or history.
+6. Do not make personal comments about managers unrelated to FPL.
+7. Use British football terminology.
+8. Do not use American sports terminology such as matchup, playoffs,
+   standings, roster or MVP.
+9. Do not use cheesy generic sports-writing language.
+10. The humour must be based on the supplied facts.
 
 REPORT STRUCTURE:
 
 The report must contain:
 
-- A strong, funny weekly headline based on what actually happened.
-- A short introduction setting up the week's story.
+- A strong funny weekly headline.
+- A short introduction.
 - A mini match report for EVERY match played that gameweek.
-- Where appropriate, mention weekly records such as the highest score,
-  lowest score, biggest winning margin, narrowest win or highest-scoring
-  match.
+- Relevant weekly statistics.
 - Four funny weekly awards.
 - Commentary on the current league table.
-- A preview of the following gameweek using ONLY supplied actual
-  fixtures.
+- A preview of the following gameweek using ONLY supplied fixtures.
 - A short closing paragraph.
 
 MATCH REPORTS:
@@ -194,42 +150,27 @@ Every match must receive its own report.
 
 Identify important players and captaincy decisions where useful.
 
-A particularly good or bad captaincy decision is worth mentioning.
-
-Look for amusing details in the numbers.
-
-Do not simply describe the score and then say it was impressive.
+Look for amusing details such as narrow wins, huge scores, poor
+captaincy decisions, bench points, large points gaps and unexpected
+results.
 
 WEEKLY AWARDS:
 
-The four awards should be funny, specific to that gameweek and based on
-what actually happened.
-
-Avoid generic awards unless there is a particularly funny reason for
-using one.
+Create four funny awards specific to the actual gameweek.
 
 TABLE COMMENTARY:
-
-Treat the league table as a source of banter.
-
-Comment on movement, points gaps, unbeaten runs, losing runs,
-unexpected positions and battles between managers where the supplied
-data supports it.
 
 Use H2H league points as the primary ranking criterion.
 
 Use total FPL points scored as the official tie-breaker.
 
-Do NOT use goal difference as a tie-breaker.
+Do NOT use goal difference as a league-table tie-breaker.
 
 PREVIEW:
 
-Preview two or three of the most interesting actual fixtures from the
-following gameweek.
+Preview two or three interesting fixtures from the following gameweek.
 
-Use only fixtures supplied in the data.
-
-Do not invent rivalries or history between managers.
+Use ONLY fixtures supplied in the data.
 
 Return ONLY valid JSON with exactly this structure:
 
@@ -262,8 +203,6 @@ Return ONLY valid JSON with exactly this structure:
 There must be one match object for every match supplied for the
 gameweek.
 """
-
-    league_table = []
 
     teams = {}
 
@@ -368,7 +307,7 @@ Here is the official Super 8s league table for this gameweek:
     ensure_ascii=False
 )}
 
-Here are the available H2H fixtures:
+Here are ALL available H2H fixtures:
 
 {json.dumps(
     matches,
@@ -380,9 +319,9 @@ Remember:
 
 - Use only the supplied information.
 - Do not invent real-life football events.
-- Cover every match for this gameweek.
+- Cover every match for Gameweek {gameweek}.
 - Use actual supplied fixtures for the preview.
-- Use the official H2H points and FPL points tie-breaker.
+- Use H2H points and FPL points as the league-table ranking criteria.
 - Keep the tone dry, witty and British.
 - Return ONLY valid JSON.
 """
@@ -457,7 +396,6 @@ def main():
     )
 
     data = load_data()
-    report_data = load_report_data()
 
     completed_gameweeks = data.get(
         "completed_gameweeks",
@@ -466,11 +404,6 @@ def main():
 
     existing_reports = data.get(
         "weekly_reports",
-        {}
-    )
-
-    gameweeks = report_data.get(
-        "gameweeks",
         {}
     )
 
@@ -498,27 +431,148 @@ def main():
             )
             continue
 
-        if gameweek_key not in gameweeks:
+        gameweek_matches = [
+            match
+            for match in matches
+            if int(match["event"]) == int(gameweek)
+        ]
+
+        expected_matches = 7
+
+        if len(gameweek_matches) < expected_matches:
             print(
-                f"No report data available for "
-                f"Gameweek {gameweek}. Skipping."
+                f"Gameweek {gameweek} H2H data is incomplete. "
+                f"Found {len(gameweek_matches)} matches; "
+                f"expected {expected_matches}. Skipping."
+            )
+            continue
+
+        if any(
+            match.get("entry_1_points") is None
+            or match.get("entry_2_points") is None
+            for match in gameweek_matches
+        ):
+            print(
+                f"Gameweek {gameweek} H2H scores are incomplete. "
+                f"Skipping."
             )
             continue
 
         print(
-            f"Gameweek {gameweek} is ready."
+            f"Gameweek {gameweek} has complete H2H data."
+        )
+
+        weekly_team_data = data.get(
+            "weekly_team_data",
+            {}
+        ).get(
+            gameweek_key,
+            {}
+        )
+
+        if not weekly_team_data:
+            print(
+                f"No weekly player data available for "
+                f"Gameweek {gameweek}. Skipping."
+            )
+            continue
+
+        report_input = {
+            "gameweek": gameweek,
+            "matches": []
+        }
+
+        for match in gameweek_matches:
+
+            entry_1 = str(match["entry_1_entry"])
+            entry_2 = str(match["entry_2_entry"])
+
+            report_input["matches"].append({
+                "match_id": match["id"],
+                "gameweek": gameweek,
+                "team_1": {
+                    "entry_id": match["entry_1_entry"],
+                    "team_name": match["entry_1_name"],
+                    "manager": match["entry_1_player_name"],
+                    "score": match["entry_1_points"],
+                    "result": (
+                        "win"
+                        if match["entry_1_win"]
+                        else "draw"
+                        if match["entry_1_draw"]
+                        else "loss"
+                    ),
+                    "players": weekly_team_data.get(
+                        entry_1,
+                        {}
+                    ).get(
+                        "players",
+                        []
+                    )
+                },
+                "team_2": {
+                    "entry_id": match["entry_2_entry"],
+                    "team_name": match["entry_2_name"],
+                    "manager": match["entry_2_player_name"],
+                    "score": match["entry_2_points"],
+                    "result": (
+                        "win"
+                        if match["entry_2_win"]
+                        else "draw"
+                        if match["entry_2_draw"]
+                        else "loss"
+                    ),
+                    "players": weekly_team_data.get(
+                        entry_2,
+                        {}
+                    ).get(
+                        "players",
+                        []
+                    )
+                }
+            })
+
+        report_input["weekly_statistics"] = {
+            "highest_score": max(
+                match["entry_1_points"]
+                for match in gameweek_matches
+                + [
+                    {
+                        "entry_1_points": match["entry_2_points"],
+                        "entry_2_points": match["entry_2_points"]
+                    }
+                    for match in []
+                ]
+            )
+        }
+
+        all_scores = []
+
+        for match in gameweek_matches:
+            all_scores.append(
+                match["entry_1_points"]
+            )
+            all_scores.append(
+                match["entry_2_points"]
+            )
+
+        report_input["weekly_statistics"]["highest_score"] = max(
+            all_scores
+        )
+
+        report_input["weekly_statistics"]["lowest_score"] = min(
+            all_scores
         )
 
         print(
-            f"Generating AI report for "
-            f"Gameweek {gameweek}..."
+            f"Generating AI report for Gameweek {gameweek}..."
         )
 
         try:
 
             ai_report = generate_ai_report(
                 gameweek,
-                gameweeks[gameweek_key],
+                report_input,
                 matches
             )
 
@@ -529,6 +583,18 @@ def main():
             data[
                 "weekly_reports"
             ] = existing_reports
+
+            processed = data.get(
+                "processed_gameweeks",
+                []
+            )
+
+            if gameweek not in processed:
+                processed.append(gameweek)
+
+            data[
+                "processed_gameweeks"
+            ] = processed
 
             save_data(data)
 
@@ -560,8 +626,7 @@ def main():
     else:
 
         print(
-            f"Created {reports_created} new "
-            f"AI report(s)."
+            f"Created {reports_created} new AI report(s)."
         )
 
 
