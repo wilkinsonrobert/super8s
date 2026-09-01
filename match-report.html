@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -133,7 +132,7 @@ main {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.4px;
-    margin-bottom: 16px;
+    margin-bottom: 22px;
 }
 
 .report-header h2 {
@@ -187,10 +186,10 @@ main {
 
 .match-fixture {
     display: grid;
-    grid-template-columns: 1fr 90px 1fr;
+    grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr);
     align-items: center;
     gap: 18px;
-    margin-bottom: 13px;
+    margin-bottom: 15px;
 }
 
 .match-team {
@@ -356,7 +355,7 @@ footer {
     }
 
     .report-kicker {
-        margin-bottom: 14px;
+        margin-bottom: 19px;
     }
 
     .report-header h2 {
@@ -376,7 +375,7 @@ footer {
     }
 
     .match-fixture {
-        grid-template-columns: 1fr 70px 1fr;
+        grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
         gap: 10px;
     }
 
@@ -412,13 +411,11 @@ footer {
 
 <main>
 
-```
 <a class="back" href="index.html">← Back to Gameweek</a>
 
 <div id="content">
     <div class="empty">Loading match report...</div>
 </div>
-```
 
 </main>
 
@@ -451,7 +448,7 @@ function safe(value) {
 
     Team A (Manager A) 58 - Team B (Manager B) 42
 
-    into the new visual fixture layout.
+    into the visual fixture layout.
 */
 
 function parseMatchTitle(title) {
@@ -459,7 +456,8 @@ function parseMatchTitle(title) {
     const pattern =
         /^(.*?)\s*\((.*?)\)\s*(\d+)\s*[-–]\s*(.*?)\s*\((.*?)\)\s*(\d+)\s*$/;
 
-    const match = String(title || "").match(pattern);
+    const match =
+        String(title || "").match(pattern);
 
     if (!match) {
         return null;
@@ -482,27 +480,42 @@ function parseMatchTitle(title) {
 
 function renderMatchFixture(match) {
 
-    const parsed = parseMatchTitle(match.title);
+    const parsed =
+        parseMatchTitle(match.title);
+
+    /*
+        If an AI-generated title does not follow
+        the expected format, fall back to displaying
+        the original title rather than breaking the page.
+    */
 
     if (!parsed) {
 
         return `
-            <h3 style="
-                margin: 0 0 9px;
+            <div style="
+                margin: 0 0 15px;
                 color: var(--navy);
                 font-size: 18px;
+                font-weight: 800;
+                line-height: 1.35;
             ">
                 ${safe(match.title)}
-            </h3>
+            </div>
         `;
     }
 
-    let team1Class = "match-team home";
-    let team2Class = "match-team away";
+    let team1Class =
+        "match-team home";
+
+    let team2Class =
+        "match-team away";
 
     if (parsed.score1 > parsed.score2) {
+
         team1Class += " winner";
+
     } else if (parsed.score2 > parsed.score1) {
+
         team2Class += " winner";
     }
 
@@ -550,12 +563,14 @@ async function loadData() {
         );
 
     if (!response.ok) {
+
         throw new Error(
             "Could not load gameweek_data.json"
         );
     }
 
-    data = await response.json();
+    data =
+        await response.json();
 
     render();
 }
@@ -620,6 +635,8 @@ function render() {
     `;
 
 
+    /* MATCH REPORTS */
+
     if (report.matches &&
         report.matches.length) {
 
@@ -653,6 +670,8 @@ function render() {
         `;
     }
 
+
+    /* WEEKLY AWARDS */
 
     if (report.awards &&
         report.awards.length) {
@@ -694,6 +713,8 @@ function render() {
     }
 
 
+    /* LEAGUE TABLE COMMENTARY */
+
     if (report.table_commentary) {
 
         html += `
@@ -712,6 +733,8 @@ function render() {
         `;
     }
 
+
+    /* NEXT WEEK'S KEY MATCHES */
 
     if (report.preview &&
         report.preview.length) {
@@ -749,6 +772,8 @@ function render() {
     }
 
 
+    /* CLOSING */
+
     if (report.closing) {
 
         html += `
@@ -768,7 +793,8 @@ function render() {
     }
 
 
-    document.getElementById("content").innerHTML = html;
+    document.getElementById("content").innerHTML =
+        html;
 }
 
 
