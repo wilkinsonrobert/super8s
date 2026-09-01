@@ -2,8 +2,10 @@
 
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Super 8s Match Report</title>
 
 <style>
@@ -21,6 +23,9 @@
     --green: #16803c;
 }
 
+
+/* GLOBAL */
+
 * {
     box-sizing: border-box;
 }
@@ -29,8 +34,14 @@ body {
     margin: 0;
     background: var(--cream);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
 }
+
 
 /* HEADER */
 
@@ -76,6 +87,7 @@ header {
     font-weight: 500;
 }
 
+
 /* MAIN */
 
 main {
@@ -83,6 +95,7 @@ main {
     margin: 28px auto 55px;
     padding: 0 18px;
 }
+
 
 /* BACK BUTTON */
 
@@ -104,6 +117,7 @@ main {
 .back:hover {
     background: var(--navy-light);
 }
+
 
 /* REPORT HEADER */
 
@@ -152,6 +166,7 @@ main {
     max-width: 850px;
 }
 
+
 /* SECTIONS */
 
 .section {
@@ -170,11 +185,13 @@ main {
     font-size: 21px;
 }
 
-/* MATCHES */
+
+/* MATCH REPORTS */
 
 .match-report {
+    width: 100%;
     padding: 0 0 24px;
-    margin-bottom: 24px;
+    margin: 0 0 24px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -184,58 +201,77 @@ main {
     border-bottom: 0;
 }
 
-/* FIXTURE HEADER */
+
+/* MATCH FIXTURE */
 
 .match-fixture {
-    display: flex;
-    align-items: center;
     width: 100%;
-    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 100px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 20px;
+    margin: 0 0 14px;
 }
 
+
+/* TEAM BLOCKS */
+
 .match-team {
-    flex: 1 1 0;
     min-width: 0;
 }
 
 .match-team.home {
     text-align: right;
-    padding-right: 18px;
 }
 
 .match-team.away {
     text-align: left;
-    padding-left: 18px;
 }
+
+
+/* WINNING TEAM */
 
 .match-team.winner .team-name {
     color: var(--green);
 }
+
+
+/* TEAM NAME */
 
 .team-name {
     color: var(--navy);
     font-size: 18px;
     font-weight: 800;
     line-height: 1.25;
+    overflow-wrap: break-word;
 }
 
+
+/* MANAGER NAME */
+
 .manager-name {
-    margin-top: 3px;
+    margin-top: 4px;
     color: var(--grey);
     font-size: 13px;
     font-weight: 400;
     line-height: 1.3;
 }
 
+
+/* SCORE */
+
 .match-score {
-    flex: 0 0 90px;
-    width: 90px;
+    width: 100%;
     text-align: center;
     color: var(--navy);
     font-size: 23px;
     font-weight: 900;
+    line-height: 1;
     white-space: nowrap;
 }
+
+
+/* MATCH COMMENTARY */
 
 .match-report p {
     margin: 0;
@@ -243,7 +279,8 @@ main {
     line-height: 1.7;
     font-size: 15px;
 }
-    
+
+
 /* AWARDS */
 
 .award {
@@ -281,6 +318,7 @@ main {
     font-size: 15px;
 }
 
+
 /* TABLE COMMENTARY */
 
 .table-commentary,
@@ -289,6 +327,7 @@ main {
     line-height: 1.7;
     font-size: 15px;
 }
+
 
 /* PREVIEW */
 
@@ -319,6 +358,7 @@ main {
     font-size: 15px;
 }
 
+
 /* EMPTY */
 
 .empty {
@@ -327,6 +367,7 @@ main {
     border-radius: 10px;
     padding: 25px;
 }
+
 
 /* FOOTER */
 
@@ -339,6 +380,7 @@ footer {
     border-top: 4px solid var(--gold);
 }
 
+
 /* MOBILE */
 
 @media (max-width: 700px) {
@@ -347,7 +389,16 @@ footer {
         padding: 22px 18px;
     }
 
-    .brand h1 {
+    .header-inner {
+        padding: 18px 8px;
+    }
+
+    .crest {
+        width: 58px;
+        height: 58px;
+    }
+
+    .brand-text h1 {
         font-size: 29px;
     }
 
@@ -380,22 +431,10 @@ footer {
         font-size: 19px;
     }
 
-.match-fixture {
-    width: 100%;
-}
-
-.match-team.home {
-    padding-right: 10px;
-}
-
-.match-team.away {
-    padding-left: 10px;
-}
-
-.match-score {
-    flex: 0 0 70px;
-    width: 70px;
-}
+    .match-fixture {
+        grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+        column-gap: 10px;
+    }
 
     .team-name {
         font-size: 16px;
@@ -418,34 +457,37 @@ footer {
 
 <header>
 
-    <div class="header-inner">
+```
+<div class="header-inner">
 
-        <div class="brand">
+    <div class="brand">
 
-            <img
-                class="crest"
-                src="super8slogo.JPG"
-                alt="Super 8s logo"
-            >
+        <img
+            class="crest"
+            src="super8slogo.JPG"
+            alt="Super 8s logo"
+        >
 
-            <div class="brand-text">
+        <div class="brand-text">
 
-                <h1>Super 8s</h1>
+            <h1>Super 8s</h1>
 
-                <p>
-                    FPL taken unnecessarily seriously
-                </p>
-
-            </div>
+            <p>
+                FPL taken unnecessarily seriously
+            </p>
 
         </div>
 
     </div>
 
+</div>
+```
+
 </header>
 
 <main>
 
+```
 <a class="back" href="index.html">
     ← Back to Gameweek
 </a>
@@ -457,21 +499,21 @@ footer {
     </div>
 
 </div>
+```
 
 </main>
 
 <footer>
-
     Super 8s — Officially taking FPL too seriously since 2013
-
 </footer>
 
 <script>
 
+
 let data = null;
 
 
-/* SAFE HTML OUTPUT */
+/* SAFELY DISPLAY TEXT */
 
 function safe(value) {
 
@@ -492,88 +534,85 @@ function safe(value) {
 
 
 /*
-    Find the actual H2H match corresponding to
-    an AI-generated match report.
+    Parse the AI-generated match title.
 
-    We use the manager names contained in the
-    AI title to identify the correct match, then
-    take the official team names and scores from
-    gameweek_data.json.
+    Handles formats such as:
+
+    Richard (Rich) 56 v Prince Majid Rd FC (Rami) 57
+
+    Richard (Rich) 56 - Prince Majid Rd FC (Rami) 57
+
+    Richard (Rich) 56 – Prince Majid Rd FC (Rami) 57
+
+    Richard (Rich) 56 — Prince Majid Rd FC (Rami) 57
+
+    It also tolerates additional text after the score.
 */
 
-function findMatchData(reportMatch, gameweek) {
+function parseMatchTitle(title) {
 
-    if (
-        !data ||
-        !data.matches ||
-        !Array.isArray(data.matches)
-    ) {
+    const text = String(title || "").trim();
+
+    /*
+        Team 1
+        Manager 1
+        Score 1
+        Separator
+        Team 2
+        Manager 2
+        Score 2
+    */
+
+    const pattern =
+        /^(.*?)\s*\((.*?)\)\s*(\d+)\s*(?:v|vs\.?|[-–—])\s*(.*?)\s*\((.*?)\)\s*(\d+)(?:\s*[—-].*)?$/i;
+
+    const match = text.match(pattern);
+
+    if (!match) {
         return null;
     }
 
-    const title = String(
-        reportMatch.title || ""
-    ).toLowerCase();
+    const score1 = Number(match[3]);
+    const score2 = Number(match[6]);
 
-    const gameweekMatches =
-        data.matches.filter(match =>
-            Number(match.event) === Number(gameweek)
-        );
+    return {
 
-    for (const match of gameweekMatches) {
+        team1: match[1].trim(),
 
-        const manager1 =
-            String(
-                match.entry_1_player_name || ""
-            ).toLowerCase();
+        manager1: match[2].trim(),
 
-        const manager2 =
-            String(
-                match.entry_2_player_name || ""
-            ).toLowerCase();
+        score1: score1,
 
-        if (
-            title.includes(manager1) &&
-            title.includes(manager2)
-        ) {
-            return {
-                team1: match.entry_1_name,
-                manager1: match.entry_1_player_name,
-                score1: Number(match.entry_1_points),
+        team2: match[4].trim(),
 
-                team2: match.entry_2_name,
-                manager2: match.entry_2_player_name,
-                score2: Number(match.entry_2_points)
-            };
-        }
-    }
+        manager2: match[5].trim(),
 
-    return null;
+        score2: score2
+
+    };
 }
 
 
 /*
-    Render the visual fixture header.
+    Render the visual fixture.
+
+    Team names are displayed on either side,
+    managers underneath,
+    and the score centrally.
 */
 
-function renderMatchFixture(
-    reportMatch,
-    gameweek
-) {
+function renderMatchFixture(match) {
 
-    const match =
-        findMatchData(
-            reportMatch,
-            gameweek
-        );
+    const parsed =
+        parseMatchTitle(match.title);
+
 
     /*
-        If the official match data cannot be
-        found, fall back to the AI title rather
-        than showing a broken fixture.
+        If an unexpected title format is encountered,
+        fall back to displaying the original title.
     */
 
-    if (!match) {
+    if (!parsed) {
 
         return `
             <div class="match-fixture">
@@ -581,14 +620,22 @@ function renderMatchFixture(
                 <div class="match-team home">
 
                     <div class="team-name">
-                        ${safe(reportMatch.title)}
+                        ${safe(match.title)}
                     </div>
 
+                </div>
+
+                <div class="match-score">
+                    —
+                </div>
+
+                <div class="match-team away">
                 </div>
 
             </div>
         `;
     }
+
 
     let team1Class =
         "match-team home";
@@ -596,21 +643,22 @@ function renderMatchFixture(
     let team2Class =
         "match-team away";
 
-    if (
-        match.score1 >
-        match.score2
-    ) {
+
+    /*
+        Colour only the winner green.
+        Draws remain navy.
+    */
+
+    if (parsed.score1 > parsed.score2) {
 
         team1Class += " winner";
 
-    } else if (
-        match.score2 >
-        match.score1
-    ) {
+    } else if (parsed.score2 > parsed.score1) {
 
         team2Class += " winner";
 
     }
+
 
     return `
         <div class="match-fixture">
@@ -618,27 +666,33 @@ function renderMatchFixture(
             <div class="${team1Class}">
 
                 <div class="team-name">
-                    ${safe(match.team1)}
+                    ${safe(parsed.team1)}
                 </div>
 
                 <div class="manager-name">
-                    ${safe(match.manager1)}
+                    ${safe(parsed.manager1)}
                 </div>
 
             </div>
 
+
             <div class="match-score">
-                ${safe(match.score1)}–${safe(match.score2)}
+
+                ${safe(parsed.score1)}
+                –
+                ${safe(parsed.score2)}
+
             </div>
+
 
             <div class="${team2Class}">
 
                 <div class="team-name">
-                    ${safe(match.team2)}
+                    ${safe(parsed.team2)}
                 </div>
 
                 <div class="manager-name">
-                    ${safe(match.manager2)}
+                    ${safe(parsed.manager2)}
                 </div>
 
             </div>
@@ -654,9 +708,9 @@ async function loadData() {
 
     const response =
         await fetch(
-            "gameweek_data.json?" +
-            Date.now()
+            "gameweek_data.json?" + Date.now()
         );
+
 
     if (!response.ok) {
 
@@ -666,8 +720,10 @@ async function loadData() {
 
     }
 
+
     data =
         await response.json();
+
 
     render();
 }
@@ -682,53 +738,45 @@ function render() {
             window.location.search
         );
 
+
     const gameweek =
         params.get("gw");
 
+
     if (!gameweek) {
 
-        document.getElementById(
-            "content"
-        ).innerHTML =
-            '<div class="empty">' +
-            'No gameweek specified.' +
-            '</div>';
+        document.getElementById("content").innerHTML =
+            '<div class="empty">No gameweek specified.</div>';
 
         return;
     }
+
 
     if (!data.weekly_reports) {
 
-        document.getElementById(
-            "content"
-        ).innerHTML =
-            '<div class="empty">' +
-            'No match reports are currently available.' +
-            '</div>';
+        document.getElementById("content").innerHTML =
+            '<div class="empty">No match reports are currently available.</div>';
 
         return;
     }
+
 
     const report =
         data.weekly_reports[
             String(gameweek)
         ];
 
+
     if (!report) {
 
-        document.getElementById(
-            "content"
-        ).innerHTML =
+        document.getElementById("content").innerHTML =
             `<div class="empty">
-                No match report is available for
-                Gameweek ${safe(gameweek)}.
+                No match report is available for Gameweek ${safe(gameweek)}.
              </div>`;
 
         return;
     }
 
-
-    /* REPORT HEADER */
 
     let html = `
 
@@ -768,28 +816,25 @@ function render() {
 
         `;
 
-        report.matches.forEach(
-            match => {
 
-                html += `
+        report.matches.forEach(match => {
 
-                    <div class="match-report">
+            html += `
 
-                        ${renderMatchFixture(
-                            match,
-                            gameweek
-                        )}
+                <div class="match-report">
 
-                        <p>
-                            ${safe(match.text)}
-                        </p>
+                    ${renderMatchFixture(match)}
 
-                    </div>
+                    <p>
+                        ${safe(match.text)}
+                    </p>
 
-                `;
+                </div>
 
-            }
-        );
+            `;
+
+        });
+
 
         html += `
 
@@ -817,31 +862,31 @@ function render() {
 
         `;
 
-        report.awards.forEach(
-            award => {
 
-                html += `
+        report.awards.forEach(award => {
 
-                    <div class="award">
+            html += `
 
-                        <div class="award-name">
-                            ${safe(award.award)}
-                        </div>
+                <div class="award">
 
-                        <div class="award-winner">
-                            ${safe(award.winner)}
-                        </div>
-
-                        <div class="award-text">
-                            ${safe(award.text)}
-                        </div>
-
+                    <div class="award-name">
+                        ${safe(award.award)}
                     </div>
 
-                `;
+                    <div class="award-winner">
+                        ${safe(award.winner)}
+                    </div>
 
-            }
-        );
+                    <div class="award-text">
+                        ${safe(award.text)}
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
 
         html += `
 
@@ -854,9 +899,7 @@ function render() {
 
     /* LEAGUE TABLE COMMENTARY */
 
-    if (
-        report.table_commentary
-    ) {
+    if (report.table_commentary) {
 
         html += `
 
@@ -867,9 +910,7 @@ function render() {
                 </h3>
 
                 <div class="table-commentary">
-                    ${safe(
-                        report.table_commentary
-                    )}
+                    ${safe(report.table_commentary)}
                 </div>
 
             </section>
@@ -896,27 +937,27 @@ function render() {
 
         `;
 
-        report.preview.forEach(
-            item => {
 
-                html += `
+        report.preview.forEach(item => {
 
-                    <div class="preview-item">
+            html += `
 
-                        <div class="preview-fixture">
-                            ${safe(item.fixture)}
-                        </div>
+                <div class="preview-item">
 
-                        <div class="preview-text">
-                            ${safe(item.text)}
-                        </div>
-
+                    <div class="preview-fixture">
+                        ${safe(item.fixture)}
                     </div>
 
-                `;
+                    <div class="preview-text">
+                        ${safe(item.text)}
+                    </div>
 
-            }
-        );
+                </div>
+
+            `;
+
+        });
+
 
         html += `
 
@@ -950,30 +991,30 @@ function render() {
     }
 
 
-    document.getElementById(
-        "content"
-    ).innerHTML = html;
+    document.getElementById("content").innerHTML =
+        html;
 }
 
 
 /* ERROR HANDLING */
 
-loadData().catch(
-    error => {
+loadData().catch(error => {
 
-        console.error(error);
+    console.error(error);
 
-        document.getElementById(
-            "content"
-        ).innerHTML =
-            `<div class="empty">
-                Unable to load the match report.
-                <br><br>
-                ${safe(error.message)}
-             </div>`;
+    document.getElementById("content").innerHTML =
 
-    }
-);
+        `<div class="empty">
+
+            Unable to load the match report.
+
+            <br><br>
+
+            ${safe(error.message)}
+
+         </div>`;
+
+});
 
 </script>
 
