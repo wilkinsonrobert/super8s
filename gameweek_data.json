@@ -3,7 +3,8 @@
   "league_name": "Super 8s",
   "current_gameweek": 2,
   "completed_gameweeks": [
-    1
+    1,
+    2
   ],
   "number_of_teams": 14,
   "teams": [
@@ -228,16 +229,16 @@
       "entry_1_points": 90,
       "entry_1_win": 0,
       "entry_1_draw": 0,
-      "entry_1_loss": 0,
+      "entry_1_loss": 1,
       "entry_1_total": 0,
       "entry_2_entry": 266577,
       "entry_2_name": "Woolbrohampton",
       "entry_2_player_name": "Ben Woolman",
       "entry_2_points": 104,
-      "entry_2_win": 0,
+      "entry_2_win": 1,
       "entry_2_draw": 0,
       "entry_2_loss": 0,
-      "entry_2_total": 0
+      "entry_2_total": 3
     },
     {
       "id": 3151931,
@@ -248,16 +249,16 @@
       "entry_1_points": 85,
       "entry_1_win": 0,
       "entry_1_draw": 0,
-      "entry_1_loss": 0,
+      "entry_1_loss": 1,
       "entry_1_total": 0,
       "entry_2_entry": 3426860,
       "entry_2_name": "ChampagneSuperRovers",
       "entry_2_player_name": "James Dunne",
       "entry_2_points": 103,
-      "entry_2_win": 0,
+      "entry_2_win": 1,
       "entry_2_draw": 0,
       "entry_2_loss": 0,
-      "entry_2_total": 0
+      "entry_2_total": 3
     },
     {
       "id": 3151932,
@@ -268,16 +269,16 @@
       "entry_1_points": 99,
       "entry_1_win": 0,
       "entry_1_draw": 0,
-      "entry_1_loss": 0,
+      "entry_1_loss": 1,
       "entry_1_total": 0,
       "entry_2_entry": 3090456,
       "entry_2_name": "FC Dangerous",
       "entry_2_player_name": "Rob Watson",
       "entry_2_points": 108,
-      "entry_2_win": 0,
+      "entry_2_win": 1,
       "entry_2_draw": 0,
       "entry_2_loss": 0,
-      "entry_2_total": 0
+      "entry_2_total": 3
     },
     {
       "id": 3151933,
@@ -286,17 +287,17 @@
       "entry_1_name": "Seattle Scorchers",
       "entry_1_player_name": "Andrew Crystal",
       "entry_1_points": 99,
-      "entry_1_win": 0,
+      "entry_1_win": 1,
       "entry_1_draw": 0,
       "entry_1_loss": 0,
-      "entry_1_total": 0,
+      "entry_1_total": 3,
       "entry_2_entry": 166304,
       "entry_2_name": "el Guapo",
       "entry_2_player_name": "Tom Curtis",
       "entry_2_points": 76,
       "entry_2_win": 0,
       "entry_2_draw": 0,
-      "entry_2_loss": 0,
+      "entry_2_loss": 1,
       "entry_2_total": 0
     },
     {
@@ -308,16 +309,16 @@
       "entry_1_points": 82,
       "entry_1_win": 0,
       "entry_1_draw": 0,
-      "entry_1_loss": 0,
+      "entry_1_loss": 1,
       "entry_1_total": 0,
       "entry_2_entry": 3983373,
       "entry_2_name": "Change Name FC",
       "entry_2_player_name": "David Woolman",
       "entry_2_points": 100,
-      "entry_2_win": 0,
+      "entry_2_win": 1,
       "entry_2_draw": 0,
       "entry_2_loss": 0,
-      "entry_2_total": 0
+      "entry_2_total": 3
     },
     {
       "id": 3151935,
@@ -327,17 +328,17 @@
       "entry_1_player_name": "Patrick Walsh",
       "entry_1_points": 115,
       "entry_1_win": 0,
-      "entry_1_draw": 0,
+      "entry_1_draw": 1,
       "entry_1_loss": 0,
-      "entry_1_total": 0,
+      "entry_1_total": 1,
       "entry_2_entry": 2736650,
       "entry_2_name": "Humorous Name United",
       "entry_2_player_name": "Rob Wilkinson",
       "entry_2_points": 115,
       "entry_2_win": 0,
-      "entry_2_draw": 0,
+      "entry_2_draw": 1,
       "entry_2_loss": 0,
-      "entry_2_total": 0
+      "entry_2_total": 1
     },
     {
       "id": 3151936,
@@ -348,16 +349,16 @@
       "entry_1_points": 92,
       "entry_1_win": 0,
       "entry_1_draw": 0,
-      "entry_1_loss": 0,
+      "entry_1_loss": 1,
       "entry_1_total": 0,
       "entry_2_entry": 1458705,
       "entry_2_name": "Richard",
       "entry_2_player_name": "Rich Sutton",
       "entry_2_points": 108,
-      "entry_2_win": 0,
+      "entry_2_win": 1,
       "entry_2_draw": 0,
       "entry_2_loss": 0,
-      "entry_2_total": 0
+      "entry_2_total": 3
     },
     {
       "id": 3151937,
@@ -8071,21 +8072,10 @@
             "effective_points": 2
           },
           {
-            "id": 201,
-            "name": "Daniel Muñoz Mejía",
-            "position": 2,
-            "slot": 2,
-            "multiplier": 1,
-            "captain": false,
-            "vice_captain": false,
-            "points": 0,
-            "effective_points": 0
-          },
-          {
             "id": 11,
             "name": "Cristhian Mosquera",
             "position": 2,
-            "slot": 3,
+            "slot": 2,
             "multiplier": 1,
             "captain": false,
             "vice_captain": false,
@@ -8096,12 +8086,23 @@
             "id": 532,
             "name": "Daniel Ballard",
             "position": 2,
-            "slot": 4,
+            "slot": 3,
             "multiplier": 1,
             "captain": false,
             "vice_captain": false,
             "points": 8,
             "effective_points": 8
+          },
+          {
+            "id": 305,
+            "name": "Leif Davis",
+            "position": 2,
+            "slot": 4,
+            "multiplier": 1,
+            "captain": false,
+            "vice_captain": false,
+            "points": 6,
+            "effective_points": 6
           },
           {
             "id": 427,
@@ -8148,21 +8149,10 @@
             "effective_points": 4
           },
           {
-            "id": 411,
-            "name": "Erling Haaland",
-            "position": 4,
-            "slot": 9,
-            "multiplier": 2,
-            "captain": true,
-            "vice_captain": false,
-            "points": 13,
-            "effective_points": 26
-          },
-          {
             "id": 106,
             "name": "Igor Thiago Nascimento Rodrigues",
             "position": 4,
-            "slot": 10,
+            "slot": 9,
             "multiplier": 1,
             "captain": false,
             "vice_captain": false,
@@ -8173,12 +8163,23 @@
             "id": 165,
             "name": "João Pedro Junqueira de Jesus",
             "position": 4,
-            "slot": 11,
+            "slot": 10,
             "multiplier": 1,
             "captain": false,
             "vice_captain": false,
             "points": 9,
             "effective_points": 9
+          },
+          {
+            "id": 411,
+            "name": "Erling Haaland",
+            "position": 4,
+            "slot": 11,
+            "multiplier": 2,
+            "captain": true,
+            "vice_captain": false,
+            "points": 13,
+            "effective_points": 26
           },
           {
             "id": 109,
@@ -8203,14 +8204,14 @@
             "effective_points": 0
           },
           {
-            "id": 305,
-            "name": "Leif Davis",
+            "id": 201,
+            "name": "Daniel Muñoz Mejía",
             "position": 2,
             "slot": 14,
             "multiplier": 0,
             "captain": false,
             "vice_captain": false,
-            "points": 6,
+            "points": 0,
             "effective_points": 0
           },
           {
@@ -8226,7 +8227,14 @@
           }
         ],
         "active_chip": null,
-        "automatic_subs": []
+        "automatic_subs": [
+          {
+            "entry": 2859462,
+            "element_in": 305,
+            "element_out": 201,
+            "event": 2
+          }
+        ]
       },
       "2773052": {
         "entry_id": 2773052,
@@ -9822,19 +9830,19 @@
             "effective_points": 8
           },
           {
-            "id": 231,
-            "name": "Michael Keane",
+            "id": 173,
+            "name": "Bobby Thomas",
             "position": 2,
             "slot": 3,
             "multiplier": 1,
             "captain": false,
             "vice_captain": false,
-            "points": 0,
-            "effective_points": 0
+            "points": 8,
+            "effective_points": 8
           },
           {
-            "id": 556,
-            "name": "Matt Targett",
+            "id": 204,
+            "name": "Tyrick Mitchell",
             "position": 2,
             "slot": 4,
             "multiplier": 1,
@@ -9932,19 +9940,19 @@
             "effective_points": 0
           },
           {
-            "id": 173,
-            "name": "Bobby Thomas",
+            "id": 231,
+            "name": "Michael Keane",
             "position": 2,
             "slot": 13,
             "multiplier": 0,
             "captain": false,
             "vice_captain": false,
-            "points": 8,
+            "points": 0,
             "effective_points": 0
           },
           {
-            "id": 204,
-            "name": "Tyrick Mitchell",
+            "id": 556,
+            "name": "Matt Targett",
             "position": 2,
             "slot": 14,
             "multiplier": 0,
@@ -9966,7 +9974,20 @@
           }
         ],
         "active_chip": null,
-        "automatic_subs": []
+        "automatic_subs": [
+          {
+            "entry": 3237255,
+            "element_in": 173,
+            "element_out": 231,
+            "event": 2
+          },
+          {
+            "entry": 3237255,
+            "element_in": 204,
+            "element_out": 556,
+            "event": 2
+          }
+        ]
       },
       "3829660": {
         "entry_id": 3829660,
