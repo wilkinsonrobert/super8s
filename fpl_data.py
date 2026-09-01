@@ -1,15 +1,12 @@
 import json
-import os
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
-from openai import OpenAI
 
 
 LEAGUE_ID = 54930
 DATA_FILE = Path("gameweek_data.json")
-REPORT_FILE = Path("report_data.json")
 
 BASE_URL = "https://fantasy.premierleague.com/api"
 
@@ -41,7 +38,8 @@ def load_existing_data():
         "matches": [],
         "weekly_team_data": {},
         "completed_gameweeks": [],
-        "weekly_reports": {}
+        "weekly_reports": {},
+        "processed_gameweeks": []
     }
 
 
@@ -98,7 +96,11 @@ def get_current_gameweek():
         if event["is_current"]:
             return event["id"]
 
-    finished = get_finished_gameweeks()
+    finished = [
+        event["id"]
+        for event in data["events"]
+        if event["finished"]
+    ]
 
     if finished:
         return max(finished)
@@ -109,43 +111,11 @@ def get_current_gameweek():
 def get_finished_gameweeks():
     data = get_json("bootstrap-static/")
 
-    now = datetime.now(timezone.utc)
-
-    completed = []
-
-    for event in data["events"]:
-
-        gameweek = event["id"]
-
-        matches = [
-            fixture
-            for fixture in get_json(
-                f"fixtures/?event={gameweek}"
-            )
-            if fixture.get("kickoff_time")
-        ]
-
-        if not matches:
-            continue
-
-        final_kickoff = max(
-            datetime.fromisoformat(
-                fixture["kickoff_time"].replace(
-                    "Z",
-                    "+00:00"
-                )
-            )
-            for fixture in matches
-        )
-
-        available_from = (
-            final_kickoff + timedelta(hours=12)
-        )
-
-        if now >= available_from:
-            completed.append(gameweek)
-
-    return completed
+    return [
+        event["id"]
+        for event in data["events"]
+        if event["finished"]
+    ]
 
 
 def get_player_data():
@@ -317,140 +287,184 @@ def clean_match_data(matches):
     return cleaned
 
 
-def generate_ai_report(
-    gameweek,
-    report_data
-):
-    api_key = os.environ.get(
-        "OPENAI_API_KEY"
+def get_gameweek_final_kickoffs(gameweek):
+    """
+    Get all Premier League fixture kick-off times for a gameweek.
+    The gameweek is eligible for processing 12 hours after
+    the latest kick-off time.
+    """
+
+    data = get_json(
+        f"fixtures/?event={gameweek}"
     )
 
-    if not api_key:
-        raise RuntimeError(
-            "OPENAI_API_KEY is not available."
+    kickoffs = []
+
+    for fixture in data:
+        kickoff = fixture.get("kickoff_time")
+
+        if kickoff:
+            try:
+                kickoffs.append(
+                    datetime.fromisoformat(
+                        kickoff.replace("Z", "+00:00")
+                    )
+                )
+            except ValueError:
+                continue
+
+    return kickoffs
+
+
+def gameweek_is_eligible(gameweek):
+    """
+    A gameweek becomes eligible 12 hours after the
+    final Premier League fixture kicks off.
+    """
+
+    kickoffs = get_gameweek_final_kickoffs(gameweek)
+
+    if not kickoffs:
+        print(
+            f"No fixture kick-off data available for GW{gameweek}."
         )
+        return False
 
-    client = OpenAI(
-        api_key=api_key
+    final_kickoff = max(kickoffs)
+    available_from = (
+        final_kickoff + timedelta(hours=12)
     )
 
-    system_prompt = """
-You are the writer of the weekly Super 8s Fantasy Premier League
-report.
+    now = datetime.now(timezone.utc)
 
-Super 8s is a private 14-manager head-to-head FPL league.
-
-Write in a dry, witty, slightly irreverent British sports-journalism
-style. The humour should be understated and intelligent rather than
-forced.
-
-You are writing about fantasy football managers, not professional
-footballers. Team names and manager names should be used naturally.
-
-IMPORTANT FACTUAL RULES:
-
-1. Only use information contained in the supplied data.
-2. Never invent a score, player, fixture, result, league position or
-   statistical record.
-3. Never invent a real-life football event.
-4. Do not claim that a player scored, assisted, kept a clean sheet or
-   did anything else in a real-life match unless that information is
-   actually present in the supplied data.
-5. If there is insufficient information to make a real-life football
-   reference, simply don't make one.
-6. Do not repeat the same joke excessively.
-7. Avoid generic filler.
-
-The report must contain:
-
-- A strong weekly headline based on what actually happened.
-- A short introduction.
-- A mini match report for EVERY match played that gameweek.
-- Where appropriate, mention weekly records such as the highest score,
-  lowest score, biggest winning margin, narrowest win or highest-scoring
-  match.
-- Four funny weekly awards.
-- Commentary on the current league table.
-- A preview of the following gameweek using ONLY the supplied actual
-  fixtures. Pick two or three interesting fixtures.
-- A short closing paragraph.
-
-For match reports, identify important players and captaincy decisions
-where useful. A particularly good or bad captaincy decision is worth
-mentioning.
-
-The weekly awards should be different where possible and should feel
-specific to what happened that week.
-
-Return ONLY valid JSON with exactly this structure:
-
-{
-  "headline": "...",
-  "introduction": "...",
-  "matches": [
-    {
-      "title": "...",
-      "text": "..."
-    }
-  ],
-  "awards": [
-    {
-      "award": "...",
-      "winner": "...",
-      "text": "..."
-    }
-  ],
-  "table_commentary": "...",
-  "preview": [
-    {
-      "fixture": "...",
-      "text": "..."
-    }
-  ],
-  "closing": "..."
-}
-
-There must be one match object for every match supplied.
-"""
-
-
-    user_prompt = f"""
-Generate the Super 8s report for Gameweek {gameweek}.
-
-Here is the factual report data:
-
-{json.dumps(
-    report_data,
-    indent=2,
-    ensure_ascii=False
-)}
-
-Remember:
-- Use only the supplied information.
-- Do not invent real-life football events.
-- Cover every match.
-- Use the actual next-gameweek fixtures for the preview.
-- Keep the tone dry, witty and sports-journalistic.
-"""
-
-    response = client.responses.create(
-        model="gpt-5-mini",
-        instructions=system_prompt,
-        input=user_prompt
+    print(
+        f"GW{gameweek} final kick-off: "
+        f"{final_kickoff.isoformat()}"
     )
 
-    text = response.output_text.strip()
+    print(
+        f"GW{gameweek} eligible from: "
+        f"{available_from.isoformat()}"
+    )
 
-    if text.startswith("```"):
-        text = text.replace(
-            "```json",
-            ""
-        ).replace(
-            "```",
-            ""
-        ).strip()
+    print(
+        f"Current time: "
+        f"{now.isoformat()}"
+    )
 
-    return json.loads(text)
+    return now >= available_from
+
+
+def h2h_data_available(matches, gameweek, teams):
+    """
+    Confirm that every Super 8s manager has a completed
+    H2H fixture for this gameweek.
+    """
+
+    gameweek_matches = [
+        match
+        for match in matches
+        if int(match["event"]) == int(gameweek)
+    ]
+
+    expected_matches = len(teams) // 2
+
+    if len(gameweek_matches) < expected_matches:
+        print(
+            f"GW{gameweek} H2H data incomplete: "
+            f"found {len(gameweek_matches)} matches, "
+            f"expected {expected_matches}."
+        )
+        return False
+
+    for match in gameweek_matches:
+        if (
+            match.get("entry_1_points") is None
+            or match.get("entry_2_points") is None
+        ):
+            print(
+                f"GW{gameweek} H2H data is not fully populated."
+            )
+            return False
+
+    print(
+        f"GW{gameweek} H2H data is available."
+    )
+
+    return True
+
+
+def build_league_table(matches, gameweek):
+    teams = {}
+
+    for match in matches:
+
+        if int(match["event"]) > int(gameweek):
+            continue
+
+        entry_1 = match["entry_1_entry"]
+        entry_2 = match["entry_2_entry"]
+
+        if entry_1 not in teams:
+            teams[entry_1] = {
+                "entry_id": entry_1,
+                "team_name": match["entry_1_name"],
+                "manager": match["entry_1_player_name"],
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "points": 0,
+                "scored": 0,
+            }
+
+        if entry_2 not in teams:
+            teams[entry_2] = {
+                "entry_id": entry_2,
+                "team_name": match["entry_2_name"],
+                "manager": match["entry_2_player_name"],
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "points": 0,
+                "scored": 0,
+            }
+
+        home = teams[entry_1]
+        away = teams[entry_2]
+
+        home["played"] += 1
+        away["played"] += 1
+
+        home["scored"] += match["entry_1_points"]
+        away["scored"] += match["entry_2_points"]
+
+        home["points"] += match["entry_1_total"]
+        away["points"] += match["entry_2_total"]
+
+        if match["entry_1_win"]:
+            home["wins"] += 1
+            away["losses"] += 1
+
+        elif match["entry_2_win"]:
+            away["wins"] += 1
+            home["losses"] += 1
+
+        else:
+            home["draws"] += 1
+            away["draws"] += 1
+
+    table = list(teams.values())
+
+    table.sort(
+        key=lambda team: (
+            -team["points"],
+            -team["scored"]
+        )
+    )
+
+    return table
 
 
 def main():
@@ -498,6 +512,9 @@ def main():
     if "weekly_reports" not in existing:
         existing["weekly_reports"] = {}
 
+    if "processed_gameweeks" not in existing:
+        existing["processed_gameweeks"] = []
+
     for gameweek in finished_gameweeks:
 
         print(
@@ -535,64 +552,43 @@ def main():
             ensure_ascii=False
         )
 
-    if REPORT_FILE.exists():
+    print(
+        "Checking whether any gameweek is ready "
+        "for an AI report..."
+    )
+
+    for gameweek in finished_gameweeks:
+
+        gameweek_key = str(gameweek)
+
+        if gameweek_key in existing["processed_gameweeks"]:
+            print(
+                f"GW{gameweek} already processed. "
+                f"No AI report required."
+            )
+            continue
+
+        if not gameweek_is_eligible(gameweek):
+            print(
+                f"GW{gameweek} is not yet eligible "
+                f"for processing."
+            )
+            continue
+
+        if not h2h_data_available(
+            matches,
+            gameweek,
+            teams
+        ):
+            print(
+                f"GW{gameweek} is eligible by time, "
+                f"but H2H data is not yet available."
+            )
+            continue
 
         print(
-            "Generating AI reports..."
+            f"GW{gameweek} is ready for AI report generation."
         )
-
-        with REPORT_FILE.open(
-            "r",
-            encoding="utf-8"
-        ) as file:
-            report_data = json.load(file)
-
-        gameweeks = report_data.get(
-            "gameweeks",
-            {}
-        )
-
-        for gameweek in finished_gameweeks:
-
-            gameweek_key = str(gameweek)
-
-            if gameweek_key not in gameweeks:
-                continue
-
-            if gameweek_key in existing["weekly_reports"]:
-                print(
-                    f"AI report already exists for "
-                    f"Gameweek {gameweek} - skipping."
-                )
-                continue
-
-            print(
-                f"Generating AI report for "
-                f"Gameweek {gameweek}..."
-            )
-
-            try:
-
-                ai_report = generate_ai_report(
-                    gameweek,
-                    gameweeks[gameweek_key]
-                )
-
-                existing[
-                    "weekly_reports"
-                ][gameweek_key] = ai_report
-
-                print(
-                    f"AI report generated for "
-                    f"Gameweek {gameweek}"
-                )
-
-            except Exception as error:
-
-                print(
-                    f"AI report failed for "
-                    f"Gameweek {gameweek}: {error}"
-                )
 
     with DATA_FILE.open(
         "w",
@@ -606,8 +602,7 @@ def main():
         )
 
     print(
-        "Data collection and report generation "
-        "complete."
+        "FPL data collection complete."
     )
 
 
