@@ -2,362 +2,51 @@ import json
 import os
 from pathlib import Path
 
-import requests
 from openai import OpenAI
 
 
-LEAGUE_ID = 54930
 DATA_FILE = Path("gameweek_data.json")
 REPORT_FILE = Path("report_data.json")
 
-BASE_URL = "https://fantasy.premierleague.com/api"
 
-
-def get_json(endpoint):
-    url = f"{BASE_URL}/{endpoint}"
-    response = requests.get(url, timeout=30)
-
-    if response.status_code != 200:
+def load_data():
+    if not DATA_FILE.exists():
         raise RuntimeError(
-            f"FPL API returned {response.status_code} for {url}"
+            "gameweek_data.json does not exist."
         )
 
-    return response.json()
+    with DATA_FILE.open(
+        "r",
+        encoding="utf-8"
+    ) as file:
+        return json.load(file)
 
 
-def load_existing_data():
-    if DATA_FILE.exists():
-        try:
-            with DATA_FILE.open("r", encoding="utf-8") as file:
-                return json.load(file)
-        except Exception:
-            pass
-
-    return {
-        "league_id": LEAGUE_ID,
-        "league_name": "Super 8s",
-        "teams": [],
-        "matches": [],
-        "weekly_team_data": {},
-        "completed_gameweeks": [],
-        "weekly_reports": {}
-    }
-
-
-def get_league_matches():
-    matches = []
-    page = 1
-
-    while True:
-        data = get_json(
-            f"leagues-h2h-matches/league/{LEAGUE_ID}/?page={page}"
+def load_report_data():
+    if not REPORT_FILE.exists():
+        raise RuntimeError(
+            "report_data.json does not exist."
         )
 
-        results = data.get("results", [])
-        matches.extend(results)
-
-        if not data.get("has_next"):
-            break
-
-        page += 1
-
-    return matches
+    with REPORT_FILE.open(
+        "r",
+        encoding="utf-8"
+    ) as file:
+        return json.load(file)
 
 
-def get_teams_from_matches(matches):
-    teams = {}
-
-    for match in matches:
-        entry_1 = match["entry_1_entry"]
-
-        teams[entry_1] = {
-            "entry_id": entry_1,
-            "team_name": match["entry_1_name"],
-            "manager": match["entry_1_player_name"],
-        }
-
-        entry_2 = match["entry_2_entry"]
-
-        teams[entry_2] = {
-            "entry_id": entry_2,
-            "team_name": match["entry_2_name"],
-            "manager": match["entry_2_player_name"],
-        }
-
-    return sorted(
-        teams.values(),
-        key=lambda team: team["team_name"].lower()
-    )
-
-
-def get_current_gameweek():
-    data = get_json("bootstrap-static/")
-
-    for event in data["events"]:
-        if event["is_current"]:
-            return event["id"]
-
-    finished = [
-        event["id"]
-        for event in data["events"]
-        if event["finished"]
-    ]
-
-    if finished:
-        return max(finished)
-
-    return None
-
-
-def get_finished_gameweeks():
-    data = get_json("bootstrap-static/")
-
-    return [
-        event["id"]
-        for event in data["events"]
-        if event["finished"]
-    ]
-
-
-def get_player_data():
-    data = get_json("bootstrap-static/")
-
-    players = {}
-
-    for player in data["elements"]:
-        players[player["id"]] = {
-            "id": player["id"],
-            "name": (
-                f"{player['first_name']} "
-                f"{player['second_name']}"
-            ),
-            "team": player["team"],
-            "position": player["element_type"],
-        }
-
-    return players
-
-
-def get_team_picks(entry_id, gameweek):
-    return get_json(
-        f"entry/{entry_id}/event/{gameweek}/picks/"
-    )
-
-
-def get_gameweek_player_points(gameweek):
-    data = get_json(
-        f"event/{gameweek}/live/"
-    )
-
-    points = {}
-
-    for player in data.get("elements", []):
-        points[player["id"]] = (
-            player["stats"]["total_points"]
+def save_data(data):
+    with DATA_FILE.open(
+        "w",
+        encoding="utf-8"
+    ) as file:
+        json.dump(
+            data,
+            file,
+            indent=2,
+            ensure_ascii=False
         )
 
-    return points
-
-
-def build_weekly_team_data(
-    teams,
-    gameweek,
-    player_data,
-    player_points
-):
-    weekly_data = {}
-
-    for team in teams:
-        entry_id = team["entry_id"]
-
-        try:
-            picks_data = get_team_picks(
-                entry_id,
-                gameweek
-            )
-
-        except Exception as error:
-            print(
-                f"Could not retrieve picks for "
-                f"{team['team_name']}: {error}"
-            )
-            continue
-
-        players = []
-
-        for pick in picks_data["picks"]:
-            player_id = pick["element"]
-
-            player = player_data.get(
-                player_id,
-                {}
-            )
-
-            points = player_points.get(
-                player_id,
-                0
-            )
-
-            players.append({
-                "id": player_id,
-                "name": player.get(
-                    "name",
-                    f"Player {player_id}"
-                ),
-                "position": player.get(
-                    "position"
-                ),
-                "slot": pick["position"],
-                "multiplier": pick["multiplier"],
-                "captain": pick["is_captain"],
-                "vice_captain": pick["is_vice_captain"],
-                "points": points,
-                "effective_points": (
-                    points * pick["multiplier"]
-                ),
-            })
-
-        weekly_data[str(entry_id)] = {
-            "entry_id": entry_id,
-            "team_name": team["team_name"],
-            "manager": team["manager"],
-            "players": players,
-            "active_chip": picks_data.get(
-                "active_chip"
-            ),
-            "automatic_subs": picks_data.get(
-                "automatic_subs",
-                []
-            ),
-        }
-
-    return weekly_data
-
-
-def clean_match_data(matches):
-    cleaned = []
-
-    for match in matches:
-        cleaned.append({
-            "id": match["id"],
-            "event": match["event"],
-
-            "entry_1_entry": match["entry_1_entry"],
-            "entry_1_name": match["entry_1_name"],
-            "entry_1_player_name": match[
-                "entry_1_player_name"
-            ],
-            "entry_1_points": match[
-                "entry_1_points"
-            ],
-            "entry_1_win": match[
-                "entry_1_win"
-            ],
-            "entry_1_draw": match[
-                "entry_1_draw"
-            ],
-            "entry_1_loss": match[
-                "entry_1_loss"
-            ],
-            "entry_1_total": match[
-                "entry_1_total"
-            ],
-
-            "entry_2_entry": match["entry_2_entry"],
-            "entry_2_name": match["entry_2_name"],
-            "entry_2_player_name": match[
-                "entry_2_player_name"
-            ],
-            "entry_2_points": match[
-                "entry_2_points"
-            ],
-            "entry_2_win": match[
-                "entry_2_win"
-            ],
-            "entry_2_draw": match[
-                "entry_2_draw"
-            ],
-            "entry_2_loss": match[
-                "entry_2_loss"
-            ],
-            "entry_2_total": match[
-                "entry_2_total"
-            ],
-        })
-
-    return cleaned
-
-def build_league_table(matches, gameweek):
-    teams = {}
-
-    for match in matches:
-
-        if int(match["event"]) > int(gameweek):
-            continue
-
-        entry_1 = match["entry_1_entry"]
-        entry_2 = match["entry_2_entry"]
-
-        if entry_1 not in teams:
-            teams[entry_1] = {
-                "entry_id": entry_1,
-                "team_name": match["entry_1_name"],
-                "manager": match["entry_1_player_name"],
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "points": 0,
-                "scored": 0,
-            }
-
-        if entry_2 not in teams:
-            teams[entry_2] = {
-                "entry_id": entry_2,
-                "team_name": match["entry_2_name"],
-                "manager": match["entry_2_player_name"],
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "points": 0,
-                "scored": 0,
-            }
-
-        home = teams[entry_1]
-        away = teams[entry_2]
-
-        home["played"] += 1
-        away["played"] += 1
-
-        home["scored"] += match["entry_1_points"]
-        away["scored"] += match["entry_2_points"]
-
-        home["points"] += match["entry_1_total"]
-        away["points"] += match["entry_2_total"]
-
-        if match["entry_1_win"]:
-            home["wins"] += 1
-            away["losses"] += 1
-
-        elif match["entry_2_win"]:
-            away["wins"] += 1
-            home["losses"] += 1
-
-        else:
-            home["draws"] += 1
-            away["draws"] += 1
-
-    table = list(teams.values())
-
-    table.sort(
-        key=lambda team: (
-            -team["points"],
-            -team["scored"]
-        )
-    )
-
-    return table
 
 def generate_ai_report(
     gameweek,
@@ -401,12 +90,9 @@ or general FPL decision-making was stupid, spectacularly unlucky,
 needlessly complicated or simply funny, take the piss out of them.
 
 Good performances should not automatically receive earnest praise.
-Look for the funny angle. Someone scoring 90 points does not need to be
-described as a "fantastic performance" if there is a better joke to be
-made about how they achieved it.
+Look for the funny angle.
 
-Bad performances should be mocked properly. A manager scoring 38 points
-after making several unnecessary transfers should expect consequences.
+Bad performances should be mocked properly.
 
 Use British expressions naturally where appropriate, including phrases
 such as "took the piss", "absolute shambles", "properly", "somehow",
@@ -414,22 +100,15 @@ such as "took the piss", "absolute shambles", "properly", "somehow",
 "nonsense", "embarrassing", "got away with it", "having a mare",
 "mugged off", "bottled it", "smash and grab", and similar language.
 
-Do NOT force British slang into every paragraph. Natural British
-humour is more important than constantly using British expressions.
+Do NOT force British slang into every paragraph.
 
-Use understatement and sarcasm. Often the funniest description of a
-terrible decision is to describe it as though it were perfectly
-reasonable.
+Use understatement and sarcasm.
 
 The report should feel PERSONAL. Use manager names and team names
 frequently enough that it feels like this is genuinely about the
 Super 8s league rather than a generic FPL article.
 
 MANAGER NAME RULES:
-
-The following are the names used by the Super 8s managers. When
-referring to these managers, use ONLY the preferred names listed below.
-Do not use their full names or invent alternative forms.
 
 Rami El-Dahshan = Rami
 Kevin Walsh = Kev
@@ -446,101 +125,35 @@ Rob Wilkinson = Rob
 Ben Woolman = Woolly
 Ben Foster = Foz
 
-These preferred names should be used consistently throughout the
-report, including match reports, awards, league-table commentary and
-preview sections.
+Use ONLY these preferred names when referring to managers.
 
-Do not use "Martyn" for Bradshaw, "Ben" for Woolman, "James" for Dunne,
-"Patrick" for Walsh, "Rob" for Watson, or any other shortened form that
-is not specifically listed above.
+Do not use full names or invent alternative forms.
 
-Use the preferred manager name even when the underlying FPL data gives
-the manager's full name.
+The following established league jokes may be used when genuinely
+relevant to the week's FPL events:
 
-Vary the humour. Use sarcasm, exaggeration, understatement, mock
-seriousness, absurd comparisons, recurring league personalities and
-specific references to what actually happened that week.
+Andrew Crystal is often the butt of jokes as he has a history of being
+promiscuous.
 
-Do not make every paragraph a joke. A mixture of factual reporting and
-sharp observations is funnier than constant punchlines.
+Ben Woolman is known as being very wealthy and spending lots of money.
 
-Avoid cheesy or generic sports-writing language.
+Patrick Walsh enjoys a martini at all hours of the day.
 
-DO NOT use phrases such as:
-- "statement victory"
-- "what a performance"
-- "rose to the occasion"
-- "crucial clash"
-- "thrilling encounter"
-- "commanding display"
-- "footballing masterclass"
-- "took their game to another level"
-- "a week to remember"
-- "the battle for supremacy"
-- "delivered when it mattered"
-- "showed great character"
-- "an impressive showing"
-- "a nail-biting affair"
-- "left it all on the pitch"
-- "the fantasy gods"
-- "dream team"
-- "tactical genius"
-unless there is a genuinely funny reason to use them ironically.
+Tom Curtis loves Tottenham Hotspur and doesn't like criticism of Spurs.
+The term "Spursy" may be used when relevant.
 
-Avoid American sports terminology such as "matchup", "playoffs",
-"standings", "roster", "MVP", "clutch", "dominant performance" and
-similar language. Use British football terminology such as "fixture",
-"match", "table", "team", "manager", "captain", "bench", "points",
-"haul", "blank", "gameweek", "transfers" and "formation".
+Martyn Bradshaw is a Burnley fan and Burnley can be mocked when relevant.
 
-Do not write like a professional newspaper columnist trying to sound
-dramatic. Do not write like a children's football magazine.
+Ben Woolman, Andrew Crystal, Patrick Walsh, David Woolman and Rob
+Wilkinson are big Leeds fans. The others get annoyed when Leeds do well
+and talk about it.
 
-Imagine that the report is being read aloud in a pub to fourteen
-managers who all know exactly who is being mocked.
+Kevin Walsh is constantly off playing golf.
 
-Example of the desired style:
+Rami lives in Saudi Arabia, so the joke is that he is sports washing
+the league with all his money.
 
-Instead of:
-"Rob produced an impressive performance this week, securing a
-comfortable victory."
-
-Prefer something like:
-"Rob won comfortably, which is irritating because it means we now have
-to pretend the team selection was deliberate."
-
-Instead of:
-"James was unlucky with his captain choice."
-
-Prefer something like:
-"James' captain returned two points. He will no doubt describe this as
-unlucky. The rest of us will describe it as what happens when you make
-your FPL decisions after reading one bloke on Twitter."
-
-Instead of:
-"Tom's low score leaves him needing to improve next week."
-
-Prefer something like:
-"Tom scored 38, which would be concerning if anyone believed Tom was
-capable of learning from his mistakes."
-
-These examples establish the tone only. Do not reuse their wording
-unless the supplied data genuinely makes it appropriate.
-
-The humour must ALWAYS be based on the supplied facts. Do not invent
-personal characteristics, history, rivalries, arguments or behaviour
-that is not contained in the data. However, in terms of rivalries and characters, 
-there are the following which may be relevant: Andrew Crystal is often
-the butt of jokes as he has a history of being promiscuous. Ben Woolman
-is known as being very wealthy and spending lots of money. Patrick Walsh enjoys 
-a martini at all hours of the day. Tom Curtis loves Tottenham Hotspurs and
-doesn't like it when people criticise how bad they are - feel free to use the term 
-'Spursy'. Martyn Bradshaw is a Burnley fan and they are terrible so you 
-should feel free to mock them when you can. Ben Woolman, Andrew Crystal, Patrick Walsh,
-David Woolman and Robert Wilkinson are all big Leeds fans and the other players get
-annoyed when Leeds do well and talk about it. Kevin Walsh is constantly off playing
-golf. Rami lives in Saudi Arabia, so the joke is that he is sports washing the league
-with all his money.
+Do not force these jokes into the report. Use them only where they fit.
 
 IMPORTANT FACTUAL RULES:
 
@@ -571,8 +184,8 @@ The report must contain:
   match.
 - Four funny weekly awards.
 - Commentary on the current league table.
-- A preview of the following gameweek using ONLY the supplied actual
-  fixtures. Pick two or three interesting fixtures.
+- A preview of the following gameweek using ONLY supplied actual
+  fixtures.
 - A short closing paragraph.
 
 MATCH REPORTS:
@@ -583,66 +196,31 @@ Identify important players and captaincy decisions where useful.
 
 A particularly good or bad captaincy decision is worth mentioning.
 
-Look for amusing details in the numbers. A narrow win, huge score,
-terrible captain, unexpected bench points, massive points gap,
-particularly poor score or dramatic swing should all be considered
-potential material for a joke.
+Look for amusing details in the numbers.
 
-Do not simply describe the score and then say it was "impressive".
+Do not simply describe the score and then say it was impressive.
 
 WEEKLY AWARDS:
 
 The four awards should be funny, specific to that gameweek and based on
 what actually happened.
 
-Avoid generic awards such as "Manager of the Week" unless there is a
-particularly funny reason for using one.
-
-Possible styles include things such as:
-- "The What Were You Thinking? Award"
-- "The Absolutely Robbed Award"
-- "The How Did That Happen? Award"
-- "The Tactical Masterclass (Allegedly) Award"
-
-But create awards appropriate to the actual week's events and vary them
-from week to week.
+Avoid generic awards unless there is a particularly funny reason for
+using one.
 
 TABLE COMMENTARY:
 
-The league table should be treated as a source of banter.
+Treat the league table as a source of banter.
 
 Comment on movement, points gaps, unbeaten runs, losing runs,
 unexpected positions and battles between managers where the supplied
 data supports it.
 
-Do not simply reproduce the table in prose.
+Use H2H league points as the primary ranking criterion.
 
-IMPORTANT LEAGUE TABLE RULE:
-
-When discussing the current Super 8s league table, use the H2H league
-points and the official FPL tie-breaker of total FPL points scored.
+Use total FPL points scored as the official tie-breaker.
 
 Do NOT use goal difference as a tie-breaker.
-
-The league standings should therefore be treated for GW1 as:
-
-1. Bielsa's Babes
-2. HNU
-3. Woolbrohampton
-4. Atletico Waspo
-5. Prince Majid Rd FC
-6. BeLucky Again
-7. FC Dangerous
-8. Seattle Scorchers
-9. Roped in again
-10. Change Name FC
-11. Richard
-12. ChampagneSuperRovers
-13. Turf Less
-14. el Guapo
-
-Do not describe a team as leading, second, third, etc. unless that
-position is supported by the supplied data and this tie-breaker.
 
 PREVIEW:
 
@@ -650,9 +228,6 @@ Preview two or three of the most interesting actual fixtures from the
 following gameweek.
 
 Use only fixtures supplied in the data.
-
-Find the angle that makes each fixture interesting and, where possible,
-use the managers' current form or league position.
 
 Do not invent rivalries or history between managers.
 
@@ -684,19 +259,93 @@ Return ONLY valid JSON with exactly this structure:
   "closing": "..."
 }
 
-There must be one match object for every match supplied.
+There must be one match object for every match supplied for the
+gameweek.
 """
 
-    league_table = build_league_table(
-        matches,
-        gameweek
+    league_table = []
+
+    teams = {}
+
+    for match in matches:
+
+        if int(match["event"]) > int(gameweek):
+            continue
+
+        entry_1 = match["entry_1_entry"]
+        entry_2 = match["entry_2_entry"]
+
+        if entry_1 not in teams:
+            teams[entry_1] = {
+                "entry_id": entry_1,
+                "team_name": match["entry_1_name"],
+                "manager": match["entry_1_player_name"],
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "points": 0,
+                "scored": 0
+            }
+
+        if entry_2 not in teams:
+            teams[entry_2] = {
+                "entry_id": entry_2,
+                "team_name": match["entry_2_name"],
+                "manager": match["entry_2_player_name"],
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "points": 0,
+                "scored": 0
+            }
+
+        home = teams[entry_1]
+        away = teams[entry_2]
+
+        home["played"] += 1
+        away["played"] += 1
+
+        home["scored"] += match["entry_1_points"]
+        away["scored"] += match["entry_2_points"]
+
+        home["points"] += match["entry_1_total"]
+        away["points"] += match["entry_2_total"]
+
+        if match["entry_1_win"]:
+            home["wins"] += 1
+            away["losses"] += 1
+
+        elif match["entry_2_win"]:
+            away["wins"] += 1
+            home["losses"] += 1
+
+        else:
+            home["draws"] += 1
+            away["draws"] += 1
+
+    league_table = list(teams.values())
+
+    league_table.sort(
+        key=lambda team: (
+            -team["points"],
+            -team["scored"]
+        )
     )
 
-    print("LEAGUE TABLE BEING SENT TO AI:")
-    for position, team in enumerate(league_table, 1):
+    print(
+        f"League table calculated for Gameweek {gameweek}:"
+    )
+
+    for position, team in enumerate(
+        league_table,
+        1
+    ):
         print(
-            f"{position}. {team['team_name']} "
-            f"- {team['points']} H2H points, "
+            f"{position}. "
+            f"{team['team_name']} - "
+            f"{team['points']} H2H points, "
             f"{team['scored']} FPL points"
         )
 
@@ -719,12 +368,23 @@ Here is the official Super 8s league table for this gameweek:
     ensure_ascii=False
 )}
 
+Here are the available H2H fixtures:
+
+{json.dumps(
+    matches,
+    indent=2,
+    ensure_ascii=False
+)}
+
 Remember:
+
 - Use only the supplied information.
 - Do not invent real-life football events.
-- Cover every match.
-- Use the actual next-gameweek fixtures for the preview.
-- Keep the tone dry, witty and sports-journalistic.
+- Cover every match for this gameweek.
+- Use actual supplied fixtures for the preview.
+- Use the official H2H points and FPL points tie-breaker.
+- Keep the tone dry, witty and British.
+- Return ONLY valid JSON.
 """
 
     response = client.responses.create(
@@ -760,13 +420,17 @@ Remember:
         "Patrick Walsh": "Paddy",
         "Rob Wilkinson": "Rob",
         "Ben Woolman": "Woolly",
-        "Ben Foster": "Foz",
+        "Ben Foster": "Foz"
     }
 
     def replace_manager_names(value):
+
         if isinstance(value, str):
             for old, new in manager_name_replacements.items():
-                value = value.replace(old, new)
+                value = value.replace(
+                    old,
+                    new
+                )
             return value
 
         if isinstance(value, list):
@@ -787,155 +451,118 @@ Remember:
 
 
 def main():
-    print("Retrieving FPL data...")
-
-    existing = load_existing_data()
-
-    matches = get_league_matches()
 
     print(
-        f"Found {len(matches)} H2H matches"
+        "Checking for completed, unprocessed gameweeks..."
     )
 
-    teams = get_teams_from_matches(
-        matches
+    data = load_data()
+    report_data = load_report_data()
+
+    completed_gameweeks = data.get(
+        "completed_gameweeks",
+        []
     )
 
-    print(
-        f"Found {len(teams)} teams"
+    existing_reports = data.get(
+        "weekly_reports",
+        {}
     )
 
-    current_gameweek = get_current_gameweek()
-
-    print(
-        f"Current gameweek: {current_gameweek}"
+    gameweeks = report_data.get(
+        "gameweeks",
+        {}
     )
 
-    finished_gameweeks = get_finished_gameweeks()
-
-    player_data = get_player_data()
-
-    existing["teams"] = teams
-
-    existing["matches"] = clean_match_data(
-        matches
+    matches = data.get(
+        "matches",
+        []
     )
 
-    existing["completed_gameweeks"] = (
-        finished_gameweeks
-    )
+    if not completed_gameweeks:
+        print(
+            "No completed gameweeks found."
+        )
+        return
 
-    if "weekly_team_data" not in existing:
-        existing["weekly_team_data"] = {}
+    reports_created = 0
 
-    if "weekly_reports" not in existing:
-        existing["weekly_reports"] = {}
+    for gameweek in completed_gameweeks:
 
-    for gameweek in finished_gameweeks:
+        gameweek_key = str(gameweek)
+
+        if gameweek_key in existing_reports:
+            print(
+                f"Gameweek {gameweek} already has "
+                f"an AI report. Skipping."
+            )
+            continue
+
+        if gameweek_key not in gameweeks:
+            print(
+                f"No report data available for "
+                f"Gameweek {gameweek}. Skipping."
+            )
+            continue
 
         print(
-            f"Collecting player data for "
+            f"Gameweek {gameweek} is ready."
+        )
+
+        print(
+            f"Generating AI report for "
             f"Gameweek {gameweek}..."
         )
 
-        player_points = (
-            get_gameweek_player_points(
-                gameweek
-            )
-        )
+        try:
 
-        weekly_team_data = (
-            build_weekly_team_data(
-                teams,
+            ai_report = generate_ai_report(
                 gameweek,
-                player_data,
-                player_points
+                gameweeks[gameweek_key],
+                matches
             )
-        )
 
-        existing[
-            "weekly_team_data"
-        ][str(gameweek)] = weekly_team_data
+            existing_reports[
+                gameweek_key
+            ] = ai_report
 
-    with DATA_FILE.open(
-        "w",
-        encoding="utf-8"
-    ) as file:
-        json.dump(
-            existing,
-            file,
-            indent=2,
-            ensure_ascii=False
-        )
+            data[
+                "weekly_reports"
+            ] = existing_reports
 
-    if REPORT_FILE.exists():
+            save_data(data)
 
-        print(
-            "Generating AI reports..."
-        )
-
-        with REPORT_FILE.open(
-            "r",
-            encoding="utf-8"
-        ) as file:
-            report_data = json.load(file)
-
-        gameweeks = report_data.get(
-            "gameweeks",
-            {}
-        )
-
-        for gameweek in finished_gameweeks:
-
-            gameweek_key = str(gameweek)
-
-            if gameweek_key not in gameweeks:
-                continue
+            reports_created += 1
 
             print(
-                f"Generating AI report for "
-                f"Gameweek {gameweek}..."
+                f"AI report generated and permanently "
+                f"saved for Gameweek {gameweek}."
             )
 
-            try:
+        except Exception as error:
 
-                ai_report = generate_ai_report(
-                    gameweek,
-                    gameweeks[gameweek_key],
-                    matches
-                )
+            print(
+                f"AI report failed for "
+                f"Gameweek {gameweek}: {error}"
+            )
 
-                existing[
-                    "weekly_reports"
-                ][gameweek_key] = ai_report
+            print(
+                "The gameweek has NOT been marked as "
+                "processed and will be retried later."
+            )
 
-                print(
-                    f"AI report generated for "
-                    f"Gameweek {gameweek}"
-                )
+    if reports_created == 0:
 
-            except Exception as error:
-
-                print(
-                    f"AI report failed for "
-                    f"Gameweek {gameweek}: {error}"
-                )
-
-    with DATA_FILE.open(
-        "w",
-        encoding="utf-8"
-    ) as file:
-        json.dump(
-            existing,
-            file,
-            indent=2,
-            ensure_ascii=False
+        print(
+            "No new AI reports required."
         )
 
-    print(
-        "Data collection and report generation "
-        "complete."
-    )
+    else:
+
+        print(
+            f"Created {reports_created} new "
+            f"AI report(s)."
+        )
 
 
 if __name__ == "__main__":
