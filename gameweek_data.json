@@ -285,7 +285,7 @@
       "entry_1_entry": 3237255,
       "entry_1_name": "Seattle Scorchers",
       "entry_1_player_name": "Andrew Crystal",
-      "entry_1_points": 91,
+      "entry_1_points": 99,
       "entry_1_win": 0,
       "entry_1_draw": 0,
       "entry_1_loss": 0,
@@ -305,7 +305,7 @@
       "entry_1_entry": 2859462,
       "entry_1_name": "BeLucky Again",
       "entry_1_player_name": "Kevin Walsh",
-      "entry_1_points": 76,
+      "entry_1_points": 82,
       "entry_1_win": 0,
       "entry_1_draw": 0,
       "entry_1_loss": 0,
@@ -10391,5 +10391,6 @@
       ],
       "closing": "That’s your Gameweek 1 digest: close calls, a brutal thrashing and several captaincies already asking for therapy. Get your teams right — and if you left good players on the bench, don’t bother apologising; just promise a transfer and then do nothing."
     }
-  }
+  },
+  "processed_gameweeks": []
 }
