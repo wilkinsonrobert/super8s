@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,6 +17,7 @@
     --text: #202a35;
     --grey: #68727d;
     --border: #e3e0d7;
+    --green: #16803c;
 }
 
 * {
@@ -53,30 +55,6 @@ header {
 }
 
 .crest {
-    width: 58px;
-    height: 58px;
-    max-width: 58px;
-    max-height: 58px;
-    object-fit: contain;
-    display: block;
-    flex-shrink: 0;
-}
-
-.brand-text h1 {
-    margin: 0;
-    font-size: 31px;
-    letter-spacing: -1px;
-    font-weight: 900;
-}
-
-.brand-text p {
-    margin: 3px 0 0;
-    color: #aeb8c0;
-    font-size: 13px;
-    font-weight: 500;
-}    
-    
-.crest {
     width: 68px;
     height: 68px;
     object-fit: contain;
@@ -96,6 +74,7 @@ header {
     font-size: 13px;
     font-weight: 500;
 }
+
 /* MAIN */
 
 main {
@@ -154,7 +133,7 @@ main {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.4px;
-    margin-bottom: 9px;
+    margin-bottom: 16px;
 }
 
 .report-header h2 {
@@ -193,8 +172,8 @@ main {
 /* MATCHES */
 
 .match-report {
-    padding: 0 0 22px;
-    margin-bottom: 22px;
+    padding: 0 0 24px;
+    margin-bottom: 24px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -204,10 +183,53 @@ main {
     border-bottom: 0;
 }
 
-.match-report h3 {
-    margin: 0 0 9px;
+/* FIXTURE HEADER */
+
+.match-fixture {
+    display: grid;
+    grid-template-columns: 1fr 90px 1fr;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 13px;
+}
+
+.match-team {
+    min-width: 0;
+}
+
+.match-team.home {
+    text-align: right;
+}
+
+.match-team.away {
+    text-align: left;
+}
+
+.match-team.winner .team-name {
+    color: var(--green);
+}
+
+.team-name {
     color: var(--navy);
     font-size: 18px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.manager-name {
+    margin-top: 3px;
+    color: var(--grey);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.match-score {
+    text-align: center;
+    color: var(--navy);
+    font-size: 23px;
+    font-weight: 900;
+    white-space: nowrap;
 }
 
 .match-report p {
@@ -333,6 +355,10 @@ footer {
         padding: 25px 21px;
     }
 
+    .report-kicker {
+        margin-bottom: 14px;
+    }
+
     .report-header h2 {
         font-size: 25px;
     }
@@ -348,8 +374,26 @@ footer {
     .section-title {
         font-size: 19px;
     }
+
+    .match-fixture {
+        grid-template-columns: 1fr 70px 1fr;
+        gap: 10px;
+    }
+
+    .team-name {
+        font-size: 16px;
+    }
+
+    .manager-name {
+        font-size: 12px;
+    }
+
+    .match-score {
+        font-size: 20px;
+    }
 }
 </style>
+
 </head>
 
 <body>
@@ -368,11 +412,13 @@ footer {
 
 <main>
 
-    <a class="back" href="index.html">← Back to Gameweek</a>
+```
+<a class="back" href="index.html">← Back to Gameweek</a>
 
-    <div id="content">
-        <div class="empty">Loading match report...</div>
-    </div>
+<div id="content">
+    <div class="empty">Loading match report...</div>
+</div>
+```
 
 </main>
 
@@ -397,6 +443,102 @@ function safe(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+
+/*
+    Convert the existing AI-generated match title:
+
+    Team A (Manager A) 58 - Team B (Manager B) 42
+
+    into the new visual fixture layout.
+*/
+
+function parseMatchTitle(title) {
+
+    const pattern =
+        /^(.*?)\s*\((.*?)\)\s*(\d+)\s*[-–]\s*(.*?)\s*\((.*?)\)\s*(\d+)\s*$/;
+
+    const match = String(title || "").match(pattern);
+
+    if (!match) {
+        return null;
+    }
+
+    const score1 = Number(match[3]);
+    const score2 = Number(match[6]);
+
+    return {
+        team1: match[1].trim(),
+        manager1: match[2].trim(),
+        score1: score1,
+
+        team2: match[4].trim(),
+        manager2: match[5].trim(),
+        score2: score2
+    };
+}
+
+
+function renderMatchFixture(match) {
+
+    const parsed = parseMatchTitle(match.title);
+
+    if (!parsed) {
+
+        return `
+            <h3 style="
+                margin: 0 0 9px;
+                color: var(--navy);
+                font-size: 18px;
+            ">
+                ${safe(match.title)}
+            </h3>
+        `;
+    }
+
+    let team1Class = "match-team home";
+    let team2Class = "match-team away";
+
+    if (parsed.score1 > parsed.score2) {
+        team1Class += " winner";
+    } else if (parsed.score2 > parsed.score1) {
+        team2Class += " winner";
+    }
+
+    return `
+        <div class="match-fixture">
+
+            <div class="${team1Class}">
+
+                <div class="team-name">
+                    ${safe(parsed.team1)}
+                </div>
+
+                <div class="manager-name">
+                    ${safe(parsed.manager1)}
+                </div>
+
+            </div>
+
+            <div class="match-score">
+                ${safe(parsed.score1)}–${safe(parsed.score2)}
+            </div>
+
+            <div class="${team2Class}">
+
+                <div class="team-name">
+                    ${safe(parsed.team2)}
+                </div>
+
+                <div class="manager-name">
+                    ${safe(parsed.manager2)}
+                </div>
+
+            </div>
+
+        </div>
+    `;
 }
 
 
@@ -495,9 +637,7 @@ function render() {
             html += `
                 <div class="match-report">
 
-                    <h3>
-                        ${safe(match.title)}
-                    </h3>
+                    ${renderMatchFixture(match)}
 
                     <p>
                         ${safe(match.text)}
@@ -581,7 +721,7 @@ function render() {
             <section class="section">
 
                 <h3 class="section-title">
-                    Next Gameweek
+                    Next week's key matches
                 </h3>
         `;
 
