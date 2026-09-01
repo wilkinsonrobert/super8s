@@ -10411,7 +10411,81 @@
         }
       ],
       "closing": "That’s your Gameweek 1 digest: close calls, a brutal thrashing and several captaincies already asking for therapy. Get your teams right — and if you left good players on the bench, don’t bother apologising; just promise a transfer and then do nothing."
+    },
+    "2": {
+      "headline": "The Bruno Bug: Double-captains everywhere and still somehow not enough for everyone",
+      "introduction": "Gameweek 2 served up enough double-captain hysteria to make a telemarketer’s head spin. Bruno Borges Fernandes was the unofficial mascot of the weekend — several managers slapped the armband on him and watched 46 points appear like applause. There were high scores (hello 115), a few wasted benches (looking at you, Pascal Groß), and a draw so symmetric it felt like two managers had shared a single brain cell.",
+      "matches": [
+        {
+          "title": "Prince Majid Rd FC (Rami) 90 — Woolbrohampton (Ben) 104",
+          "text": "Rami double-captained Bruno and enjoyed 46 magic points from him — which is impressive, shame it wasn’t enough. Woolly did the exact same trick (also 46 from Bruno) and still edged it by 14 thanks to contributions across the pitch: Haaland 13, João Pedro 9 and a steady supporting cast. Bonus bit of cruelty for Ben: Pascal Groß scored 13 on his bench and went unused — the kind of bench punctuality that keeps statisticians awake at night."
+        },
+        {
+          "title": "Turf Less (Martyn) 85 — ChampagneSuperRovers (James) 103",
+          "text": "Dunne’s Haaland hand (double-capped for 26) proved decisive as ChampagneSuperRovers finished well clear. Martyn tried a cheeky double on Cole Palmer (14) but it couldn’t close the gap; Bruno again popped up with 23 for Turf Less but, as the scoreboard shows, one big name doesn’t win the whole thing."
+        },
+        {
+          "title": "Atletico Waspo (Ben F) 99 — FC Dangerous (Watson) 108",
+          "text": "Foz’s side hit 99 despite a big 26 from his own Haaland — but Watson’s FC Dangerous had the better balance. Watson’s double-captain bet on Bukayo Saka paid out (22) and Rayan Cherki’s 14 added weight; that was enough to nick a nine-point win."
+        },
+        {
+          "title": "Seattle Scorchers (Andrew) 99 — el Guapo (Tom) 76",
+          "text": "Crystal was too hot for Tom this week. Seattle leaned on the Bruno double again (46) and added tidy returns elsewhere to build a comfortable 23-point cushion. Tom’s double-Haaland (26) couldn’t paper over the cracks — a reminder that even a doubled superstar needs colleagues who deliver."
+        },
+        {
+          "title": "BeLucky Again (Kev) 82 — Change Name FC (David W) 100",
+          "text": "Dave cruised to three points as Change Name FC hit a century. David’s Haaland double (26) combined with Bruno’s usual 23 to outscore Kevin’s decent but insufficient haul. Kevin did have Haaland as his double as well (26), so this one came down to the rest of the XI — and David’s supporting cast simply did more."
+        },
+        {
+          "title": "Bielsa's Babes (Patrick) 115 — Humorous Name United (Rob W) 115",
+          "text": "A one-in-a-thousand sort of result: identical 115s and a shared scalp of the week. Both Patrick and Rob W double-captained Bruno for 46 and both reaped identical returns elsewhere — a truly symmetrical draw. They also share the honour of the week’s highest score, which makes the trophy cabinet rather awkward."
+        },
+        {
+          "title": "Roped in again (Paul) 92 — Richard (Rich) 108",
+          "text": "Rich’s Richard took three points in comfortable fashion. Once again Bruno shows up big where it counts — Rich double-capped Bruno for 46 and it sliced through Paul’s otherwise respectable return (Paul’s Haaland double gave 26 but the rest of the side didn’t quite match it)."
+        }
+      ],
+      "awards": [
+        {
+          "award": "The Bruno Plague",
+          "winner": "Bielsa's Babes & Humorous Name United",
+          "text": "Both Patrick and Rob W double-capped Bruno and ended up with identical 115s. When the virus spreads, it spreads symmetrically."
+        },
+        {
+          "award": "Wasted Bench Bonanza",
+          "winner": "Woolbrohampton (Woolly)",
+          "text": "Ben had Pascal Groß scoring 13 on his bench — brilliant work by Pascal, tragic timing by Ben."
+        },
+        {
+          "award": "Double-Down Delusion",
+          "winner": "Rami",
+          "text": "Rami double-capped Bruno for 46 and still lost. Brave, committed and ultimately heartbreaking."
+        },
+        {
+          "award": "Needs a Refill",
+          "winner": "el Guapo (Tom)",
+          "text": "Lowest score of the week at 76. Tom’s double-Haaland got 26, but the rest of the XI looked like they’d been sent home early."
+        }
+      ],
+      "table_commentary": "Woolly’s Woolbrohampton sits top with the perfect six H2H points and a healthy 175 FPL points — unbeaten and smug. Behind him is Paddy’s Bielsa's Babes on four points, narrowly ahead of Rob’s Humorous Name United thanks to the official tie-breaker of total FPL points (191 vs 187). There’s a four-way cluster on four points in total if you include Watson and Crystal, but the tie-breakers shuffle their order. Mid-table is congested: several teams on three H2H points after trading wins and losses in the opening pair of weeks. At the other end, Paul (Roped in again), Bradshaw (Turf Less) and Tom (el Guapo) are yet to find a point from two matches and will be sharpening transfer knives.",
+      "preview": [
+        {
+          "fixture": "Humorous Name United vs Prince Majid Rd FC (event 3)",
+          "text": "Rob W faces Rami next. Both managers are dangerous in different ways — Rob already has that 115 under his belt, Rami will be licking his wounds after a Bruno double that didn’t quite win. Expect more Bruno-related decisions and a tight encounter on paper."
+        },
+        {
+          "fixture": "Change Name FC vs Richard (event 3)",
+          "text": "Dave hosts Rich in what looks like a revenge/reaffirmation tie. Both came away with wins this week, so it could be a toss-up of who’s got the deeper bench and who resists wasting Pascal Groß again."
+        },
+        {
+          "fixture": "Woolbrohampton vs Seattle Scorchers (event 3)",
+          "text": "Top-of-the-table Woolly welcomes Crystal. Ben is unbeaten and will fancy his chances, but Andrew’s Seattle have shown they can pile on the points when Bruno turns up. Could be the first heavyweight clash of the mini-season."
+        }
+      ],
+      "closing": "That’s your lot for Gameweek 2 — plenty of double-captain drama, a couple of wasted benches and a tie so neat it could’ve been scheduled. See you next week; start deciding who gets the armband before the Bruno contagion spreads any further."
     }
   },
-  "processed_gameweeks": []
+  "processed_gameweeks": [
+    2
+  ]
 }
